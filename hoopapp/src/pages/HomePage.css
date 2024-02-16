@@ -1,0 +1,118 @@
+.container{
+    background-image: url(../componets/images/bkImage.jpg); 
+    background: linear-gradient( rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0.379) ), url(../componets/images/bkImage.jpg);
+    background-repeat: no-repeat;  
+    background-size: 300%; 
+    height: 100vh;
+    display: flex; 
+    flex-direction: column; 
+    padding: 2em 2em; 
+    overflow: hidden; 
+    
+    
+} 
+
+
+.top-box{   
+    width: 100%; 
+    height: 500px; 
+    background-color: aquamarine;
+
+    
+
+} 
+
+img{
+    width: 200px;  
+    height: 200px;
+    align-items: center;
+    margin: 2rem 0; 
+}  
+
+.card{ 
+    justify-content: center;
+    width: 100%; 
+    height: 25%;  
+    background: white;
+    border-radius: 5px; 
+    box-shadow: 1px 4px 2px 2px rgba(0, 0, 10, 0.594); 
+    margin: 1em 0; 
+    padding: .5em ;
+
+} 
+
+.card h1{ 
+     font-size: 1.1em; 
+     margin: 0;
+}
+ 
+.card h2{
+    font-size: .8em; 
+    margin:0; 
+    font-weight: normal;
+}
+
+.top-heading{   
+    
+    font-weight: normal;
+    font-size: 1em;
+    margin:.5rem .5rem; 
+    color: white;
+    font-family: Helvetica, sans-serif; 
+    margin-right: 75%;
+}  
+
+.bb-image{  
+    margin-top: 2%;
+    width: 60px;
+    height:  80px;
+    
+    
+}  
+
+.court-type{
+    margin-top: 10%;
+    display: grid;  
+    grid-template-columns: 70px 170px 100px; 
+    grid-gap: 10px;
+
+}  
+
+.court-num{  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    letter-spacing: -0.3rem;
+    font-size: 3rem; 
+    color: #f86931; 
+    font-style: oblique; 
+    margin-top: 30px;
+}  
+  
+
+.read-more{
+   width: 75px;  
+   color: #f86931;
+   background: none;  
+   margin-top: 50px;
+
+
+} 
+
+
+.read-more:hover{ 
+    cursor: pointer;
+    margin-left: 3rem;  
+    width: 75px;   
+    color: black;
+    background: beige;   
+    background: rgb(238, 238, 238);
+  
+ }
+ 
+
+
+@media (max-width: 600px) {
+    .container { 
+        background-size: 600%;     
+       
+   }
+  }

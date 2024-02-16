@@ -1,0 +1,442 @@
+
+{ 
+    "courts":
+[
+    {
+    "name":"Colver Park", 
+    "type":"Full Court", 
+    "address": "Culver Park, 1 Culver St, Yonkers, NY 10705", 
+    "floor":"Absalt",  
+    "rim":"single", 
+    "netType":"net",  
+    "threePointLine":true, 
+    "collegeThreePointLine":"false", 
+    "courtCount":2, 
+    "seats":false
+
+
+}, 
+
+{
+    "name":"Andrus Park and Playground", 
+    "type":"Full Court", 
+    "address": "Central Park Ave. Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"single", 
+    "netType":"net",  
+    "threePointLine":true, 
+    "collegeThreePointLine":"false", 
+    "courtCount":1, 
+    "seats":false
+
+
+},  
+{
+    "name":"Andrus Park", 
+    "type":"Full Court", 
+    "address": "72 McLean Ave, Yonkers, NY 10705", 
+    "floor":"Concrete",  
+    "rim":"double", 
+    "netType":"net",  
+    "threePointLine":true, 
+    "collegeThreePointLine":"false", 
+    "courtCount":1, 
+    "seats":false
+
+
+},  
+{
+    "name":"Barton Park", 
+    "type":"Full Court", 
+    "address": "High Street Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"double", 
+    "netType":"net",  
+    "threePointLine":true, 
+    "collegeThreePointLine":false,
+    "courtCount":1, 
+    "seats":false
+
+
+} 
+,  
+{
+    "name":"Bregano Park", 
+    "type":"Full Court", 
+    "address": "Rigby St. & Brandon Road Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"double", 
+    "netType":"net",  
+    "threePointLine":true, 
+    "collegeThreePointLine":false, 
+    "courtCount":1, 
+    "seats":false
+
+
+} 
+,  
+{
+    "name":"Cerrato Park", 
+    "type":"Half Court", 
+    "address": "Rigby St. & Brandon Road Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"double", 
+    "netType":"net",  
+    "threePointLine":false, 
+    "collegeThreePointLine":false, 
+    "courtCount":4, 
+    "seats":false
+
+
+}
+,  
+{
+    "name":"Coyne Park", 
+    "type":"Full Court", 
+    "address": "777 Mc Lean Ave. and Old Jerome Ave. Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"single", 
+    "netType":"net",  
+    "threePointLine":false, 
+    "collegeThreePointLine":false, 
+    "courtCount":2, 
+    "seats":false
+
+
+} 
+,  
+{
+    "name":"Ferme Park", 
+    "type":"Full Court", 
+    "address": "Brewster & Dunston Ave. Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"single", 
+    "netType":"net",  
+    "threePointLine":false, 
+    "collegeThreePointLine":false, 
+    "courtCount":2, 
+    "seats":false
+
+
+} 
+
+,  
+{
+    "name":"Ferme Park", 
+    "type":"Full Court", 
+    "address": "Brewster & Dunston Ave. Yonkers, NY 10701", 
+    "floor":"Concrete",  
+    "rim":"single", 
+    "netType":"net",  
+    "threePointLine":false, 
+    "collegeThreePointLine":false, 
+    "courtCount":2, 
+    "seats":false
+
+
+}, 
+{
+    "name": "Fitzpatrick-Tompkins Park", 
+    "type": "Full Court" , 
+    "address":"Valley and Bolmer Ave Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType":"reguluar" , 
+    "threePoineLine": true,
+    "collegeThreePointLine": false ,
+    "courtCount": 2,
+    "seats": false
+
+}, 
+   {
+    "name": "Georgia Avenue Park ", 
+    "type": "Half Court" , 
+    "address":"Georgia and Louisiana Ave Yonkers, NY 10701", 
+    "floor": "Concrete", 
+    "rim": "single", 
+    "netType":"regular" , 
+    "threePoineLine": false ,
+    "collegeThreePointLine":false ,
+    "courtCount": 1 ,
+    "seats": false
+
+}, 
+   {
+    "name": "H. Boo Wilson Park ", 
+    "type": "Full Court" , 
+    "address":"Tuckahoe Road Yonkers, NY 10701", 
+    "floor": "absalt" , 
+    "rim": "single", 
+    "netType": "regular", 
+    "threePoineLine": true,
+    "collegeThreePointLine": false,
+    "courtCount": 2,
+    "seats": true
+
+}, 
+   {
+    "name":"Kinsley Park", 
+    "type": "Full Court" , 
+    "address":"Park and Chase Avenues Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester" , 
+    "threePoineLine": false,
+    "collegeThreePointLine": false,
+    "courtCount": 1,
+    "seats": false
+
+}, 
+   {
+    "name": "Lennon Park", 
+    "type": "Full Court" , 
+    "address":"Lake and Park Ave Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine": false,
+    "collegeThreePointLine": false ,
+    "courtCount": 1,
+    "seats":false
+
+}, 
+   {
+    "name": "O'Boyle Park", 
+    "type": "Half Court" , 
+    "address":"Hawthorne Avenue Yonkers, NY 10705", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType":"none", 
+    "threePoineLine": true,
+    "collegeThreePointLine": true,
+    "courtCount": 2,
+    "seats": false
+
+}, 
+   {
+    "name": "Pickett Park ", 
+    "type": "Full Court" , 
+    "address":"Knowles St. and Hawthorne Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine": true,
+    "collegeThreePointLine": false,
+    "courtCount": 1,
+    "seats" :false
+
+}, 
+   {
+    "name": "Ragone-Muscente's Park", 
+    "type": "Half Court" , 
+    "address":"Oak and Willow Streets Yonkers, NY 10701", 
+    "floor": "absalt" , 
+    "rim": "single", 
+    "netType": "none", 
+    "threePoineLine": false,
+    "collegeThreePointLine":false ,
+    "courtCount": 1,
+    "seats": false
+
+}, 
+   {
+    "name": "Ravine Avenue Park", 
+    "type": "Full Court",
+    "address":"Ravine Ave. and Union Place Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Rev. Roy Richter", 
+    "type": "Full Court",
+    "address":"Nepperhan Ave. & Reade St. Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":false ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Ravine Avenue Park", 
+    "type": "Full Court",
+    "address":"Ravine Ave. and Union Place Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Rubeo Cieslinski Park", 
+    "type": "Full Court",
+    "address":"Edwards & Frederick Pls. Yonkers, NY 10701", 
+    "floor": "absalt" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Schultze Park", 
+    "type": "Full Court",
+    "address":"St. Elanoras Lane Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":false ,
+    "collegeThreePointLine": false,
+    "courtCount":2 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Scotti Park", 
+    "type": "Full Court",
+    "address":"Bronx River Parkway and BronxRiver Road Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "double", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Stefanik Park", 
+    "type": "Full Court",
+    "address":"Nepperhan Ave. & Ingram St. Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Sullivan Oval Park", 
+    "type": "Full Court",
+    "address":"Van Cortland Park & Spruce Street. Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":4 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Trenchard Street Park", 
+    "type": "Full Court",
+    "address":"Trenchard Street Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+}, 
+   {
+    "name": "Trevor Park ", 
+    "type": "Full Court",
+    "address":"Ravine Ave. and Union Place Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":true ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+} 
+, 
+   {
+    "name": "Vark Park ", 
+    "type": "Full Court",
+    "address":"Vark Streets Yonkers, NY 10701", 
+    "floor": "Concrete" , 
+    "rim": "single", 
+    "netType": "polyester", 
+    "threePoineLine":false ,
+    "collegeThreePointLine": false,
+    "courtCount":1 ,
+    "seats":false
+
+} 
+
+, 
+{
+ "name": "War Memorial Field", 
+ "type": "Full Court",
+ "address":"Copcutt Lane Off off Nepperhan Ave. Yonkers, NY 10701", 
+ "floor": "Concrete" , 
+ "rim": "single", 
+ "netType": "polyester", 
+ "threePoineLine":false ,
+ "collegeThreePointLine": false,
+ "courtCount":1 ,
+ "seats":false
+
+}  
+
+, 
+{
+"name": "Wasicsko Park", 
+"type": "Full Court",
+"address":"Colin & Agar Streets Yonkers, NY 10701", 
+"floor": "Concrete" , 
+"rim": "single", 
+"netType": "polyester", 
+"threePoineLine":true ,
+"collegeThreePointLine": false,
+"courtCount":1 ,
+"seats":false
+
+}  
+
+, 
+{
+"name": "Welty Park", 
+"type": "Full Court",
+"address":"Mile Square and Barton Roads Yonkers, NY 10701", 
+"floor": "Concrete" , 
+"rim": "single", 
+"netType": "polyester", 
+"threePoineLine":true ,
+"collegeThreePointLine": false,
+"courtCount":1 ,
+"seats":false
+
+}
+
+
+
+
+
+
+
+
+    ]
+
+
+}

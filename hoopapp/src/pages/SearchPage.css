@@ -1,0 +1,60 @@
+.container{
+    align-items: center;
+}
+
+
+.search-container{
+    
+    display: flex; 
+    flex-direction: row;    
+    padding: 1rem;
+    width: 93%;
+    background: white; 
+    border-radius: 5px; 
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 10px; 
+    transition: background ease-in 5ms; 
+    transition:border ease-in 5ms ;
+}
+ 
+
+.search-container:focus-within{
+    background: rgb(234, 234, 234); 
+    
+}
+
+.s-icon{
+    width: 30px; 
+    height: 30px; 
+    padding: 0; 
+    margin: 0; 
+    fill: orange;
+}   
+
+.search-inp{
+    height: 100%;
+    width: 100%;
+    margin-left:20px ;
+    border: none;   
+    outline: none;
+    background: transparent; 
+    font-size: 1.5rem;
+}
+
+.s-read-more{ 
+    width: 100px;
+    margin-top: 6rem; 
+    margin-left: 7rem; 
+    background:none; 
+    color: #f86931 ; 
+    
+}  
+
+.s-read-more:hover{
+    background-color: rgba(250, 250, 250, 0.995);  
+    color: black;
+    cursor: pointer;
+}
+ 
+
+
+

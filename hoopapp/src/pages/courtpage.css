@@ -1,0 +1,114 @@
+*{
+    box-sizing: border-box;
+}
+
+.court-card{ 
+    background-color: white; 
+    height:90%;
+    width: 100%; 
+    border-radius: 5px;  
+    padding: 10px ; 
+    margin: 0;  
+    display: grid;  
+    grid-template-rows: .8fr 1.7fr;
+}  
+
+h1{
+    margin: 0;
+    font-size: 1.5rem;
+}  
+
+h2{
+    font-size: 1rem;
+    margin: 0;
+}
+.court-top{ 
+    width: 100%; 
+}
+
+
+.dot{
+    color: orange;
+}
+
+.court-bottom{  
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #dcdcdc; 
+    width: 100%;  
+} 
+
+.court-more-info{
+   margin: 0; 
+   font-size: .75rem; 
+} 
+.court-more-info p{
+    font-size: .8rem; 
+    margin:0;
+} 
+
+.recent-changes{
+    margin-top: 2rem;
+    width: 100%; 
+    height: 45%; 
+    border-bottom: white solid 2px;
+} 
+
+.recent-changes h3 { 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-weight: bold; 
+    font-size: .9rem; 
+    color: rgb(48, 48, 48);
+
+}
+
+.r-date{
+    color:#f86931
+}
+
+.revise-btn{
+    cursor: pointer;
+    background-color: rgb(210, 209, 209);
+    color: #f86931; 
+    transition: ease-in-out 1s; 
+    font-weight: bold; 
+    margin: 0; 
+    margin-top: 40px;
+}
+.revise-btn:hover{
+    background-color: rgba(235, 235, 235, 0.546);
+}
+
+.c-court-num{  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    letter-spacing: -0.3rem;
+    font-size: 2.5rem;
+    color: #f86931!important; 
+    font-style: oblique;
+}  
+
+
+.bb{
+    width: 50px;
+    height: 50px;
+} 
+.c-image{
+    margin-top: 1.5rem;
+    width: 100%;   
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    
+    
+}  
+
+img{
+    margin: 0!important; 
+    padding: 0;
+} 
+
+.c-image img{
+    height: 90px;
+    width: 70px;
+}
