@@ -2,8 +2,8 @@ import react, { useState , useEffect } from "react"
 import axios  from "axios"   
 import {Link } from "react-router-dom"   
 import "./SearchPage.css"
-import search_i from "../componets/images/search-icon-black.svg" 
-import bb from "../componets/images/bb_image.png"
+import search_i from "../images/search-icon-black.svg" 
+import bb from "../images/bb_image.png"
 
 
 

@@ -1,9 +1,10 @@
 import react, { useState ,useEffect } from "react" 
 import axios  from "axios" 
 import {Link } from "react-router-dom" 
-import Top from "../componets/Top" 
+import Top from "../Top" 
 import "./HomePage.css"  
-import bb from "../componets/images/bb_image.png"
+import bb from "../images/bb_image.png"
+
 
 
 const HomePage = () => {

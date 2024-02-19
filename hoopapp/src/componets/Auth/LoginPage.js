@@ -1,7 +1,7 @@
 import react, {useState} from "react"  
 import "./LoginPage.css" 
 import {Link} from "react-router-dom"    
-import fullLogo from "../componets/images/fullLogo.svg"  
+import fullLogo from "../images/fullLogo.svg"    
 import SignIn from "./SignInPage" 
 import SignUp from "./SignUpPage"
 import axios from "axios"

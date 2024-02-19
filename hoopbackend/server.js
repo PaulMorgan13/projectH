@@ -2,37 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose"); 
 const cors = require("cors") 
 require("dotenv").config() 
-const passport = require("passport") 
 const session  = require("express-session");
+const MongoStore = require('connect-mongo');
+const passport = require("passport") 
 const LocalStrategy  = require("passport-local").Strategy; 
-const bcrypt = require("bcrypt") 
+const bcrypt = require("bcrypt"); 
+
 const app = express()  
  
 
 
-app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({
-    origin:"http://localhost:3000", 
-    methods:"GET,POST,PUT,DELETE",
-    credentials:true,
-}))   
-
-
-app.use(session({
-    secret:"hoop",
-    resave: false,
-    saveUninitialized:true
-}))
-
-
-app.use(express.urlencoded(
-    {extended:false}
-)) 
-
-app.use(express.json())  
-
-
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 
 
@@ -40,6 +21,24 @@ mongoose.connect(process.env.DATABASE_URI)
     .then(()=> console.log("connected to the Database") ) 
     .catch(error => console.log(error)) 
 
+
+
+
+app.use(session({ 
+    secret: 'thekey',
+    resave: false,
+    saveUninitialized: false,
+    store:MongoStore.create({mongoUrl:process.env.DATABASE_URI}),
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    },
+  
+}));
+
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())  
 
 
 const courtSchema = new mongoose.Schema({
@@ -89,18 +88,19 @@ const User = mongoose.model("User", userSchema)
 //passport.js 
 
 app.use(passport.initialize()); 
-
 app.use(passport.session());  
 
-passport.serializeUser(function (user, done){
-    done(null, user.id)
-}) 
 
-passport.deserializeUser((id,done)=> 
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
+
+passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
-        done(err, user)
-    })
-)
+      done(err, user);
+    });
+  });
 
 
 
@@ -133,15 +133,6 @@ passport.use(new LocalStrategy(
 
 
 
-passport.serializeUser(function (user, done){
-    done(null, user.id)
-}) 
-
-passport.deserializeUser((id,done)=> 
-    User.findById(id, (err, user) => {
-        done(err, user)
-    })
-)
 
 
 
@@ -175,17 +166,19 @@ app.delete("/courts/:id", async (req , res) => {
 
 }) 
 
-/*app.post('/signin',passport.authenticate('local'), async(req , res)=> {  
-    console.log(req.body)
-    
-}); */
 
-app.post('/signin', passport.authenticate('local'), (req, res) => { 
-    console.log(req.body)
-    res.json({ message: 'Login successful', user: req.user });
+app.post('/signin', passport.authenticate('local'), (req, res) => {
+    console.log('User:', req.user);
+    res.json({ isAuthenticated: req.isAuthenticated(), user: req.user });
   });
 
+/*
+app.post('/signin', passport.authenticate('local'), (req, res) => { 
+    res.json({ message: 'Login successful', user: req.user });  
 
+  });
+
+*/
 
 
 
@@ -211,7 +204,20 @@ app.post("/signup", async(req, res)=>{
 
     }
 
-})
+}) 
+
+
+
+app.get('/check-auth', (req, res) => {
+    if (req.isAuthenticated()) { 
+        console.log(req.user)
+      res.json({ isAuthenticated: true, user: req.user });
+    } else {
+      res.json({ isAuthenticated: false });
+    }
+  });
+
+  
 
 // Setup our admin user
 /*app.get('/setup', async (req ,res) => {
@@ -243,6 +249,3 @@ app.post("/signup", async(req, res)=>{
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
 }) 
-
-
-

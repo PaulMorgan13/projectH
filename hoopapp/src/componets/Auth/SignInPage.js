@@ -2,7 +2,7 @@ import react, {useState} from "react"
 import "./SignInPage.css" 
 import {Link,useNavigate} from "react-router-dom"     
 import {Route , BrowserRouter as Router, Routes} from "react-router-dom"
-import fullLogo from "../componets/images/fullLogo.svg"   
+import fullLogo from "../images/fullLogo.svg" 
 
 import axios from "axios"
 
@@ -22,7 +22,20 @@ const SignInPage = () => {
             const res = await axios.post("http://localhost:3400/signin" ,{
                 username, 
                 password 
-            }).then(res => {
+            }) 
+            const {isAuthenticated, user} = res.data; 
+            
+            if(isAuthenticated) {
+                console.log('User is authenticated:', user.username); 
+                navigate("/")
+
+
+           } 
+           else {
+            console.log( 'Login failed'); 
+            navigate("/signin")
+           }
+             /*.then(res => {
                 console.log(res)  
                 if(res.status == 200){
                     navigate("/")
@@ -31,12 +44,13 @@ const SignInPage = () => {
                     navigate("/signin")
                 }
             })
-
+             */
             
         }
         catch(err){
             console.error("login did not work",err.message)
-        }
+        } 
+       
     }
 
     return(  

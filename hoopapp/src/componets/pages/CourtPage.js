@@ -1,11 +1,49 @@
 import React  , {useState , useEffect }from "react"; 
 import axios from "axios"  
-import { useParams } from "react-router-dom"; 
+import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
-import bb from "../componets/images/bb_image.png"
+import bb from "../images/bb_image.png"
+
 
 
 const CourtPage = () => {
+   
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
+
+    const navigate = useNavigate();
+
+
+    useEffect( () => {
+        const checkAuthStatus = async () => {
+            try {
+              const response = await axios.get('http://localhost:3400/check-auth');
+              const { isAuthenticated, user } = response.data;
+          
+              if (isAuthenticated) {
+                // User is authenticated, handle accordingly
+                setIsAuthenticated(true) 
+                setUser(user)
+              } else {
+                // User is not authenticated, handle accordingly
+                console.log('User is not authenticated');  
+                setIsAuthenticated(false) 
+                setUser(null)
+
+              }
+            } catch (error) {
+              // Handle error
+              console.error('Error checking authentication status:', error);
+            }
+          };
+          checkAuthStatus()
+        }, [])
+
+
+
+
+
+
 
 
     const [court , setCourt] = useState({
@@ -25,6 +63,7 @@ const CourtPage = () => {
 
     const {id} = useParams() 
 
+
     useEffect(() =>{
         const grabCourt = async () => {
             const res = await axios.get(`http://localhost:3400/courts/${id}`) 
@@ -34,9 +73,10 @@ const CourtPage = () => {
     },[id])  
 
 
-        return(
+        return( 
                 <div className="container">
-                
+                    
+                  { isAuthenticated ? (
                     <div className="court-card"> 
 
 
@@ -89,8 +129,8 @@ const CourtPage = () => {
 
 
                             
-                    </div>
-
+                    </div>  
+                  ) : (navigate("/signin"))}
                 </div>
 
 
