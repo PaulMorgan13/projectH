@@ -9,7 +9,7 @@ import SignUpPage from "./componets/Auth/SignUpPage"
 import SignInPage from "./componets/Auth/SignInPage"  
 import  SearchPage  from "./componets/pages/SearchPage"
 import Nav from "./componets/Nav"   
-import axios from 'axios';
+
 
 
 export const AuthContext = createContext()  

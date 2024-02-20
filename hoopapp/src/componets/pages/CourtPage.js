@@ -1,43 +1,50 @@
-import React  , {useState , useEffect }from "react"; 
+import React  , {useState , useEffect , useContext }from "react"; 
 import axios from "axios"  
 import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
 import bb from "../images/bb_image.png"
+import { AuthContext } from "../../App";
 
 
 
-const CourtPage = () => {
-   
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+const CourtPage = () => { 
+
+
+
+    const [isAuth, setIsAuth] = useContext(AuthContext)
     const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
 
 
-    useEffect( () => {
-        const checkAuthStatus = async () => {
-            try {
-              const response = await axios.get('http://localhost:3400/check-auth');
-              const { isAuthenticated, user } = response.data;
-          
-              if (isAuthenticated) {
-                // User is authenticated, handle accordingly
-                setIsAuthenticated(true) 
-                setUser(user)
-              } else {
-                // User is not authenticated, handle accordingly
-                console.log('User is not authenticated');  
-                setIsAuthenticated(false) 
-                setUser(null)
+    useEffect(() =>  { 
 
-              }
-            } catch (error) {
-              // Handle error
-              console.error('Error checking authentication status:', error);
-            }
-          };
-          checkAuthStatus()
-        }, [])
+      const checkAuth = async () => {
+
+
+          try{
+              const res = await axios.get(`http://localhost:3400/check-auth`)
+              .then((res)=>{
+              console.log(res.data.isAuthenticated)
+               if(res.data.isAuthenticated === false){
+                   setIsAuth(false)
+                   navigate("/login")
+               }
+               else{
+                  setIsAuth(true)  
+                  navigate("/search")
+
+               }
+              })
+          } 
+          catch(err){
+              console.log(`error : ${err}`)
+          }
+
+          
+      }
+         checkAuth()
+  }, [] ) 
 
 
 

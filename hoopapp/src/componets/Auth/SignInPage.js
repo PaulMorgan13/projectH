@@ -26,13 +26,7 @@ const SignInPage = () => {
             },    {
                 withCredentials: true, // Include credentials in the request
               }) 
-            //const {isAuthenticated, user} = res.data; 
             
-            //if(isAuthenticated) {
-            //    console.log('User is authenticated:', user.username); 
-
-
-          // } 
 
 
           if (res.status === 200) {
