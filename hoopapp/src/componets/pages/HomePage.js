@@ -1,14 +1,17 @@
-import react, { useState ,useEffect } from "react" 
+import react, { useState ,useEffect, useContext } from "react" 
 import axios  from "axios" 
-import {Link } from "react-router-dom" 
+import {Link , useNavigate} from "react-router-dom" 
 import Top from "../Top" 
 import "./HomePage.css"  
 import bb from "../images/bb_image.png"
+import { AuthContext } from "../../App"
 
 
 
-const HomePage = () => {
+
+const HomePage = (props) => { 
     const [courts , setCourts ] = useState([]) 
+    const navigate = useNavigate();
 
 
     useEffect(()=> {
@@ -19,6 +22,44 @@ const HomePage = () => {
         } 
         grabCourts()  
     },[])
+
+
+    //const isAuth = useContext(AuthContext)  
+
+    const [isAuth ,setIsAuth] = useContext(AuthContext)
+
+
+
+    useEffect(() =>  { 
+
+        const checkAuth = async () => {
+
+
+            try{
+                const res = await axios.get(`http://localhost:3400/check-auth`)
+                .then((res)=>{
+                console.log(res.data.isAuthenticated)
+                 if(res.data.isAuthenticated === false){
+                     setIsAuth(true)
+                     navigate("/")
+                 }
+                 else{
+                    navigate("/login")
+
+                 }
+                })
+            } 
+            catch(err){
+                console.log(`error : ${err}`)
+            }
+
+            
+        }
+           checkAuth()
+    }, [] ) 
+
+
+
 
     return( 
         <div className="container" >  

@@ -92,14 +92,23 @@ app.use(passport.session());
 
 
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
+passport.serializeUser((user, done) => {  
+        done(null, user.id);
   });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-      done(err, user);
-    });
+passport.deserializeUser(async (id, done) => { 
+    try {  
+        user = await User.findById(id); 
+
+        if(!user) {
+            return done(new Error('User not found'));
+        }
+        
+        done(null, user)
+    } catch (err) {
+            done(err)
+    }
+    
   });
 
 
@@ -211,9 +220,9 @@ app.post("/signup", async(req, res)=>{
 app.get('/check-auth', (req, res) => {
     if (req.isAuthenticated()) { 
         console.log(req.user)
-      res.json({ isAuthenticated: true, user: req.user });
+     return  res.json({ isAuthenticated: true, user: req.user });
     } else {
-      res.json({ isAuthenticated: false });
+      return res.json({ isAuthenticated: false });
     }
   });
 

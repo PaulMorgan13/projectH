@@ -1,12 +1,13 @@
-import react  , {useState }from "react"; 
+import react  , {useState ,useEffect, useContext}from "react"; 
 import axios from "axios" 
 import { useNavigate  } from "react-router-dom";   
 import "./addCourtPage.css"
-
+import { AuthContext } from "../../App"
    
 
 
-const  NewCourtPage =() => {
+const  NewCourtPage =() => { 
+    const navigate = useNavigate();
 
     const [court , setCourt] = useState({
         name: "", 
@@ -20,7 +21,11 @@ const  NewCourtPage =() => {
         courtCount: "",
         seats:""
 
-    })  
+    })    
+
+
+    const [isAuth ,setIsAuth] = useContext(AuthContext)
+
 
 
     const Navigate = useNavigate() 
@@ -36,7 +41,39 @@ const  NewCourtPage =() => {
         await axios.post("http://localhost:3400/courts",court )  
         Navigate("/") 
 
-    }
+    }     
+
+
+    useEffect(() =>  { 
+
+        const checkAuth = async () => {
+
+
+            try{
+                const res = await axios.get(`http://localhost:3400/check-auth`)
+                .then((res)=>{
+                console.log(res.data.isAuthenticated)
+                 if(res.data.isAuthenticated === false){
+                     setIsAuth(false)
+                     navigate("/login")
+                 }  
+                 else{
+                    setIsAuth(true)
+                    navigate("/add")
+                 }
+     
+                })
+            } 
+            catch(err){
+                console.log(`error : ${err}`)
+            }
+
+            
+        }
+           checkAuth()
+    }, [] ) 
+
+
 
     return(
 

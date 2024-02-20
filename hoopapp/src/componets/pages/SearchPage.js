@@ -1,16 +1,19 @@
-import react, { useState , useEffect } from "react" 
+import react, { useState , useEffect , useContext} from "react" 
 import axios  from "axios"   
-import {Link } from "react-router-dom"   
+import {Link ,useNavigate } from "react-router-dom"   
 import "./SearchPage.css"
 import search_i from "../images/search-icon-black.svg" 
 import bb from "../images/bb_image.png"
+import { AuthContext } from "../../App"
 
 
 
+const SearchPage =()=>{    
+    const navigate = useNavigate();
 
-const SearchPage =()=>{ 
     const [query, setQuery] = useState([])    
-    const [search, setSearch] = useState("")   
+    const [search, setSearch] = useState("")    
+    const [isAuth ,setIsAuth] = useContext(AuthContext)
   
     
     useEffect(() =>{
@@ -24,6 +27,36 @@ const SearchPage =()=>{
         console.log(grabParks)
     },[])
  
+    
+    useEffect(() =>  { 
+
+        const checkAuth = async () => {
+
+
+            try{
+                const res = await axios.get(`http://localhost:3400/check-auth`)
+                .then((res)=>{
+                console.log(res.data.isAuthenticated)
+                 if(res.data.isAuthenticated === false){
+                     setIsAuth(false)
+                     navigate("/login")
+                 }
+                 else{
+                    setIsAuth(true)  
+                    navigate("/search")
+
+                 }
+                })
+            } 
+            catch(err){
+                console.log(`error : ${err}`)
+            }
+
+            
+        }
+           checkAuth()
+    }, [] ) 
+
 
 
     return( 

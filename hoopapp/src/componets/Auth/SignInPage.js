@@ -1,13 +1,14 @@
-import react, {useState} from "react"  
+import react, {useState , useContext} from "react"  
 import "./SignInPage.css" 
 import {Link,useNavigate} from "react-router-dom"     
 import {Route , BrowserRouter as Router, Routes} from "react-router-dom"
-import fullLogo from "../images/fullLogo.svg" 
+import fullLogo from "../images/fullLogo.svg"  
+import { AuthContext } from "../../App"
 
 import axios from "axios"
 
 const SignInPage = () => {     
-
+    const [isAuth, setIsAuth] = useContext(AuthContext)
     const [username , setUsername] = useState("") 
     const [password, setPassword] = useState("")    
 
@@ -22,29 +23,26 @@ const SignInPage = () => {
             const res = await axios.post("http://localhost:3400/signin" ,{
                 username, 
                 password 
-            }) 
-            const {isAuthenticated, user} = res.data; 
+            },    {
+                withCredentials: true, // Include credentials in the request
+              }) 
+            //const {isAuthenticated, user} = res.data; 
             
-            if(isAuthenticated) {
-                console.log('User is authenticated:', user.username); 
-                navigate("/")
+            //if(isAuthenticated) {
+            //    console.log('User is authenticated:', user.username); 
 
 
-           } 
+          // } 
+
+
+          if (res.status === 200) {
+            console.log("user is logged in")   
+            setIsAuth(true)
+            navigate("/")
+          }
            else {
             console.log( 'Login failed'); 
-            navigate("/signin")
            }
-             /*.then(res => {
-                console.log(res)  
-                if(res.status == 200){
-                    navigate("/")
-                }  
-                else{
-                    navigate("/signin")
-                }
-            })
-             */
             
         }
         catch(err){

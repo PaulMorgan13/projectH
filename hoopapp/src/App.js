@@ -1,4 +1,4 @@
-import React from 'react';
+import eact ,{createContext , useState , useEffect} from 'react';
 import {Route , BrowserRouter as Router, Routes , Navigate} from "react-router-dom"
 import './App.css';  
 import AddCourtPage from "./componets/pages/AddCourtPage"
@@ -12,13 +12,22 @@ import Nav from "./componets/Nav"
 import axios from 'axios';
 
 
+export const AuthContext = createContext()  
 
 
 
 
 function App() {
 
+
+  const [isAuth, setIsAuth] = useState(true)
    
+
+  useEffect(()=> {
+    console.log(isAuth)
+  })
+
+
   /*cosnt [isAuth, setAuth ] = useState(false)
   
   useEffect(() => {
@@ -40,7 +49,7 @@ function App() {
 
 */
   return (  
-
+      <AuthContext.Provider value={[isAuth, setIsAuth]}>
       <div className='wrapper'> 
       <Router> 
             <Routes> 
@@ -58,7 +67,8 @@ function App() {
             <Nav/>   
 
       </Router> 
-      </div>
+      </div> 
+      </AuthContext.Provider>
   );
 }
 
