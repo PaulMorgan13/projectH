@@ -26,15 +26,11 @@ const CourtPage = () => {
               const res = await axios.get(`http://localhost:3400/check-auth`)
               .then((res)=>{
               console.log(res.data.isAuthenticated)
-               if(res.data.isAuthenticated === false){
-                   setIsAuth(false)
-                   navigate("/login")
+               if(res.data.isAuthenticated === true){
+                   setIsAuth(true)
+                   navigate("/court")
                }
-               else{
-                  setIsAuth(true)  
-                  navigate("/search")
-
-               }
+              
               })
           } 
           catch(err){
@@ -82,8 +78,7 @@ const CourtPage = () => {
 
         return( 
                 <div className="container">
-                    
-                  { isAuthenticated ? (
+                  
                     <div className="court-card"> 
 
 
@@ -137,7 +132,7 @@ const CourtPage = () => {
 
                             
                     </div>  
-                  ) : (navigate("/signin"))}
+                 
                 </div>
 
 

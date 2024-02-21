@@ -66,7 +66,8 @@ const SignUpPage = () => {
                 </div>  
 
 
-                <button type="submit" onClick={handleSubmit} >sign up</button>
+                <button type="submit" onClick={handleSubmit} >sign up</button> 
+                <p>Already Have an Account? <a className="link-login">Login</a></p>
 
 
             </form>
