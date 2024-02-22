@@ -37,13 +37,12 @@ const SearchPage =()=>{
                 const res = await axios.get(`http://localhost:3400/check-auth`)
                 .then((res)=>{
                 console.log(res.data.isAuthenticated)
-                 if(res.data.isAuthenticated === false){
-                     setIsAuth(false)
-                     navigate("/login")
+                 if(res.data.isAuthenticated === true){
+                     setIsAuth(true)
+                     navigate("/search")
                  }
                  else{
-                    setIsAuth(true)  
-                    navigate("/search")
+                    
 
                  }
                 })
