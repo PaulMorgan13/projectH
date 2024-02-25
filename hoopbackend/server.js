@@ -81,7 +81,50 @@ const userSchema = new mongoose.Schema({
 })
 
 
-const User = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema)      
+
+//user profie schema 
+
+const userProfileSchema = new mongoose.Schema({
+    username:{
+        type:String,
+        
+    } , 
+    email: {
+        type:String, 
+      
+    },
+    fullName:{
+        type:String,
+     
+    }, 
+    number: {
+        type:String, 
+        
+    }, 
+    city: {
+        type:String, 
+    }, 
+    state: {
+        type:String, 
+       
+    }, 
+    favoritePark:{
+        type:String, 
+      
+    },
+    reviews:[{
+        type:String,
+       
+
+    }]
+
+})
+
+
+const UserProfile = new mongoose.model("UserProfile", userProfileSchema)  
+
+
 
 
 
@@ -204,9 +247,24 @@ app.post("/signup", async(req, res)=>{
                 password:password,
                 fullName:fullName,
                 number:number
-        })
-        console.log(newUser) 
+        }) 
+
+        const newUserProfile = new  UserProfile({ 
+            username:username,
+            email:null,
+            fullName:fullName,
+            number:number,
+            city:null,
+            state:null, 
+            favoritePark:null, 
+            reviews:null,
+
+        })        
+         
+        console.log(newUser)  
+        console.log(newUserProfile)
         newUser.save() 
+        newUserProfile.save()
     }
     catch(err){ 
         console.error("failed to sign up", err)

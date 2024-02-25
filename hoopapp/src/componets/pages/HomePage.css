@@ -115,4 +115,15 @@ img{
         background-size: 600%;     
        
    }
+  }   
+
+  @media (max-width: 50em) {
+    .container { 
+        background-size: 600%; 
+       
+       
+   }
   } 
+  
+  
+
