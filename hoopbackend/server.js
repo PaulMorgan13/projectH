@@ -87,7 +87,8 @@ const User = mongoose.model("User", userSchema)
 
 const userProfileSchema = new mongoose.Schema({
     username:{
-        type:String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
         
     } , 
     email: {
@@ -250,7 +251,8 @@ app.post("/signup", async(req, res)=>{
         }) 
 
         const newUserProfile = new  UserProfile({ 
-            username:username,
+            username: newUser.id, 
+          
             email:null,
             fullName:fullName,
             number:number,
