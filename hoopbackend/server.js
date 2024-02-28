@@ -225,13 +225,7 @@ app.post('/signin', passport.authenticate('local'), (req, res) => {
     res.json({ isAuthenticated: req.isAuthenticated(), user: req.user });
   });
 
-/*
-app.post('/signin', passport.authenticate('local'), (req, res) => { 
-    res.json({ message: 'Login successful', user: req.user });  
 
-  });
-
-*/
 
 
 
@@ -288,32 +282,7 @@ app.get('/check-auth', (req, res) => {
 
   
 
-// Setup our admin user
-/*app.get('/setup', async (req ,res) => {
-	const exists = await User.exists({ username: "admin" });
-    console.log("exist")
-	if (exists) {
-		res.redirect('/login');
-		return;
-	};
 
-	bcrypt.genSalt(10, function (err, salt) {
-		if (err) return next(err);
-		bcrypt.hash("pass", salt, function (err, hash) {
-			if (err) return next(err);
-			
-			const newAdmin = new User({
-				username: "admin",
-				password: hash
-			});
-
-			newAdmin.save();
-
-			res.redirect('/login');
-		});
-	});
-});
-*/
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
