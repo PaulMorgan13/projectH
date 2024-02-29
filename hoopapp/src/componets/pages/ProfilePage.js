@@ -22,7 +22,7 @@ const ProfilePage = ()=>{
                         </h1>
 
 
-                        <div className="pic-box"> </div>
+                        <div className="pic-box"> H </div>
                     </div>  
 
                     <div className="p-card-bottom">
