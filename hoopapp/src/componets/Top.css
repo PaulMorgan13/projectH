@@ -30,7 +30,8 @@
     height: 60px; 
     border-radius: 50%; 
     border: solid  3px salmon;  
-    margin-left: 70%;     
+    margin-left: 70%;
+    cursor: pointer;
  
    
 }

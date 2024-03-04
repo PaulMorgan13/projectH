@@ -52,6 +52,14 @@
     background-color: rgba(232, 33, 73, 0.683); 
     border-radius: 50%; 
     border: solid 5px whitesmoke; 
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 2.5rem;  
+    font-weight: bold;  
+    color: white; 
+    padding: 0; 
+    
 }
 
