@@ -271,15 +271,17 @@ app.post("/signup", async(req, res)=>{
 
 
 
-app.get('/check-auth', (req, res) => {
-    if (req.isAuthenticated()) { 
-        console.log(req.user)
-     return  res.json({ isAuthenticated: true, user: req.user });
+
+  
+  app.get('/check-auth', (req, res) => {
+    if (req.isAuthenticated()) {
+      // User is authenticated
+      res.json({ authenticated: true, user: req.user });
     } else {
-      return res.json({ isAuthenticated: false });
+      // User is not authenticated
+      res.json({ authenticated: false, user: null });
     }
   });
-
   
 
 
