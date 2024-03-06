@@ -13,7 +13,7 @@ const app = express()
 
 
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin:'http://localhost:3000', credentials: true }));
 
 
 
@@ -26,8 +26,8 @@ mongoose.connect(process.env.DATABASE_URI)
 
 app.use(session({ 
     secret: 'thekey',
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     store:MongoStore.create({mongoUrl:process.env.DATABASE_URI}),
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, // 1 day
@@ -35,7 +35,8 @@ app.use(session({
   
 }));
 
-
+app.use(passport.initialize()); 
+app.use(passport.session());  
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())  
@@ -222,7 +223,7 @@ app.delete("/courts/:id", async (req , res) => {
 
 app.post('/signin', passport.authenticate('local'), (req, res) => {
     console.log('User:', req.user);
-    res.json({ isAuthenticated: req.isAuthenticated(), user: req.user });
+    res.json({ isAuthenticated: req.isAuthenticated(), user: req.user });  
   });
 
 
@@ -276,10 +277,10 @@ app.post("/signup", async(req, res)=>{
   app.get('/check-auth', (req, res) => {
     if (req.isAuthenticated()) {
       // User is authenticated
-      res.json({ authenticated: true, user: req.user });
+      return res.json({ authenticated: true, user: req.user });
     } else {
       // User is not authenticated
-      res.json({ authenticated: false, user: null });
+     return res.json({ authenticated: false, user: null });
     }
   });
   
