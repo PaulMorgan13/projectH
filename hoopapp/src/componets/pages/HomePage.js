@@ -36,11 +36,17 @@ const HomePage = (props) => {
 
 
             try{
-                const res = await axios.get(`http://localhost:3400/check-auth`)
+                const res = await axios.get(`http://localhost:3400/check-auth` , {
+                    withCredentials: true,
+                })
                 .then((res)=>{  
-                
-                console.log(res)
-                
+                console.log(res) 
+                if(res.data.authenticated === true){
+                    navigate("/")
+                }
+                else {
+                    navigate("/login")
+                }
                 })
             } 
             catch(err){

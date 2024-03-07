@@ -26,8 +26,8 @@ mongoose.connect(process.env.DATABASE_URI)
 
 app.use(session({ 
     secret: 'thekey',
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store:MongoStore.create({mongoUrl:process.env.DATABASE_URI}),
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, // 1 day
@@ -223,7 +223,9 @@ app.delete("/courts/:id", async (req , res) => {
 
 app.post('/signin', passport.authenticate('local'), (req, res) => {
     console.log('User:', req.user);
-    res.json({ isAuthenticated: req.isAuthenticated(), user: req.user });  
+    res.json({ isAuthenticated: req.isAuthenticated(), user: req.user });   
+
+
   });
 
 
