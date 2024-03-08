@@ -23,15 +23,18 @@ const CourtPage = () => {
 
 
           try{
-              const res = await axios.get(`http://localhost:3400/check-auth`)
-              .then((res)=>{
-              console.log(res.data.isAuthenticated)
-               if(res.data.isAuthenticated === true){
-                   setIsAuth(true)
-                   navigate("/court")
-               }
-              
+              const res = await axios.get(`http://localhost:3400/check-auth`, {
+                withCredentials: true,
               })
+              .then((res)=>{  
+                console.log(res) 
+                if(res.data.authenticated === true){
+                    navigate("/")
+                }
+                else {
+                    navigate("/login")
+                }
+                })
           } 
           catch(err){
               console.log(`error : ${err}`)
