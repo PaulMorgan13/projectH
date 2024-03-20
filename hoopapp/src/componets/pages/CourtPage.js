@@ -15,7 +15,7 @@ const CourtPage = () => {
     const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
-
+    const {id} = useParams() 
 
     useEffect(() =>  { 
 
@@ -26,15 +26,15 @@ const CourtPage = () => {
               const res = await axios.get(`http://localhost:3400/check-auth`, {
                 withCredentials: true,
               })
-              .then((res)=>{  
+             
                 console.log(res) 
                 if(res.data.authenticated === true){
-                    navigate("/")
+                    navigate(`/courts/${id}`)
                 }
                 else {
                     navigate("/login")
                 }
-                })
+                
           } 
           catch(err){
               console.log(`error : ${err}`)
@@ -67,7 +67,7 @@ const CourtPage = () => {
     })
 
 
-    const {id} = useParams() 
+    
 
 
     useEffect(() =>{
