@@ -42,6 +42,7 @@ const ProfilePage = ()=>{
                         </div>
 
 
+                        <button className="ep-btn">Edit Profile</button>
                     </div>
 
 

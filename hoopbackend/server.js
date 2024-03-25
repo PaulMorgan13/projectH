@@ -1,12 +1,14 @@
 const express = require("express"); 
 const mongoose = require("mongoose"); 
-const cors = require("cors") 
-require("dotenv").config() 
+const cors = require("cors"); 
+require("dotenv").config();
 const session  = require("express-session");
 const MongoStore = require('connect-mongo');
-const passport = require("passport") 
+const passport = require("passport"); 
 const LocalStrategy  = require("passport-local").Strategy; 
 const bcrypt = require("bcrypt"); 
+const multer = require("multer");
+
 
 const app = express()  
  
