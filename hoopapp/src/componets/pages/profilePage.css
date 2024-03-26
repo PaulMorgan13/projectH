@@ -29,16 +29,14 @@
 }  
 
 .p-card-bottom{
-    width: 100%; 
-    height: 100%;
-    background-color: rgb(236, 236, 236);  
-    border-radius: 5px;  
     display: grid;
-    grid-template-columns: 1fr;  
-    justify-content: end; 
-    padding: 1rem;   
-    color: rgb(48, 48, 48);
-  
+  grid-template-columns: auto;
+  position: relative;
+  width: 1000; 
+  height: 100%; 
+  background-color: aquamarine;
+  padding: 1rem; 
+  border-radius: 5px;
 }    
 
 .p-card-bottom h1{
@@ -64,9 +62,25 @@
 }
 
 
+.box-wrap{
+    height: 100%;
+    background-color: rgb(236, 236, 236);  
+    border-radius: 5px;  
+    display: grid; 
+
+} 
+
+.test-box{
+    background-color: brown;
+     width: 100%;
+     height: 90%;
+}
+
 .ep-btn{
-    background-color: grey; 
-    margin: 0; 
-    width: 5rem; 
+    background-color: grey;  
+    width: 6rem;  
+    position: absolute;
+    bottom: 0;
+    left: 0;
     
 }

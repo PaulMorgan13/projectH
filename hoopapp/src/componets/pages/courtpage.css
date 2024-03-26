@@ -35,7 +35,9 @@ h2{
     padding: 1rem;
     border-radius: 5px;
     background-color: #dcdcdc; 
-    width: 100%;  
+    width: 100%;   
+    position: relative;
+
 } 
 
 .court-more-info{
@@ -73,7 +75,10 @@ h2{
     transition: ease-in-out 1s; 
     font-weight: bold; 
     margin: 0; 
-    margin-top: 40px;
+    margin-top: 40px;  
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 .revise-btn:hover{
     background-color: rgba(235, 235, 235, 0.546);
