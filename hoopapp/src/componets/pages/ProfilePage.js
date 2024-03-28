@@ -26,7 +26,28 @@ const ProfilePage = ()=>{
 
                     <div className="p-card-bottom"> 
 
-                        <div className="test-box"> 
+                        <div className="test-box">   
+
+                            <div className="tb-1"> 
+
+
+                            </div>
+
+                            
+                            <div className="tb-1"> 
+
+
+                            </div>
+
+
+                            
+                            <div className="tb-1"> 
+
+
+                            </div>
+
+
+
                         
 
                         </div>
