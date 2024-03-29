@@ -28,13 +28,22 @@
     
 }  
 
+.p-card-top h1{
+    font-size: 2rem; 
+    
+} 
+
+.p-card-top h2 {
+    font-size: .8rem;
+}
+
 .p-card-bottom{
     display: grid;
   grid-template-columns: auto;
   position: relative;
   width: 1000; 
-  height: 100%; 
-  background-color: aquamarine;
+  height: 65%; 
+  background-color: rgb(236, 236, 236);
   padding: 1rem; 
   border-radius: 5px;
 }    
@@ -71,27 +80,38 @@
 } 
 
 .test-box{
-    background-color: brown;
      width: 100%;
      height: 90%; 
      display: grid; 
-     grid-template-rows: 1fr 1fr 1fr;  
-     grid-gap:10%;
+     grid-template-rows: 1fr 1fr 2fr;  
+     grid-gap:3%;
      
 }
 
 .ep-btn{
-    background-color: grey;  
+    background-color: rgb(181, 181, 181);  
     width: 6rem;  
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 0; 
+    margin-left: 5%;
+    margin-bottom: 5%; 
+    cursor: pointer; 
+    color: rgb(29, 29, 29);
     
 }  
 
 .tb-1{ 
     width: 100%;
     height: auto; 
-    background: grey;
+    background: rgb(236, 236, 236);
 
+}  
+
+
+.tb-1  h1{
+    font-size: 1.3rem; 
+} 
+.tb-1 p{
+    margin: 0;
 }

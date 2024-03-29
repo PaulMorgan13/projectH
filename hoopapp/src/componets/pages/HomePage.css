@@ -100,10 +100,8 @@ img{
 
 .read-more:hover{ 
     cursor: pointer;
-    margin-left: 3rem;  
     width: 75px;   
     color: black;
-    background: beige;   
     background: rgb(238, 238, 238);
   
  }

@@ -29,20 +29,43 @@ const ProfilePage = ()=>{
                         <div className="test-box">   
 
                             <div className="tb-1"> 
+                                <h1>
+                                    My Favorite Park.
+                                </h1> 
 
+                                <p>test</p>
 
                             </div>
 
                             
                             <div className="tb-1"> 
+                                <h1>
+                                    My City.
+                                </h1> 
 
+                                <p>
+                                    The City
+                                </p>
 
                             </div>
 
 
                             
                             <div className="tb-1"> 
+                                <h1>
+                                    Latest Review.
+                                </h1>  
 
+                                <h2>
+                                    Park: 
+                                </h2>    
+
+
+
+
+                                <p>Date:</p>
+
+                                <p>Date:</p>
 
                             </div>
 
