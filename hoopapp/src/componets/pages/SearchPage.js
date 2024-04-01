@@ -69,27 +69,36 @@ const SearchPage =()=>{
               ? null
               : x.name.toLocaleLowerCase().includes(search);
           }).map((x)=> (
-                      <div className="card" key="_id">
-                      <h1>
-                          {x.name}
-                      </h1> 
+                      <div className="s-card" key="_id">  
 
-                      <h2>
+                      <div className="c-top">
+                      <h1>
+                          {x.name} 
+
+                          <h2>
                           {x.address}
                       </h2>   
+                      </h1> 
 
-                      <div className="court-type">
+                      
+                       </div>
+
+
+                      <div className="c-mid">
 
                        <img src={bb} className="bb-image"></img> <p className="court-num">{x.courtCount} x</p> 
 
-                      <Link to={`/courts/${x._id}`}>
-                        <button className="s-read-more">Read More</button>
-                      </Link>
-                     
                           
                       </div>  
-                  
+                    <div className="c-bottom">
+                      <Link to={`/courts/${x._id}`}>
+                        <button className="s-read-more">Read More</button>
+                      </Link> 
+
+                    </div>
+                     
                   </div>
+                    
 
 
                 ))}
