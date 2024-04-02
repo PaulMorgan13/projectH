@@ -73,26 +73,25 @@ const SearchPage =()=>{
 
                       <div className="c-top">
                       <h1>
-                          {x.name} 
-
-                          <h2>
-                          {x.address}
-                      </h2>   
+                          {x.name}
                       </h1> 
 
-                      
+                      <h2>
+                          {x.address}
+                      </h2>   
                        </div>
 
 
                       <div className="c-mid">
 
-                       <img src={bb} className="bb-image"></img> <p className="court-num">{x.courtCount} x</p> 
+                       <img src={bb} className="bb-image"></img> 
+                       <p className="court-num">{x.courtCount} x</p> 
 
                           
                       </div>  
                     <div className="c-bottom">
                       <Link to={`/courts/${x._id}`}>
-                        <button className="s-read-more">Read More</button>
+                        <button className="s-read-more">More Info</button>
                       </Link> 
 
                     </div>
