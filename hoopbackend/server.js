@@ -239,12 +239,12 @@ app.post("/signup", async(req, res)=>{
     const {username , password ,fullName, number } = req.body
 
     try{ 
-        const hashedPass = await bcrypt.hash(req.body.password,10)  
-        console.log(hashedPass) 
+
+        const hashedPassword = await bcrypt.hash(password , 10)
+
         const newUser = new User({
                 username,
-               // password:hashedPass,
-                password:password,
+                password:hashedPassword,
                 fullName:fullName,
                 number:number
         }) 
