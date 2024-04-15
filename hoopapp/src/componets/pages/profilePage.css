@@ -99,7 +99,26 @@
     cursor: pointer; 
     color: rgb(29, 29, 29);
     
-}  
+}   
+
+.sign-out-btn{
+    background: none;
+    width: 6rem;  
+    position: absolute;
+    bottom: 0;
+    right: 0; 
+    text-transform: capitalize;
+    cursor: pointer; 
+    color:rgba(255, 38, 0, 0.865)
+    
+}    
+
+.sign-out-btn:hover{
+   background: none;
+    
+}    
+
+
 
 .tb-1{ 
     width: 100%;

@@ -77,7 +77,8 @@ const ProfilePage = ()=>{
 
                     
                        
-                        <button className="ep-btn">Edit Profile</button>
+                        <button className="ep-btn">Edit Profile</button> 
+                        <button className="sign-out-btn">sign out </button>
 
                     </div>
 

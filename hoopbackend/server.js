@@ -168,9 +168,7 @@ passport.use(new LocalStrategy(
           .then(user => {
             if (!user) {
               return done(null, false, { message: 'Incorrect username.' });
-            }  
-
-           
+            }
             // Check password here and handle accordingly 
          /*   if (user.password !== password) {
                 return done(null, false, { message: 'Incorrect password.' });
@@ -180,18 +178,18 @@ passport.use(new LocalStrategy(
              
           }) */  
         
-          bcrypt.compare(password, user.password)
+          bcrypt.compare(password, user.password) 
           .then(result => {
-            if (result) {
-              // Passwords match, user authenticated
-              return done(null, user);
-            } else {
-              // Passwords don't match
-              return done(null, false, { message: 'Incorrect password.' });
+            if(result === false){
+                return done(null, false, { message: 'Incorrect password.' });
+            } 
+            else {
+                return done(null, user);
             }
-          })
 
-          }).catch(err => {
+          }) 
+          
+        }).catch(err => {
             return done(err);
           });
       }
