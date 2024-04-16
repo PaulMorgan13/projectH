@@ -1,5 +1,6 @@
-
-
+.nav-m{
+    display: none;
+}
 
 
 
@@ -19,7 +20,7 @@
 
 
     } 
-    ul{ 
+    .nav-m ul{ 
         align-self: center;
         float: right;
         list-style-type: none; 
@@ -28,7 +29,7 @@
          
     }  
 
-    ul li {    
+    .nav-m ul li {    
         display: inline;
         align-items: center;
         text-decoration: none;

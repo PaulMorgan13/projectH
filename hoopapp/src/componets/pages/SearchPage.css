@@ -83,4 +83,14 @@
     background: none ;  
     color: orange; 
   
+}  
+
+
+
+
+@media(min-width: 1090px) {  
+   .container{
+    align-items: left;
+   } 
+
 }

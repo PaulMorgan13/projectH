@@ -12,6 +12,17 @@
     
 } 
 
+/*  
+
+this card call is only temp 
+
+will be changeing this to fix the web view
+
+*/
+
+.cards{
+    background-color: green;
+}
 
 .top-box{   
     width: 100%; 
@@ -122,6 +133,18 @@ img{
        
    }
   } 
-  
-  
+     
+
+@media (min-width: 1090px){ 
+    .container{
+        align-items: left;
+    }
+ 
+    .top-heading{
+      margin-left: 0;
+    }
+ 
+}
+
+
 
