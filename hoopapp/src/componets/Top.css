@@ -34,4 +34,15 @@
     cursor: pointer;
  
    
+}  
+
+@media (min-width: 1090px) { 
+    .user-icon{
+        margin-left: 80%;
+    } 
+
+    .top{
+        height: 70%;
+    }
+    
 }
