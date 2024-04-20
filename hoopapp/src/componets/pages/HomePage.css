@@ -138,8 +138,9 @@ img{
     
     }
     .cards{
+        background: green;
         display: flex; 
-        width: 30%;  
+        width: 35%;  
         height: 500px;
         margin: 0; 
         flex-direction: column; 
@@ -151,10 +152,35 @@ img{
         height: 150px; 
         margin: .5em 0;
     }
+
+    .bb-image{
+        width: 40px;
+        height:  60px;
+    }
     .top-heading{
       margin-left: 0;
       font-size: .8em;
-    }
+    } 
+    .court-num{  
+        letter-spacing: -0.3rem;
+        font-size: 2rem; 
+        color: #f86931; 
+        font-style: oblique; 
+        margin-top: 30px;
+    }  
+    .read-more{
+        font-size: .5rem;
+    } 
+    .card h1{ 
+        font-size: .9em; 
+        margin: 0;
+   }
+    
+   .card h2{
+       font-size: .6em; 
+       margin:0; 
+       font-weight: normal;
+   }
  
 }
 
