@@ -12,6 +12,7 @@ function Nav() {
         <div className='nav-m' >  
 
             <ul class> 
+            
             <Link to={`/`} style={{ textDecoration: 'none'}}>
               <li><img className='i' src={homeIcon}></img></li>  
             </Link>

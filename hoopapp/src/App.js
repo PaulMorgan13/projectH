@@ -8,9 +8,9 @@ import LoginPage from "./componets/Auth/LoginPage"
 import SignUpPage from "./componets/Auth/SignUpPage"   
 import SignInPage from "./componets/Auth/SignInPage"  
 import  SearchPage  from "./componets/pages/SearchPage" 
-import  ProfilePage  from "./componets/pages/ProfilePage"
-
-import Nav from "./componets/Nav"   
+import  ProfilePage  from "./componets/pages/ProfilePage" 
+import Nav from "./componets/Nav"
+import SideNav  from './componets/SideNav';
 
 
 
@@ -54,6 +54,7 @@ function App() {
       <AuthContext.Provider value={[isAuth, setIsAuth]}>
       <div className='wrapper'> 
       <Router> 
+            <SideNav/>
             <Routes> 
                 
                 
@@ -67,7 +68,9 @@ function App() {
                 <Route path="/profile"  element={<ProfilePage/>}/>
 
             </Routes>
-            <Nav/>   
+            <Nav/>  
+           
+            
 
       </Router> 
       </div> 

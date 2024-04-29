@@ -43,6 +43,16 @@
 
     .top{
         height: 70%;
-    }
+    } 
+
+    .icon{
+        margin: 0;
+        width: 80px; 
+        height: 60px;  
+        
+    
+      
+        
+    }  
     
 }
