@@ -4,7 +4,8 @@ import {Link ,useNavigate } from "react-router-dom"
 import "./SearchPage.css"
 import search_i from "../images/search-icon-black.svg" 
 import bb from "../images/bb_image.png"
-import { AuthContext } from "../../App"
+import { AuthContext } from "../../App"   
+import Top from "../Top"
 
 
 
@@ -57,7 +58,9 @@ const SearchPage =()=>{
 
 
     return( 
-            <div className="container">
+            <div className="container">  
+
+                <Top/>
                 
                 <div className="search-container">  
                         <img src={search_i} className="s-icon"  />

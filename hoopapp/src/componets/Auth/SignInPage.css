@@ -56,3 +56,42 @@
     cursor: pointer
 
 }
+
+
+@media (min-width: 1090px){ 
+  
+
+    .sign-in-cont{
+        flex: 1;
+    }
+    
+
+    .sign-in-form h1 {
+        align-self: center; 
+        text-align: center;
+    }
+
+    .sign-in-form{ 
+        display: grid; 
+        grid-template-row: repeat(5, 1fr); 
+        width: 50%; 
+        height: 80%;  
+        padding: 0 100px;
+    }  
+
+    .sign-in-form button {
+        align-self: center; 
+        justify-self: center;
+    } 
+
+    .input-cnt{ 
+
+        display: grid;  
+        gap: 0;
+        margin: 0; 
+        height: 60px;
+        
+    } 
+
+
+}
