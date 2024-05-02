@@ -2,7 +2,8 @@ import react  , {useState ,useEffect, useContext}from "react";
 import axios from "axios" 
 import { useNavigate  } from "react-router-dom";   
 import "./addCourtPage.css"
-import { AuthContext } from "../../App"
+import { AuthContext } from "../../App"  
+import Top from "../Top";
    
 
 
@@ -77,6 +78,8 @@ const  NewCourtPage =() => {
     return(
 
         <div className="container">
+             <Top/> 
+
             <form className="form" onSubmit={handleSubmit}>
                 <h1 >Add a Park.</h1> 
 

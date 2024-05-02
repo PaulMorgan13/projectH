@@ -93,4 +93,9 @@
     align-items: left;
    } 
 
+   .search-container{
+    width: 50%;
+   }
+
+
 }

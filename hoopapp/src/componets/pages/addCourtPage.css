@@ -6,7 +6,7 @@
     overflow: none;  
     border-radius: 5px; 
     margin: 0;  
-    overflow: scroll;
+   
 } 
 
 form h1{
@@ -73,4 +73,64 @@ label{
         border-radius: 3px; 
         padding: 5px;
    }   
+}  
+
+@media (min-width: 1090px){
+
+    .inputBox{ 
+        background-color: blue;
+        width: 100%;
+        height: 100%;
+        display: grid;  
+        grid-template-columns: 1fr 1fr;   
+        padding: 0;
+        
+
+       
+    
+    }  
+    .form { 
+        background-color: green;
+        height: 75%; 
+        padding: 0 2%; 
+        display: grid; 
+        grid-template-row: repeat(3 ,1fr);
+
+    }
+
+    .form h1 {
+        font-size: 2rem;
+        padding: 0;
+        margin: 1%; 
+        
+    } 
+
+    .input-f{
+        margin: 0; 
+        padding: 0;
+    }
+
+
+    .input-f label{ 
+        font-size: .8em;
+
+    } 
+
+    .input-f input{
+        height: 1.5rem; 
+        width: 90%;
+    }
+
+    .form button{
+        margin: 1%; 
+        width: 4rem; 
+        height: 2rem;
+    }
+
+
+
+
+
+
+
 }

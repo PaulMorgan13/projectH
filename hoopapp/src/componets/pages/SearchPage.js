@@ -35,15 +35,14 @@ const SearchPage =()=>{
 
 
             try{
-                const res = await axios.get(`http://localhost:3400/check-auth`)
-             
-                console.log(res.data.isAuthenticated)
-                 if(res.data.isAuthenticated === true){
-                     setIsAuth(true)
+                const res = await axios.get(`http://localhost:3400/check-auth` , {
+                    withCredentials: true,
+                }) 
+                 if(res.data.authenticated === true){
                      navigate("/search")
                  }
                  else{
-
+                    navigate("/login")
                  }
             } 
             catch(err){
@@ -60,7 +59,7 @@ const SearchPage =()=>{
     return( 
             <div className="container">  
 
-                <Top/>
+             <Top/> 
                 
                 <div className="search-container">  
                         <img src={search_i} className="s-icon"  />
