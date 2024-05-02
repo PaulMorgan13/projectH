@@ -66,6 +66,7 @@ const SearchPage =()=>{
                     <input type="search" className="search-inp" placeholder="Explore..." onChange={(e)=> setSearch(e.target.value)}/>
                 </div>    
 
+            <div className="s-card-box">
                 {query.filter((x) => {
             return search.length === 0
               ? null
@@ -104,7 +105,7 @@ const SearchPage =()=>{
 
                 ))}
                 
-
+                </div>
             </div>
 
     )

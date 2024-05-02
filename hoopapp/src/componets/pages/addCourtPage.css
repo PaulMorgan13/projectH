@@ -30,7 +30,8 @@ button {
     height: 3em; 
     border-radius: 2px; 
     color:white; 
-    margin-left: 25px;
+    margin-left: 25px; 
+    cursor: pointer;
 }  
 
 button:Hover{
@@ -78,7 +79,6 @@ label{
 @media (min-width: 1090px){
 
     .inputBox{ 
-        background-color: blue;
         width: 100%;
         height: 100%;
         display: grid;  
@@ -90,7 +90,6 @@ label{
     
     }  
     .form { 
-        background-color: green;
         height: 75%; 
         padding: 0 2%; 
         display: grid; 
@@ -99,7 +98,7 @@ label{
     }
 
     .form h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         padding: 0;
         margin: 1%; 
         
@@ -117,14 +116,18 @@ label{
     } 
 
     .input-f input{
-        height: 1.5rem; 
-        width: 90%;
+        border: 1.5px solid #f86931; 
+        height: 2rem; 
+        width: 90%; 
+        border-radius: 0; 
+
     }
 
     .form button{
         margin: 1%; 
         width: 4rem; 
-        height: 2rem;
+        height: 1.5rem; 
+        margin-left: 0; 
     }
 
 
