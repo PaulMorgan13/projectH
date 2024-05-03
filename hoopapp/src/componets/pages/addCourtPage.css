@@ -116,10 +116,10 @@ label{
     } 
 
     .input-f input{
-        border: 1.5px solid #f86931; 
+        border: 1.5px solid grey; 
         height: 2rem; 
         width: 90%; 
-        border-radius: 0; 
+        border-radius: 3px; 
 
     }
 

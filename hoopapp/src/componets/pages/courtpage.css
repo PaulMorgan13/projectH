@@ -53,7 +53,6 @@ h2{
     margin-top: 2rem;
     width: 100%; 
     height: 45%; 
-    border-bottom: white solid 2px;
 } 
 
 .recent-changes h3 { 
@@ -102,10 +101,8 @@ h2{
     width: 100%;   
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 10px; 
 
-    
-    
 }  
 
 img{
@@ -116,4 +113,78 @@ img{
 .c-image img{
     height: 90px;
     width: 70px;
+}  
+
+@media (min-width: 1090px) { 
+
+    .court-card{
+        width: 50%;
+        height: 80%; 
+        grid-template-rows: 1.3fr .7fr;
+    }  
+
+    .c-image img{
+        height: 150px;
+        width: 100px;
+    }  
+    .c-court-num{  
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+        letter-spacing: -0.3rem;
+        font-size: 4.5rem;
+        color: #f86931!important; 
+        font-style: oblique;
+    }    
+
+    .court-bottom{  
+       display:grid; 
+       grid-template-columns: repeat(2, 1fr);
+    
+    } 
+    
+    .c-image{ 
+        height: 100px;
+          
+    } 
+
+    .recent-changes{
+        margin-top: 0;
+        width: 100%; 
+        height: 45%; 
+    } 
+    
+    .recent-changes h3 { 
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif; 
+        font-weight: bold; 
+        font-size: .9rem; 
+        color: rgb(48, 48, 48);
+    
+    } 
+
+    .court-top {
+        display: flex;
+    }  
+
+    .court-t-l{
+        flex: 1;
+    } 
+
+    .court-t-l{
+        flex: 1;
+    }  
+
+    .edit-c{
+        width: 30px;
+        height: 30px;
+        background-color: #f86931; 
+        background: url(../images/edit-c.svg);
+        background-size: cover; 
+        background-repeat: no-repeat;  
+        cursor: pointer; 
+        opacity: 40%;
+    }  
+
+    .edit-c:hover{
+       opacity: 70%;
+    }
 }

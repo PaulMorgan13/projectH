@@ -1,7 +1,8 @@
 import React, {useEffect , useState ,useContext} from "react" 
 import axios  from "axios" 
 import "./profilePage.css"  
-import  "./profilePage.css"
+import  "./profilePage.css" 
+import Top from "../Top"
 
 
 
@@ -9,7 +10,7 @@ const ProfilePage = ()=>{
 
     return(
         <div className="container">   
-
+                <Top/>
                 <div className="profile-card">  
                     <div className="p-card-top">
 
@@ -17,11 +18,12 @@ const ProfilePage = ()=>{
                         <h1>
                             Name.  
 
-                            <h2>email@email.com</h2>
+                            <h2>Email@demo.com</h2>
                         </h1>
 
 
                         <div className="pic-box"> H </div>
+                        <div className="pic-edit"> </div>
                     </div>  
 
                     <div className="p-card-bottom"> 
@@ -77,7 +79,6 @@ const ProfilePage = ()=>{
 
                     
                        
-                        <button className="ep-btn">Edit Profile</button> 
                         <button className="sign-out-btn">sign out </button>
 
                     </div>

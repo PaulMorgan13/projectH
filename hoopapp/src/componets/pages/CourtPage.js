@@ -3,7 +3,8 @@ import axios from "axios"
 import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
 import bb from "../images/bb_image.png"
-import { AuthContext } from "../../App";
+import { AuthContext } from "../../App"; 
+import Top from "../Top";
 
 
 
@@ -80,12 +81,15 @@ const CourtPage = () => {
 
 
         return( 
-                <div className="container">
+                <div className="container"> 
+
+                    <Top/>
                   
                     <div className="court-card"> 
 
 
-                        <div className="court-top"> 
+                        <div className="court-top">  
+                        <div className="court-t-l">
                         <h1>
                         {court.name}<span className="dot">.</span>
                         </h1> 
@@ -100,8 +104,12 @@ const CourtPage = () => {
                         <h3 className="c-court-num">{court.courtCount}x</h3>
                         </div>
 
+                        </div>
                         
-                        
+
+                        <div className="court-t-r">
+                                <div className="edit-c"></div>
+                        </div>
 
                         </div>    
 
@@ -125,7 +133,6 @@ const CourtPage = () => {
                                 </div>
 
 
-                                    <button className="revise-btn">Revise</button>
 
                             </div>  
 
