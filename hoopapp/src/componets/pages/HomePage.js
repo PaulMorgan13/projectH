@@ -73,30 +73,34 @@ const HomePage = (props) => {
                 {  
 
             courts.slice(0,3).map((court)=>(
-                    <div className="card" key="_id">
-                        <h1>
-                            {court.name}
-                        </h1> 
+                <div className="h-card" key="_id">  
 
-                        <h2>
-                            {court.address}
-                        </h2>   
+                <div className="c-top">
+                <h1>
+                    {court.name}
+                </h1> 
 
-                        <div className="court-type">
+                <h2>
+                    {court.address}
+                </h2>   
+                 </div>
 
-                         <img src={bb} className="bb-image"></img> 
-                         
-                         
-                         <p className="court-num">{court.courtCount} x</p> 
 
-                        <Link to={`/courts/${court._id}`}>
-                          <button className="read-more">More Info</button>
-                        </Link>
-                       
-                            
-                        </div>  
+                <div className="c-mid">
+
+                 <img src={bb} className="bb-image"></img> 
+                 <p className="court-num">{court.courtCount} x</p> 
+
                     
-                    </div>
+                </div>  
+              <div className="c-bottom">
+                <Link to={`/courts/${court._id}`}>
+                  <button className="h-read-more">More Info</button>
+                </Link> 
+
+              </div>
+               
+            </div>
             ))}
             </div>
         </div>

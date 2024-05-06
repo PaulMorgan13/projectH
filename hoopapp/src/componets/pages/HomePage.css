@@ -8,7 +8,8 @@
     flex-direction: column;  
     padding: 2em 2em; 
     overflow: hidden;  
-    flex: 1;
+    flex: 1; 
+    box-sizing: border-box;
     
     
 } 
@@ -35,19 +36,43 @@ img{
     height: 200px;
     align-items: center;
     margin: 2rem 0; 
-}  
+}   
 
-.card{ 
-    justify-content: center;
+.bb-image{  
+    margin-top: 2%;
+    width: 60px;
+    height:  80px;
+    
+    
+}   
+
+.court-num{  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    letter-spacing: -0.3rem;
+    font-size: 2rem; 
+    color: #f86931; 
+    font-style: oblique; 
+    margin-top: 30px;
+}  
+  
+.cards{
+    display: grid;
+    row-gap: 10px;
+}
+
+
+
+.h-card{ 
     width: 100%; 
-    height: 25%;  
+    height: 100%;
     background: white;
     border-radius: 5px; 
     box-shadow: 1px 4px 2px 2px rgba(0, 0, 10, 0.594); 
-    margin: 1em 0; 
+   
     padding: .5em ;
 
 } 
+
 
 .card h1{ 
      font-size: 1.1em; 
@@ -68,52 +93,13 @@ img{
     color: white;
     font-family: Helvetica, sans-serif; 
     margin-right: 75%;
-}  
+}   
 
-.bb-image{  
-    margin-top: 2%;
-    width: 60px;
-    height:  80px;
-    
-    
-}  
+.h-read-more{
+    width: 80px; 
+    height: 20px;
+}
 
-.court-type{
-    margin-top: 10%;
-    display: grid;  
-    grid-template-columns: 70px 170px 100px; 
-    grid-gap: 10px;
-
-}  
-
-.court-num{  
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
-    letter-spacing: -0.3rem;
-    font-size: 3rem; 
-    color: #f86931; 
-    font-style: oblique; 
-    margin-top: 30px;
-}  
-  
-
-.read-more{
-   width: 75px;  
-   color: #f86931;
-   background: none;  
-   margin-top: 50px;
-
-
-} 
-
-
-.read-more:hover{ 
-    cursor: pointer;
-    width: 75px;   
-    color: black;
-    background: rgb(238, 238, 238);
-  
- }
- 
 
 
 @media (max-width: 32em) {
@@ -142,51 +128,64 @@ img{
         height:80px;
     }
 
+    .bb-image{  
+        margin-top: 2%;
+        width: 50px;
+        height:  60px;
+        
+        
+    }  
     .cards{
-        display: flex; 
+        display: grid; 
+        grid-template-row: repeat(3 , 1fr);
         width: 30%;  
-        height: 450px;
+        height: 80%;
         margin: 0; 
         flex-direction: column;  
-        
-        flex: 1;
-
-    } 
-
-    .card{
-        width: 300px;
-        height: 135px; 
-        margin: .3em 0;
-    }
-
-    .bb-image{
-        width: 40px;
-        height:  60px;
-    }
-    .top-heading{
-      margin-left: 0;
-      font-size: .8em;
-    } 
-    .court-num{  
-        letter-spacing: -0.3rem;
-        font-size: 2rem; 
-        color: #f86931; 
-        font-style: oblique; 
-        margin-top: 30px;
+        overflow: hidden; 
+        row-gap: 10px;
     }  
-    .read-more{
-        font-size: .5rem;
-    } 
-    .card h1{ 
-        font-size: .9em; 
-        margin: 0;
-   }
+
+    .h-card{
+        width: calc(90% - 20px);  
+        height: 125px;
+        background: white;
+        border-radius: 5px; 
+        box-shadow: 1px 4px 2px 2px rgba(0, 0, 10, 0.51); 
+        border-radius: 5px; 
+        padding: .5em ;
+        display: grid; 
+        grid-template-rows: 1fr 40% 1fr; 
+        gap: 4%; 
+        
+        
+     
+        
+    }  
     
-   .card h2{
-       font-size: .6em; 
-       margin:0; 
-       font-weight: normal;
-   }
+    
+    .c-top h1 {
+        font-size: 1rem;
+    }
+    
+    .c-top h2{
+        font-size: .7rem;
+    }
+    
+    .c-mid{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row; 
+        gap: 5px;
+      
+    }   
+    
+    .h-read-more{
+        width: 80px; 
+        height: 20px;
+    }
+
+    
  
 }
 
