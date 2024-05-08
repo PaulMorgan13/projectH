@@ -51,15 +51,15 @@ const  NewCourtPage =() => {
 
 
             try{
-                const res = await axios.get(`http://localhost:3400/check-auth`)
-                
+                const res = await axios.get(`http://localhost:3400/check-auth` , {
+                    withCredentials: true,
+                })   
                 console.log(res.data.isAuthenticated)
-                 if(res.data.isAuthenticated === true){
-                     setIsAuth(true)
+                 if(res.data.authenticated === true){
                      navigate("/add")
                  }  
                  else{
-                    
+                    navigate("/login")
                  }
      
             
