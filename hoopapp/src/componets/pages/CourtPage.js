@@ -122,8 +122,10 @@ const CourtPage = () => {
                                     <p>Net Type: {court.netType}</p>
                                     <p>Three Point Line: {court.threePointLine}</p>
                                     <p>College Three Point Line: {court.collegeThreePointLine}</p>
-
+                                    <h3  className="miles-away"> <span className="m-num">5</span>  Miles Away</h3>
+                                    
                                 </div>  
+                                
 
                                 <div className="recent-changes">
                                     <h3>Recent Changes: <span className="r-date">00/00/00</span></h3>
