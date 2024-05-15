@@ -301,7 +301,20 @@ app.post("/signup", async(req, res)=>{
   });
   
 
+/*miles away get request*/
 
+
+/*
+  app.get("/miles-away", async (req, res) => {
+
+
+    const apiUrl = 
+
+
+  }
+  ) 
+
+*/
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")

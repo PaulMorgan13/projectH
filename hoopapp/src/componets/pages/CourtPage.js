@@ -67,10 +67,9 @@ const CourtPage = () => {
 
     })
 
+    /*the use effect below will be used to get miles away*/
 
-    
-
-
+ 
     useEffect(() =>{
         const grabCourt = async () => {
             const res = await axios.get(`http://localhost:3400/courts/${id}`) 
@@ -122,7 +121,6 @@ const CourtPage = () => {
                                     <p>Net Type: {court.netType}</p>
                                     <p>Three Point Line: {court.threePointLine}</p>
                                     <p>College Three Point Line: {court.collegeThreePointLine}</p>
-                                    <h3  className="miles-away"> <span className="m-num">5</span>  Miles Away</h3>
                                     
                                 </div>  
                                 

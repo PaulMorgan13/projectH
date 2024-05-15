@@ -191,15 +191,15 @@ img{
     .miles-away{
         margin-top:20px ;
         color: rgb(85, 167, 85);
-        font-size: 1rem;  
+        font-size: 1.1rem;  
         font-weight: bold; 
         
     } 
 
     .m-num{ 
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 1.6rem; 
         color: rgb(85, 167, 85);   
+        -webkit-text-stroke: 1px rgb(106, 223, 141);
 
 
         
