@@ -248,11 +248,17 @@ app.post("/signout", async(req,res)=> {
         req.session.destroy((error) => {
             if(error == true){
                 return res.status(500).send("Failed to Sign Out"); 
-
             } 
-            else{
-                res.clearCookie("connect.sid") //this will clear my session 
+            
+            if (!req.session) {
+                return res.status(200).send('Session successfully destroyed.');
+            } else {
+                return res.status(500).send('Failed to destroy session.');
             }
+    
+                res.clearCookie("connect.sid") //this will clear my session 
+                res.sendStatus(200);
+            
         })
 
 
