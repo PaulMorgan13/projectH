@@ -243,8 +243,25 @@ app.post('/signin', passport.authenticate('local'), (req, res) => {
   });
 
 
+// will destroy the session after user logs out
+app.post("/signout", async(req,res)=> {
+        req.session.destroy((error) => {
+            if(error == true){
+                return res.status(500).send("Failed to Sign Out"); 
+
+            } 
+            else{
+                res.clearCookie("connect.sid") //this will clear my session 
+            }
+        })
 
 
+
+
+
+
+
+} )
 
 app.post("/signup", async(req, res)=>{ 
    // console.log(req.body)     
