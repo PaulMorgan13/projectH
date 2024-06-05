@@ -3,10 +3,64 @@ import axios  from "axios"
 import "./profilePage.css"  
 import  "./profilePage.css" 
 import Top from "../Top"
+import { AuthContext } from "../../App"   
+import { useNavigate  } from "react-router-dom";    
 
 
 
 const ProfilePage = ()=>{   
+    const Navigate = useNavigate()  
+
+    const [isAuth, setIsAuth] = useContext(AuthContext)
+    const [user, setUser] = useState(null);
+    
+
+    useEffect(() =>  { 
+
+        const checkAuth = async () => {
+
+
+            try{
+                const res = await axios.get(`http://localhost:3400/check-auth` , {
+                    withCredentials: true,
+                }) 
+                 if(res.data.authenticated === true){
+                     Navigate("/search")
+                 }
+                 else{
+                    Navigate("/login")
+                 }
+            } 
+            catch(err){
+                console.log(`error : ${err}`)
+            }
+
+            
+        }
+           checkAuth()
+    }, [] ) 
+
+
+
+
+
+    const handleSignOut = async (e) => {
+
+        try{
+            e.preventDefault() 
+            const res = await axios.post('http://localhost:3400/signout', {
+                withCredentials: true // Send cookies with the request
+            })
+            console.log(res.status)
+            
+        } 
+        catch(error) { 
+            console.log("you are not able to login", error)
+            
+        }
+
+    }
+
 
     return(
         <div className="container">   
@@ -79,7 +133,7 @@ const ProfilePage = ()=>{
 
                     
                        
-                        <button className="sign-out-btn">sign out </button>
+                        <button className="sign-out-btn" onClick={handleSignOut}>sign out </button>
 
                     </div>
 

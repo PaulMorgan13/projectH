@@ -1,4 +1,4 @@
-import eact ,{createContext , useState , useEffect} from 'react';
+import react ,{createContext , useState , useEffect} from 'react';
 import {Route , BrowserRouter as Router, Routes , Navigate} from "react-router-dom"
 import './App.css';  
 import AddCourtPage from "./componets/pages/AddCourtPage"
