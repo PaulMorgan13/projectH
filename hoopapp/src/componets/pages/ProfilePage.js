@@ -25,7 +25,7 @@ const ProfilePage = ()=>{
                     withCredentials: true,
                 }) 
                  if(res.data.authenticated === true){
-                     Navigate("/search")
+                     Navigate("/profile")
                  }
                  else{
                     Navigate("/login")
@@ -44,20 +44,23 @@ const ProfilePage = ()=>{
 
 
 
-    const handleSignOut = async (e) => {
-
-        try{
+    const handleSignOut = async (e) => {    
+          try{
             e.preventDefault() 
-            const res = await axios.post('http://localhost:3400/signout', {
-                withCredentials: true // Send cookies with the request
-            })
-            console.log(res.status)
+            const res = await axios.post('http://localhost:3400/signout', null,  {
+                withCredentials: true,
+              })
             
-        } 
-        catch(error) { 
-            console.log("you are not able to login", error)
-            
-        }
+              if (res.status == 200) {
+                Navigate("/login") // Redirect on successful logout
+              } else {
+                console.error('Logout failed:', res.statusText);
+                // Handle other status codes as needed
+              }
+            } catch (error) {
+              console.error('Error during logout:', error);
+              // Handle network errors or unexpected exceptions
+            }
 
     }
 

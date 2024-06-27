@@ -115,7 +115,8 @@
 }    
 
 .sign-out-btn:hover{
-   background: none;
+   background: none; 
+   color:black
     
 }    
 
