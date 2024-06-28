@@ -47,12 +47,13 @@ const ProfilePage = ()=>{
     const handleSignOut = async (e) => {    
           try{
             e.preventDefault() 
-            const res = await axios.post('http://localhost:3400/signout', null,  {
+            const res = await axios.post('http://localhost:3400/signout',  {
                 withCredentials: true,
               })
             
-              if (res.status == 200) {
-                Navigate("/login") // Redirect on successful logout
+              if (res.status === 200) {
+                Navigate("/login") // Redirect on successful logout   
+                console.log("logout worked")
               } else {
                 console.error('Logout failed:', res.statusText);
                 // Handle other status codes as needed

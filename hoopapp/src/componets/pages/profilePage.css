@@ -110,12 +110,14 @@
     right: 0; 
     text-transform: capitalize;
     cursor: pointer; 
-    color:rgba(255, 38, 0, 0.865)
+    color:rgba(255, 38, 0, 0.865); 
+    transition: ease-in;
     
 }    
 
-.sign-out-btn:hover{
-   background: none; 
+.sign-out-btn:hover{ 
+
+   background: rgb(241, 99, 99); 
    color:black
     
 }    
