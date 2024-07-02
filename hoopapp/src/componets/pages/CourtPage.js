@@ -126,7 +126,7 @@ const CourtPage = () => {
                                 
 
                                 <div className="recent-changes">
-                                    <h3>Recent Changes: <span className="r-date">00/00/00</span></h3>
+                                    <h3>Recent Photos: <span className="r-date">00/00/00</span></h3>
                                     
                                     <p>N/A</p>
 
