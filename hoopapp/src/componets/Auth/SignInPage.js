@@ -10,7 +10,9 @@ import axios from "axios"
 const SignInPage = () => {     
     const [isAuth, setIsAuth] = useContext(AuthContext)
     const [username , setUsername] = useState("") 
-    const [password, setPassword] = useState("")    
+    const [password, setPassword] = useState("")        
+    const [error, setError] = useState("")
+ 
 
     const navigate = useNavigate();
 
@@ -35,12 +37,16 @@ const SignInPage = () => {
             navigate("/")
           }
            else {
-            console.log( 'Login failed'); 
-           }
+            console.log( 'Login failed');  
+            setError("Login failed. Please try again."); // Set error message
+
+        }
             
         }
         catch(err){
-            console.error("login did not work",err.message)
+            console.error("login did not work",err.message) 
+            setError("Login failed. Please try again."); // Set error message
+
         } 
        
     }
@@ -64,8 +70,14 @@ const SignInPage = () => {
                 <input type="password" id="password" name="password" value={password}  onChange={(e)=> setPassword(e.target.value)} required/> 
                 </div>  
 
-                <button type="submit" className="signin-btn" onClick={handleSubmit}>sign in</button> 
-                <p>Forgot password?</p>
+                <button type="submit" className="signin-btn" onClick={handleSubmit}>sign in</button>  
+
+
+                <p>   
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+
+                Forgot Password?
+                </p>
                 
 
 
