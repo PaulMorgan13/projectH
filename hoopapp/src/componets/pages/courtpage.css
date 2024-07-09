@@ -201,9 +201,23 @@ img{
         color: rgb(85, 167, 85);   
         -webkit-text-stroke: 1px rgb(106, 223, 141);
 
+    }  
 
-        
+    .btn-add-img{
+        width: 20px;
+        height: 20px;
+        background: rgb(255, 245, 47); 
+        background-image: url(/src/componets/images/add-p.png); 
+        background-size: cover; 
+        cursor: pointer; 
         
 
+    }  
+    
+    .btn-add-img:hover{
+        background-color: rgba(55, 122, 100, 0.772);
     }
-}
+
+
+
+} 
