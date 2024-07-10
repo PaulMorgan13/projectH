@@ -206,7 +206,7 @@ img{
     .btn-add-img{
         width: 20px;
         height: 20px;
-        background: rgb(255, 245, 47); 
+        background: rgb(250, 197, 98); 
         background-image: url(/src/componets/images/add-p.png); 
         background-size: cover; 
         cursor: pointer; 

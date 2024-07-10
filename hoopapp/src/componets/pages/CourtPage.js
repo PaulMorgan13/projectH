@@ -16,7 +16,17 @@ const CourtPage = () => {
     const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
-    const {id} = useParams() 
+    const {id} = useParams()   
+
+
+    const handleUpload = (e) => { 
+        e.preventDefault() 
+        
+
+
+
+    }
+
 
     useEffect(() =>  { 
 
@@ -126,7 +136,7 @@ const CourtPage = () => {
                                 
 
                                 <div className="recent-changes">
-                                    <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img"></button></h3>  
+                                    <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={} ></button></h3>  
 
                             
                                     
