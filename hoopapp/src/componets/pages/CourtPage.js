@@ -13,15 +13,16 @@ const CourtPage = () => {
 
 
     const [isAuth, setIsAuth] = useContext(AuthContext)
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(null); 
+    const [toggleOn, setToggleOn] = useState(false)
 
     const navigate = useNavigate();
     const {id} = useParams()   
 
 
-    const handleUpload = (e) => { 
+    const toggleImg = (e) => { 
         e.preventDefault() 
-        
+        setToggleOn(!toggleOn)
 
 
 
@@ -136,11 +137,12 @@ const CourtPage = () => {
                                 
 
                                 <div className="recent-changes">
-                                    <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={} ></button></h3>  
+                                    <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
-                            
+                                    {
+                                        toggleOn ?  <p>N/A</p> : <form><h1> Hello </h1> </form>
+                                    }
                                     
-                                    <p>N/A</p>
 
                                 </div>
 
