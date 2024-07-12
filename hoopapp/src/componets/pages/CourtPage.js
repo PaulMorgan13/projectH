@@ -2,7 +2,8 @@ import React  , {useState , useEffect , useContext }from "react";
 import axios from "axios"  
 import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
-import bb from "../images/bb_image.png"
+import bb from "../images/bb_image.png" 
+import upload from "../images/icons8-upload-100.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
 
@@ -26,6 +27,9 @@ const CourtPage = () => {
 
 
 
+    } 
+    const uploadImg = (e) => {
+        e.preventDefault()
     }
 
 
@@ -140,7 +144,7 @@ const CourtPage = () => {
                                     <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
                                     {
-                                        toggleOn ?  <p>N/A</p> : <form><h1> Hello </h1> </form>
+                                        !toggleOn ?  <p>N/A</p> : <form className="img-form"> <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button> <input placeholder="image description"/>  </form>
                                     }
                                     
 
