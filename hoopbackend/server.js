@@ -7,11 +7,35 @@ const MongoStore = require('connect-mongo');
 const passport = require("passport"); 
 const LocalStrategy  = require("passport-local").Strategy; 
 const bcrypt = require("bcrypt"); 
-const multer = require("multer");
+const multer = require("multer"); 
+const cloudinary = require("cloudinary")
 
 
 const app = express()  
- 
+
+
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_SECRET,
+  api_secret: process.env.CLOUD_API_KEY,
+});
+
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+
+}
+)
+
+
+const upload = multer({storage:storage}); 
 
 
 
@@ -325,8 +349,31 @@ app.post("/signup", async(req, res)=>{
   }
   ) 
 
-*/
+*/  
+
+
+app.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No file uploaded.');
+  }
+
+  // Upload the file to Cloudinary
+  cloudinary.uploader.upload(req.file.path, { folder: 'uploads' }, (error, result) => {
+    // Remove the file from the local storage
+    fs.unlinkSync(req.file.path);
+
+    if (error) {
+      return res.status(500).send('Error uploading to Cloudinary');
+    }
+
+    res.json({
+      message: 'File uploaded successfully',
+      url: result.secure_url,
+    });
+  });
+});
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
-}) 
+})  
+

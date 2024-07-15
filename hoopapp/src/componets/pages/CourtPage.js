@@ -144,7 +144,7 @@ const CourtPage = () => {
                                     <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
                                     {
-                                        !toggleOn ?  <p>N/A</p> : <form className="img-form"> <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button> <input placeholder="image description"/>  </form>
+                                        !toggleOn ?  <p>N/A</p> : <form className="img-form"> <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button> <input placeholder="image description"/>  <input type="file" /> </form>
                                     }
                                     
 

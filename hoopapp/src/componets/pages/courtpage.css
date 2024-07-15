@@ -234,13 +234,13 @@ img{
         height: 20px;
     } 
     .u-btn{ 
-        padding: .5rem;
         margin: 0;
         display: grid; 
         grid-template-columns:.90fr .2fr  ;
         grid-gap:3%; 
         place-items: center;
         width: 130px; 
+        height: 30px; 
         
     } 
     .u-btn:hover{
