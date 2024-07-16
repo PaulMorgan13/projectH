@@ -1,4 +1,4 @@
-import React  , {useState , useEffect , useContext }from "react"; 
+import React  , {useState , useEffect , useContext ,  useRef}from "react"; 
 import axios from "axios"  
 import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
@@ -19,17 +19,16 @@ const CourtPage = () => {
 
     const navigate = useNavigate();
     const {id} = useParams()   
-
+    const inputRef = useRef(null)
 
     const toggleImg = (e) => { 
         e.preventDefault() 
         setToggleOn(!toggleOn)
 
-
-
     } 
     const uploadImg = (e) => {
-        e.preventDefault()
+        e.preventDefault()  
+       inputRef.current && inputRef.current.click()
     }
 
 
@@ -60,11 +59,6 @@ const CourtPage = () => {
       }
          checkAuth()
   }, [] ) 
-
-
-
-
-
 
 
 
@@ -144,7 +138,13 @@ const CourtPage = () => {
                                     <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
                                     {
-                                        !toggleOn ?  <p>N/A</p> : <form className="img-form"> <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button> <input placeholder="image description"/>  <input type="file" /> </form>
+                                        !toggleOn ?  <p>N/A</p> : 
+                                        <form className="img-form"> 
+                                        <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button>
+                                        <input placeholder="image description" /> 
+                                        <input type="file" style={{ display: 'none' }} ref={inputRef}/> 
+                                        <button className="c-s-btn">Submit</button> 
+                                        </form>
                                     }
                                     
 

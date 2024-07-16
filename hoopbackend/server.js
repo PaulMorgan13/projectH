@@ -32,10 +32,38 @@ const storage = multer.diskStorage({
   },
 
 }
-)
+)  
+
+//this will handle the file type that will be uploaded  
 
 
-const upload = multer({storage:storage}); 
+const fileFilter = (req, file , cb) => {  
+ 
+
+    // these arrays specifies what files types users can use
+  const allowedExtentions = ['jpeg', 'jpg', 'png']; 
+  const allowdMineTimes =  ['image/jpeg', 'image/jpg', 'image/png'];  
+
+
+  //this wiil split the name from extention and then turn extention to lowercase 
+  // then it will check if extention is in the allowed Extentions array
+  const fileExtension = file.originalname.split('.').pop().toLowerCase();
+  const isExtensionValid = allowedExtensions.includes(fileExtension);
+
+  const isMimeTypeValid = allowedMimeTypes.includes(file.mimetype);
+
+  if (isExtensionValid && isMimeTypeValid) {
+    cb(null, true); // Accept the file
+  } else {
+    cb(new Error('Only .jpg, .jpeg, and .png files are allowed!'), false); // Reject the file
+  }
+}
+
+
+const upload = multer({
+  storage:storage, 
+  fileFilter:fileFilter 
+}); 
 
 
 
