@@ -15,11 +15,45 @@ const CourtPage = () => {
 
     const [isAuth, setIsAuth] = useContext(AuthContext)
     const [user, setUser] = useState(null); 
-    const [toggleOn, setToggleOn] = useState(false)
+    const [toggleOn, setToggleOn] = useState(false)  
+    const [imageDescription, setImageDescription] = useState("")   
+    const [image , setImage] = useState(null) 
+    const [imageUrl , setImageUrl] = useState("") 
+    const [username, setUsername] = useState("")
+
+
 
     const navigate = useNavigate();
     const {id} = useParams()   
-    const inputRef = useRef(null)
+    const inputRef = useRef(null)  
+
+    const handleFile =(e)=> {
+        setImage(e.target.file[0])
+    }  
+
+    
+
+    const handleSubmit = async (e) => { 
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('image', image);
+        formData.append('imagedescription', imageDescription);
+        formData.append('username', username); 
+
+
+        try{
+            const res = await axios.post(`http://localhost:3400/upload`, formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+              })
+        } 
+        catch(error) { 
+            console.log(error) 
+
+        }
+
+    }
 
     const toggleImg = (e) => { 
         e.preventDefault() 
@@ -139,10 +173,10 @@ const CourtPage = () => {
 
                                     {
                                         !toggleOn ?  <p>N/A</p> : 
-                                        <form className="img-form"> 
+                                        <form className="img-form"  ons > 
                                         <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button>
-                                        <input placeholder="image description" /> 
-                                        <input type="file" style={{ display: 'none' }} ref={inputRef}/> 
+                                        <input placeholder="image description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 
+                                        <input type="file" style={{ display: 'none' }} ref={inputRef}  onChange={handleFile}/> 
                                         <button className="c-s-btn">Submit</button> 
                                         </form>
                                     }
