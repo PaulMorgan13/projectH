@@ -28,7 +28,7 @@ const CourtPage = () => {
     const inputRef = useRef(null)  
 
     const handleFile =(e)=> {
-        setImage(e.target.file[0])
+        setImage(e.target.files[0])
     }  
 
     
@@ -38,7 +38,6 @@ const CourtPage = () => {
         const formData = new FormData()
         formData.append('image', image);
         formData.append('imagedescription', imageDescription);
-        formData.append('username', username); 
 
 
         try{
@@ -173,7 +172,7 @@ const CourtPage = () => {
 
                                     {
                                         !toggleOn ?  <p>N/A</p> : 
-                                        <form className="img-form"  ons > 
+                                        <form className="img-form"  onSubmit={handleSubmit} > 
                                         <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button>
                                         <input placeholder="image description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 
                                         <input type="file" style={{ display: 'none' }} ref={inputRef}  onChange={handleFile}/> 
