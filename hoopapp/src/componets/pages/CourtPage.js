@@ -19,7 +19,6 @@ const CourtPage = () => {
     const [imageDescription, setImageDescription] = useState("")   
     const [image , setImage] = useState(null) 
     const [imageUrl , setImageUrl] = useState("") 
-    const [username, setUsername] = useState("")
 
 
 

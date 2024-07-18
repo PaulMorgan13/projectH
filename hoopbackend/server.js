@@ -180,7 +180,26 @@ const userProfileSchema = new mongoose.Schema({
 
 const UserProfile = new mongoose.model("UserProfile", userProfileSchema)  
 
+//image schema
 
+const imageSchema = new mongoose.Schema({
+      imageUrl: {
+        type:String
+      }, 
+      user:{
+        type:String
+      }, 
+      description:{
+        type:String
+      }
+      ,
+      createdAt:{
+        type:Date, default: Date.now
+      } 
+
+})
+
+const Image = new mongoose.model("Image", imageSchema)
 
 
 
@@ -380,26 +399,47 @@ app.post("/signup", async(req, res)=>{
 */  
 
 
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post('/upload', upload.single('image'), async (req, res) => {
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }
 
-  // Upload the file to Cloudinary
-  cloudinary.uploader.upload(req.file.path, { folder: 'uploads' }, (error, result) => {
-    // Remove the file from the local storage
-    fs.unlinkSync(req.file.path);
 
-    if (error) {
-      return res.status(500).send('Error uploading to Cloudinary');
-    }
+  try {
+  // Upload the file to Cloudinary  
+  const description = req.body.imageDescription;
+  const username = req.user.username;
+
+  const result = await cloudinary.uploader.upload(req.file.path, { folder: 'uploads' });
+    // Remove the file from the local storage
+
+
+    await fs.unlinkSync(req.file.path);  
+
+
+    const newImage = Image({
+      imageUrl: result.secure_url,
+      description: description,
+      username: username,
+
+    });
+
+    const savedImage = await newImage.save()  
 
     res.json({
-      message: 'File uploaded successfully',
-      url: result.secure_url,
-    });
+        message: "file was able to be uploaded", 
+        image:savedImage
+
+    })
+  } catch(error){ 
+      console.log("Not able to upload image", error)
+      res.Status(500).send("Error uplooading image")
+  }
+
+    
+   
   });
-});
+
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
