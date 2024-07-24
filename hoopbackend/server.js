@@ -9,6 +9,7 @@ const LocalStrategy  = require("passport-local").Strategy;
 const bcrypt = require("bcrypt"); 
 const multer = require("multer"); 
 const cloudinary = require("cloudinary")
+const fs = require('fs');
 
 
 const app = express()  
@@ -42,7 +43,7 @@ const fileFilter = (req, file , cb) => {
 
     // these arrays specifies what files types users can use
   const allowedExtentions = ['jpeg', 'jpg', 'png']; 
-  const allowdMineTimes =  ['image/jpeg', 'image/jpg', 'image/png'];  
+  const allowdMineTypes =  ['image/jpeg', 'image/jpg', 'image/png'];  
 
 
   //this wiil split the name from extention and then turn extention to lowercase 
@@ -417,7 +418,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     await fs.unlinkSync(req.file.path);  
 
 
-    const newImage = Image({
+    const newImage = new Image({
       imageUrl: result.secure_url,
       description: description,
       username: username,
@@ -433,7 +434,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     })
   } catch(error){ 
       console.log("Not able to upload image", error)
-      res.Status(500).send("Error uplooading image")
+      res.status(500).send("Error uplooading image")
   }
 
     
