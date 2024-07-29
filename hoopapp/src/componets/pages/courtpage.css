@@ -257,7 +257,6 @@ img{
         height:25px;   
         font-size: .7rem; 
         margin-left: 0;  
-        transition: ease-in-out .1s;
        
     }  
     .c-s-btn:hover{

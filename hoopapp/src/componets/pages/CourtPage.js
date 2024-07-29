@@ -186,10 +186,6 @@ const CourtPage = () => {
 
                             </div>  
 
-
-
-
-
                             
                     </div>  
                  
