@@ -19,8 +19,8 @@ const app = express()
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_SECRET,
-  api_secret: process.env.CLOUD_API_KEY,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.api_secret,
 });
 
 
@@ -195,7 +195,7 @@ const imageSchema = new mongoose.Schema({
     }, 
     description: {
       type: String,
-      required:true
+      required:false
     },
     createdAt:{
       type:Date, 
@@ -386,7 +386,13 @@ app.post("/signup", async(req, res)=>{
       // User is not authenticated
      return res.json({ authenticated: false, user: null });
     }
-  });
+  });  
+
+
+  app.get('/test-user', (req, res) => {
+  console.log('User:', req.user);
+  res.json({ user: req.user });
+});
   
 
 /*miles away get request*/
@@ -406,9 +412,9 @@ app.post("/signup", async(req, res)=>{
 
 
 app.post('/upload', upload.single('image'), async (req, res) => {  
-  
-console.log(req.body)
-  
+ // console.log('Session:', req.session);
+ console.log('Before Route Handler:', req.user);
+
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }
@@ -417,19 +423,19 @@ console.log(req.body)
   try {
   // Upload the file to Cloudinary  
   const description = req.body.imageDescription;
-  const username = req.user.username;
+  
 
   const result = await cloudinary.uploader.upload(req.file.path, { folder: 'uploads' });
     // Remove the file from the local storage
 
 
-    await fs.promises.unlinkSync(req.file.path);  
+    await fs.unlinkSync(req.file.path);  
 
 
     const newImage = new Image({
       imageUrl: result.secure_url,
       description: description,
-      username: username,
+      user: "paul",
 
     });
 
@@ -445,7 +451,7 @@ console.log(req.body)
       res.status(500).send("Error uplooading image")
   }
 
-    
+ 
    
   }); 
 
