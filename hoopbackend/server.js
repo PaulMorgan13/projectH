@@ -10,6 +10,7 @@ const bcrypt = require("bcrypt");
 const multer = require("multer"); 
 const cloudinary = require("cloudinary")
 const fs = require('fs');
+const { type } = require("os");
 
 
 const app = express()  
@@ -43,15 +44,15 @@ const fileFilter = (req, file , cb) => {
 
     // these arrays specifies what files types users can use
   const allowedExtentions = ['jpeg', 'jpg', 'png']; 
-  const allowdMineTypes =  ['image/jpeg', 'image/jpg', 'image/png'];  
+  const allowedMineTypes =  ['image/jpeg', 'image/jpg', 'image/png'];  
 
 
   //this wiil split the name from extention and then turn extention to lowercase 
   // then it will check if extention is in the allowed Extentions array
   const fileExtension = file.originalname.split('.').pop().toLowerCase();
-  const isExtensionValid = allowedExtensions.includes(fileExtension);
+  const isExtensionValid = allowedExtentions.includes(fileExtension);
 
-  const isMimeTypeValid = allowedMimeTypes.includes(file.mimetype);
+  const isMimeTypeValid = allowedMineTypes.includes(file.mimetype);
 
   if (isExtensionValid && isMimeTypeValid) {
     cb(null, true); // Accept the file
@@ -181,24 +182,28 @@ const userProfileSchema = new mongoose.Schema({
 
 const UserProfile = new mongoose.model("UserProfile", userProfileSchema)  
 
-//image schema
+//image schema  
 
 const imageSchema = new mongoose.Schema({
-      imageUrl: {
-        type:String
-      }, 
-      user:{
-        type:String
-      }, 
-      description:{
-        type:String
-      }
-      ,
-      createdAt:{
-        type:Date, default: Date.now
-      } 
+    imageUrl: {
+      type: String, 
+      required : true
+    }, 
+    user : {
+      type:String, 
+      required: true
+    }, 
+    description: {
+      type: String,
+      required:true
+    },
+    createdAt:{
+      type:Date, 
+      default:Date.now
+    }
 
 })
+
 
 const Image = new mongoose.model("Image", imageSchema)
 
@@ -400,7 +405,10 @@ app.post("/signup", async(req, res)=>{
 */  
 
 
-app.post('/upload', upload.single('image'), async (req, res) => {
+app.post('/upload', upload.single('image'), async (req, res) => {  
+  
+console.log(req.body)
+  
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }
@@ -415,7 +423,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     // Remove the file from the local storage
 
 
-    await fs.unlinkSync(req.file.path);  
+    await fs.promises.unlinkSync(req.file.path);  
 
 
     const newImage = new Image({
@@ -439,8 +447,11 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
     
    
-  });
+  }); 
 
+  
+
+  
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
