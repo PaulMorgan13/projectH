@@ -18,7 +18,9 @@ const CourtPage = () => {
     const [toggleOn, setToggleOn] = useState(false)  
     const [imageDescription, setImageDescription] = useState("")   
     const [image , setImage] = useState(null) 
-    const [imageUrl , setImageUrl] = useState("") 
+    const [imageUrl , setImageUrl] = useState("")  
+    const [logged, setLogged] = useState(null)
+
 
 
 
@@ -36,7 +38,8 @@ const CourtPage = () => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('image', image);
-        formData.append('imagedescription', imageDescription);
+        formData.append('imagedescription', imageDescription); 
+        formData.append("loggedInUser", logged)
 
 
         try{
@@ -44,7 +47,9 @@ const CourtPage = () => {
                 headers: {
                   'Content-Type': 'multipart/form-data',
                 },
-              })
+              })  
+              setImage(null)
+              setImageDescription("")
         } 
         catch(error) { 
             console.log(error) 
@@ -76,7 +81,8 @@ const CourtPage = () => {
              
                 console.log(res) 
                 if(res.data.authenticated === true){
-                    navigate(`/courts/${id}`)
+                    navigate(`/courts/${id}`) 
+                    setLogged(res.data.user.username)
                 }
                 else {
                     navigate("/login")
@@ -170,7 +176,24 @@ const CourtPage = () => {
                                     <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
                                     {
-                                        !toggleOn ?  <p>N/A</p> : 
+                                        !toggleOn ?  <div className="carousell-container"> 
+                                                <div className="carousell-box"> 
+
+                                                </div>  
+
+                                                <div className="carousell-box"> 
+
+                                                </div> 
+                                                 <div className="carousell-box"> 
+
+                                                </div> 
+
+                                                <div className="carousell-box"> 
+
+                                                </div>
+                                        
+                                                    </div> 
+                                        : 
                                         <form className="img-form"  onSubmit={handleSubmit} > 
                                         <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button>
                                         <input placeholder="image description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 

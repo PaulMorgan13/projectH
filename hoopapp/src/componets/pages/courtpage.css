@@ -230,6 +230,7 @@ img{
         height: 90px; 
         margin-top: .5em;  
         padding: .5rem;
+        width:260px
 
     } 
     .upload-icon{  
@@ -261,6 +262,25 @@ img{
     }  
     .c-s-btn:hover{
         background-color: rgb(40, 54, 71);
-    }
+    } 
 
+    .carousell-container{
+        margin-top: .5em;  
+        border: 3px solid black; 
+        height: 90px; 
+        width:260px; 
+        display: grid; 
+        grid-auto-flow: column; 
+        gap: 10px;  
+        overflow: hidden;
+        align-items: start;
+    }
+    .carousell-box{
+        width: 70px;
+        height: 70px; 
+        background: rgb(86, 75, 144); 
+        border: solid 3px white;
+        border-radius: 5px ; 
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
 } 

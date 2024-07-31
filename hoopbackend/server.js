@@ -389,11 +389,7 @@ app.post("/signup", async(req, res)=>{
   });  
 
 
-  app.get('/test-user', (req, res) => {
-  console.log('User:', req.user);
-  res.json({ user: req.user });
-});
-  
+
 
 /*miles away get request*/
 
@@ -413,7 +409,9 @@ app.post("/signup", async(req, res)=>{
 
 app.post('/upload', upload.single('image'), async (req, res) => {  
  // console.log('Session:', req.session);
- console.log('Before Route Handler:', req.user);
+ //console.log('Before Route Handler:', req.user);
+
+  console.log(req.body)
 
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
@@ -422,7 +420,8 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
   try {
   // Upload the file to Cloudinary  
-  const description = req.body.imageDescription;
+  const description = req.body.imageDescription; 
+  const loggedUser = req.body.loggedInUser
   
 
   const result = await cloudinary.uploader.upload(req.file.path, { folder: 'uploads' });
@@ -435,7 +434,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     const newImage = new Image({
       imageUrl: result.secure_url,
       description: description,
-      user: "paul",
+      user: loggedUser,
 
     });
 
@@ -462,4 +461,3 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
 })  
-
