@@ -39,7 +39,8 @@ const CourtPage = () => {
         const formData = new FormData()
         formData.append('image', image);
         formData.append('imagedescription', imageDescription); 
-        formData.append("loggedInUser", logged)
+        formData.append("loggedInUser", logged); 
+        formData.append("courtId", id)
 
 
         try{

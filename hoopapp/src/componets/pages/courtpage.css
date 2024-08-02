@@ -266,7 +266,6 @@ img{
 
     .carousell-container{
         margin-top: .5em;  
-        border: 3px solid black; 
         height: 90px; 
         width:260px; 
         display: grid; 

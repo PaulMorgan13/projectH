@@ -197,6 +197,10 @@ const imageSchema = new mongoose.Schema({
       type: String,
       required:false
     },
+    courtId:{
+        type:String, 
+        required:true
+    },
     createdAt:{
       type:Date, 
       default:Date.now
@@ -421,7 +425,8 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   try {
   // Upload the file to Cloudinary  
   const description = req.body.imageDescription; 
-  const loggedUser = req.body.loggedInUser
+  const loggedUser = req.body.loggedInUser 
+  const courtId = req.body.courtId;
   
 
   const result = await cloudinary.uploader.upload(req.file.path, { folder: 'uploads' });
@@ -434,11 +439,14 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     const newImage = new Image({
       imageUrl: result.secure_url,
       description: description,
-      user: loggedUser,
+      user: loggedUser, 
+      courtId: courtId
 
     });
 
-    const savedImage = await newImage.save()  
+    const savedImage = await newImage.save()    
+
+    console.log("photo was uploaded")
 
     res.json({
         message: "file was able to be uploaded", 
