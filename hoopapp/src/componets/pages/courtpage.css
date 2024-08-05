@@ -221,7 +221,11 @@ img{
         background-color: rgba(255, 63, 63, 0.772);
     }
 
-
+    #imageDesc{ 
+        
+        width: 130px; 
+        height: 30px;
+    }
     .img-form{ 
         display: flex; 
         flex-direction: column; 
