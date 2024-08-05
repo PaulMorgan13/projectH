@@ -4,7 +4,7 @@ import "./profilePage.css"
 import  "./profilePage.css" 
 import Top from "../Top"
 import { AuthContext } from "../../App"   
-import { useNavigate  } from "react-router-dom";    
+import { useParams , useNavigate } from "react-router-dom"; 
 
 
 
@@ -12,8 +12,11 @@ const ProfilePage = ()=>{
     const Navigate = useNavigate()  
 
     const [isAuth, setIsAuth] = useContext(AuthContext)
-    const [user, setUser] = useState(null);
-    
+    const [user, setUser] = useState('');
+    const [loggedUser, setLoggedUser] = useState('')
+
+
+    const {id} = useParams()   
 
     useEffect(() =>  { 
 
@@ -25,7 +28,8 @@ const ProfilePage = ()=>{
                     withCredentials: true,
                 }) 
                  if(res.data.authenticated === true){
-                     Navigate("/profile")
+                     Navigate("/profile") 
+                     //setLoggedUser(res.data.user.username)
                  }
                  else{
                     Navigate("/login")
@@ -42,6 +46,26 @@ const ProfilePage = ()=>{
 
 
 
+    //this use effect will test out grabing user and for profile page better function will be made
+    useEffect(() => {
+        const getUser = async () => {
+                
+                try { 
+                    const res = await axios.get(`http://localhost:3400/check-auth`,  {
+                        withCredentials: true,
+                      }) 
+
+                      
+
+                    setLoggedUser(res.data.user.username) 
+                } 
+
+                catch(error) {
+                    console.log('not able to get user', error)
+                }
+        }
+
+        getUser()}, [])
 
 
     const handleSignOut = async (e) => {    
@@ -74,7 +98,7 @@ const ProfilePage = ()=>{
 
 
                         <h1>
-                            Name.  
+                            {loggedUser}.  
 
                             <h2>Email@demo.com</h2>
                         </h1>

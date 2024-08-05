@@ -394,6 +394,32 @@ app.post("/signup", async(req, res)=>{
 
 
 
+  app.get("/profile/:id", async (req,res)=> {
+
+      if(req.isAuthenticated()){
+        try { 
+
+          const userProfile = await UserProfile.findById(req.params.id); 
+
+          if(userProfile) {
+            res.send(userProfile)
+          } 
+          else {
+              res.status(400).send({message: "user not found"})
+          }
+          
+        } catch (error) {  
+            res.status(500).send({ message: "Internal Server Error" })
+          
+        }
+
+      }
+      else {
+        res.status(401).send({ message: "Unauthorized" });
+
+      }
+  });
+
 
 /*miles away get request*/
 
