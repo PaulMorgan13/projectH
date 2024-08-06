@@ -145,7 +145,7 @@ const User = mongoose.model("User", userSchema)
 const userProfileSchema = new mongoose.Schema({
     username:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
         
     } , 
     email: {
@@ -394,12 +394,13 @@ app.post("/signup", async(req, res)=>{
 
 
 
-  app.get("/profile/:id", async (req,res)=> {
+  app.get("/profile", async (req,res)=> {
 
       if(req.isAuthenticated()){
         try { 
 
-          const userProfile = await UserProfile.findById(req.params.id); 
+          const userProfile = await UserProfile.findOne({username: req.user._id}).populate('username'); 
+         
 
           if(userProfile) {
             res.send(userProfile)

@@ -51,13 +51,13 @@ const ProfilePage = ()=>{
         const getUser = async () => {
                 
                 try { 
-                    const res = await axios.get(`http://localhost:3400/check-auth`,  {
+                    const res = await axios.get(`http://localhost:3400/profile`,  {
                         withCredentials: true,
                       }) 
 
                       
-
-                    setLoggedUser(res.data.user.username) 
+                    console.log(res.data)
+                    setLoggedUser(res.data) 
                 } 
 
                 catch(error) {
@@ -98,9 +98,9 @@ const ProfilePage = ()=>{
 
 
                         <h1>
-                            {loggedUser}.  
+                           .  
 
-                            <h2>Email@demo.com</h2>
+                            <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
                         </h1>
 
 
@@ -117,7 +117,7 @@ const ProfilePage = ()=>{
                                     My Favorite Park.
                                 </h1> 
 
-                                <p>test</p>
+                                <p>{loggedUser.favoritePark === null? "Park had not been set" : loggedUser.favoritePark}</p>
 
                             </div>
 
@@ -128,7 +128,7 @@ const ProfilePage = ()=>{
                                 </h1> 
 
                                 <p>
-                                    The City
+                                    {loggedUser.city === null? "City not set": loggedUser.city}
                                 </p>
 
                             </div>
