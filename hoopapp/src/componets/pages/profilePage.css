@@ -179,5 +179,25 @@
         background-size: cover; 
         opacity: 80%; 
         cursor: pointer;
+    } 
+    .pic-save{
+        width: 35px;
+        height: 35px; 
+        background: url(../images/save-icon.png);
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        opacity: 80%; 
+        cursor: pointer; 
+        transition: ease-in;
+    }  
+
+    .pic-edit:hover{
+        opacity: 75%;
+    }
+
+    .pic-save:hover{
+        transform: scale(85%); 
+        opacity: 60%;
+        
     }
 }

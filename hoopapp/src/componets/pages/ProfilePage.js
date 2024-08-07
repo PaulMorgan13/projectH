@@ -13,10 +13,18 @@ const ProfilePage = ()=>{
 
     const [isAuth, setIsAuth] = useContext(AuthContext)
     const [user, setUser] = useState('');
-    const [loggedUser, setLoggedUser] = useState('')
+    const [loggedUser, setLoggedUser] = useState('')  
+    const [editing,setIsEditing] = useState(false)
 
 
-    const {id} = useParams()   
+    const {id} = useParams()     
+
+
+
+    const handleEdit = (e) => {
+        setIsEditing((prevEdit) => 
+            !prevEdit) 
+    }
 
     useEffect(() =>  { 
 
@@ -92,20 +100,20 @@ const ProfilePage = ()=>{
 
     return(
         <div className="container">   
-                <Top/>
-                <div className="profile-card">  
+                <Top/>  
+                {
+                    editing ? <div className="profile-card"> 
                     <div className="p-card-top">
 
 
-                        <h1>
-                           .  
+                        <h1>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"  }.  
 
                             <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
                         </h1>
 
 
                         <div className="pic-box"> H </div>
-                        <div className="pic-edit"> </div>
+                        <div className="pic-edit" onClick={handleEdit}> </div>
                     </div>  
 
                     <div className="p-card-bottom"> 
@@ -169,10 +177,86 @@ const ProfilePage = ()=>{
 
                     
 
-                </div>
-            
+                </div> :  
+
+<div className="profile-card"> 
+<div className="p-card-top">
+
+
+    <h1 contentEditable >{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"  }.  
+
+        <h2 contentEditable >{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
+    </h1>
+
+
+    <div className="pic-box"> H </div>
+    <div className="pic-save" onClick={handleEdit}> </div>
+</div>  
+
+<div className="p-card-bottom"> 
+
+    <div className="test-box">   
+
+        <div className="tb-1"> 
+            <h1>
+                My Favorite Park.
+            </h1> 
+
+            <p contentEditable>{loggedUser.favoritePark === null? "Park had not been set" : loggedUser.favoritePark}</p>
+
+        </div>
+
         
+        <div className="tb-1"> 
+            <h1>
+                My City.
+            </h1> 
+
+            <p contentEditable>
+                {loggedUser.city === null? "City not set": loggedUser.city}
+            </p>
+
+        </div>
+
+
         
+        <div className="tb-1"> 
+            <h1>
+                Latest Review.
+            </h1>  
+
+            <h2>
+                Park: 
+            </h2>    
+
+
+
+
+            <p>Date:</p>
+
+            <p>Date:</p>
+
+        </div>
+
+       
+
+    
+
+    </div>
+
+
+   
+    <button className="sign-out-btn" onClick={handleSignOut}>sign out </button>
+
+</div>
+
+
+
+
+
+</div>
+                }
+                
         
         
         
