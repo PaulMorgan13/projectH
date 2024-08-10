@@ -32,9 +32,13 @@
     border: solid  3px salmon;  
     margin-left: 70%;
     cursor: pointer;
- 
+    display: flex; 
+    align-items: center ; 
+    justify-content: center;
    
-}  
+}   
+
+
 
 @media (min-width: 1090px) { 
     .user-icon{
@@ -49,10 +53,15 @@
         margin: 0;
         width: 80px; 
         height: 70px;  
-        
-    
-      
-        
-    }  
+    }   
+
+    .add-u-photo{
+        width: 35px;
+        height: 35px; 
+        opacity:30%;
+        background-image: url(../componets/images/user-account.png); 
+        background-repeat: no-repeat; 
+        background-size: 35px 35px;
+    }
     
 }

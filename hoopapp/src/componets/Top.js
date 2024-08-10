@@ -4,7 +4,14 @@ import pIcon from "./images/ProjectH.svg"
 import { useParams ,useNavigate } from "react-router-dom"; 
 
 
- const  Top = () => {
+ const  Top = ({editing, setIsEditing}) => {  
+
+
+    const style = {
+        border: editing && "dashed 2px black",
+        transition: ".2s ease-in"
+        
+    }
 
     const navigate = useNavigate();
 
@@ -13,7 +20,10 @@ import { useParams ,useNavigate } from "react-router-dom";
                     <img src={pIcon} className="icon"></img>  
 
 
-                    <div className="user-icon" onClick={((e)=> { navigate("/profile") })}></div>
+                    <div className="user-icon" style={style}  onClick={((e)=> { navigate("/profile") })}> 
+                        {editing && <div className="add-u-photo"></div>}
+                        
+                    </div>
 
                 </div>
         )

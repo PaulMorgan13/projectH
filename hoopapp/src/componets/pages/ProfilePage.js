@@ -15,7 +15,7 @@ const ProfilePage = ()=>{
     const [user, setUser] = useState('');
     const [loggedUser, setLoggedUser] = useState('')  
     const [editing,setIsEditing] = useState(false)
-
+    const [editMode, setEditingMode] = useState(false)
 
     const {id} = useParams()     
 
@@ -100,7 +100,7 @@ const ProfilePage = ()=>{
 
     return(
         <div className="container">   
-                <Top/>  
+                <Top editing={editing} setIsEditing={setIsEditing}/>  
                 {
                     editing ?
                     
