@@ -489,7 +489,41 @@ app.post('/upload', upload.single('image'), async (req, res) => {
    
   }); 
 
-  
+  app.put("/profile/updateUser", async (req,res) =>{  
+
+
+
+    if(req.isAuthenticated()){
+
+          const user = req.user._id; 
+          const updatedInfo = req.body;
+
+        try{
+            const updatedUser = await UserProfile.findByIdAndUpdate(userId, updatedInfo,{ new: true, runValidators: true })  
+
+            if(!updatedUser) {
+              return res.status(404).json({message: "user was not found"})
+            }
+
+
+            res.json(updatedUser)
+        } 
+
+        catch(err){ 
+            res.status(500).json({message: err.message})
+
+        }
+
+
+    } 
+
+    else {
+      res.status(401).json({ message: 'User not authenticated' });
+    }
+
+
+
+  })
 
   
 

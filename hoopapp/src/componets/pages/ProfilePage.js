@@ -15,10 +15,19 @@ const ProfilePage = ()=>{
     const [user, setUser] = useState('');
     const [loggedUser, setLoggedUser] = useState('')  
     const [editing,setIsEditing] = useState(false)
-    const [editMode, setEditingMode] = useState(false)
+    const [profileData, setProfileData] = useState({})
 
     const {id} = useParams()     
 
+
+    const handleInputChange = (e) => {
+        const {id, innerText} = e.target  
+        setProfileData((prev)=> ({
+            ...prev, //this takes the prev object
+            [id]:innerText //new content
+        }))
+        console.log(profileData)
+    }
 
 
     const handleEdit = (e) => {
@@ -108,9 +117,9 @@ const ProfilePage = ()=>{
 <div className="p-card-top">
 
 
-    <h1 contentEditable style={{border:"1px solid black",   }}>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"  }.  
+    <h1 contentEditable id="username" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1px solid black",   }}>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"  }.  
 
-        <h2 contentEditable style={{border:"1px solid black"}} >{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
+        <h2 contentEditable id ="email" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1px solid black"}} >{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
     </h1>
 
 
@@ -127,7 +136,7 @@ const ProfilePage = ()=>{
                 My Favorite Park.
             </h1> 
 
-            <p contentEditable  style={{border:"1px solid black"}} >{loggedUser.favoritePark === null? "Park had not been set" : loggedUser.favoritePark}</p>
+            <p contentEditable id="favoritePark" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1px solid black"}} >{loggedUser.favoritePark === null? "Park had not been set" : loggedUser.favoritePark}</p>
 
         </div>
 
@@ -137,7 +146,7 @@ const ProfilePage = ()=>{
                 My City.
             </h1> 
 
-            <p contentEditable style={{border:"1px solid black"}}>
+            <p contentEditable onInput={handleInputChange} id="city" suppressContentEditableWarning={true} style={{border:"1px solid black"}}>
                 {loggedUser.city === null? "City not set": loggedUser.city}
             </p>
 
