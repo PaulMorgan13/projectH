@@ -28,8 +28,23 @@ const ProfilePage = ()=>{
         }))
         console.log(profileData)
     }
+    
+    const handleSave = async (e)=> {
+        e.preventDefault() 
+        try { 
+            handleEdit() 
+        const res = await axios.post(`http://localhost:3400/profile/updateUser`,profileData)  
+        
+        console.log(res.data) 
+        
 
+        } 
+        catch(err){
+                console.log("error:", err)
+        }
 
+    }
+    
     const handleEdit = (e) => {
         setIsEditing((prevEdit) => 
             !prevEdit) 
@@ -124,7 +139,7 @@ const ProfilePage = ()=>{
 
 
     <div className="pic-box"> H </div>
-    <div className="pic-save" onClick={handleEdit}> </div>
+    <div className="pic-save" onClick={handleSave}> </div>
 </div>  
 
 <div className="p-card-bottom"> 

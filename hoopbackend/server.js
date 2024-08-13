@@ -489,17 +489,25 @@ app.post('/upload', upload.single('image'), async (req, res) => {
    
   }); 
 
-  app.put("/profile/updateUser", async (req,res) =>{  
+  app.post("/profile/updateUser", async (req,res) =>{  
 
 
+  //console.log(req.user._id)
+  //res.send(req.user)
 
-    if(req.isAuthenticated()){
+          //const user = req.user._id; 
+          const updatedInfo = req.body;   
 
-          const user = req.user._id; 
-          const updatedInfo = req.body;
-
+          const usernameObjtId = new mongoose.Types.ObjectId(req.user._id)
+        
+          /*
+          const updatedUser = await UserProfile.findOne({username:usernameObjtId}) 
+          return res.send(updatedUser)
+         */
+      
+      
         try{
-            const updatedUser = await UserProfile.findByIdAndUpdate(userId, updatedInfo,{ new: true, runValidators: true })  
+            const updatedUser = await UserProfile.findOneAndUpdate({username: usernameObjtId}, updatedInfo,{ new: true, runValidators: true })  
 
             if(!updatedUser) {
               return res.status(404).json({message: "user was not found"})
@@ -515,12 +523,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         }
 
 
-    } 
-
-    else {
-      res.status(401).json({ message: 'User not authenticated' });
-    }
-
+    
 
 
   })
