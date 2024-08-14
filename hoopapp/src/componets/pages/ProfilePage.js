@@ -32,11 +32,10 @@ const ProfilePage = ()=>{
     const handleSave = async (e)=> {
         e.preventDefault() 
         try { 
-            handleEdit() 
         const res = await axios.post(`http://localhost:3400/profile/updateUser`,profileData)  
         
         console.log(res.data) 
-        
+        handleEdit()
 
         } 
         catch(err){

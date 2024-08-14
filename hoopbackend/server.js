@@ -495,18 +495,19 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   //console.log(req.user._id)
   //res.send(req.user)
 
-          //const user = req.user._id; 
-          const updatedInfo = req.body;   
-
-          const usernameObjtId = new mongoose.Types.ObjectId(req.user._id)
         
-          /*
-          const updatedUser = await UserProfile.findOne({username:usernameObjtId}) 
-          return res.send(updatedUser)
-         */
-      
+          
+
       
         try{
+            
+          const user = req.user._id; 
+          const updatedInfo = req.body;   
+
+          
+
+          const usernameObjtId = new mongoose.Types.ObjectId(user)
+
             const updatedUser = await UserProfile.findOneAndUpdate({username: usernameObjtId}, updatedInfo,{ new: true, runValidators: true })  
 
             if(!updatedUser) {
@@ -522,7 +523,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
         }
 
-
+      
     
 
 
