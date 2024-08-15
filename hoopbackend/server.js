@@ -489,6 +489,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
    
   }); 
 
+  /*
   app.post("/profile/updateUser", async (req,res) =>{  
 
 
@@ -528,7 +529,40 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
 
   })
+ 
+*/
 
+  app.post("/profile/updateUser", async (req, res) => {
+    try {
+        console.log(req.user); // Log req.user to ensure it's set correctly
+        console.log(req.body); // Log req.body to ensure it's in the expected format
+
+        if (!req.isAuthenticated) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        const theUser = req.user._id;
+        const updatedInfo = req.body;
+
+        // Check if username is an ObjectId or string
+        const usernameObjtId = new mongoose.Types.ObjectId(theUser); // Only if username is an ObjectId
+
+        const updatedUser = await UserProfile.findOneAndUpdate(
+            { username: usernameObjtId }, // Use `username` or `user` based on your schema
+            updatedInfo,
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User was not found" });
+        }
+
+        res.json(updatedUser);
+    } catch (err) {
+        console.error("Error updating user:", err); // Log the full error
+        res.status(500).json({ message: err.message });
+    }
+});
   
 
 app.listen(3400 , ()=> {
