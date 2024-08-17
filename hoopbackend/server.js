@@ -489,81 +489,38 @@ app.post('/upload', upload.single('image'), async (req, res) => {
    
   }); 
 
-  /*
+  
   app.post("/profile/updateUser", async (req,res) =>{  
 
+      const updatedData = req.body;
 
-  //console.log(req.user._id)
-  //res.send(req.user)
+    if(req.isAuthenticated()){
+      try { 
 
-        
-          
-
+        const updateUser = await UserProfile.findOneAndUpdate({username: req.user._id}, updatedData ); 
       
-        try{
-            
-          const user = req.user._id; 
-          const updatedInfo = req.body;   
 
-          
-
-          const usernameObjtId = new mongoose.Types.ObjectId(user)
-
-            const updatedUser = await UserProfile.findOneAndUpdate({username: usernameObjtId}, updatedInfo,{ new: true, runValidators: true })  
-
-            if(!updatedUser) {
-              return res.status(404).json({message: "user was not found"})
-            }
-
-
-            res.json(updatedUser)
+        if(updateUser) {
+          res.send(updateUser)
         } 
-
-        catch(err){ 
-            res.status(500).json({message: err.message})
-
+        else {
+            res.status(400).send({message: "user not found"})
         }
+        
+      } catch (error) {  
+          res.status(500).send({ message: "Internal Server Error" })
+        
+      }
 
-      
-    
-
-
-  })
- 
-*/
-
-  app.post("/profile/updateUser", async (req, res) => {
-    try {
-        console.log(req.user); // Log req.user to ensure it's set correctly
-        console.log(req.body); // Log req.body to ensure it's in the expected format
-
-        if (!req.isAuthenticated) {
-            return res.status(401).json({ message: "Unauthorized" });
-        }
-
-        const theUser = req.user._id;
-        const updatedInfo = req.body;
-
-        // Check if username is an ObjectId or string
-        const usernameObjtId = new mongoose.Types.ObjectId(theUser); // Only if username is an ObjectId
-
-        const updatedUser = await UserProfile.findOneAndUpdate(
-            { username: usernameObjtId }, // Use `username` or `user` based on your schema
-            updatedInfo,
-            { new: true, runValidators: true }
-        );
-
-        if (!updatedUser) {
-            return res.status(404).json({ message: "User was not found" });
-        }
-
-        res.json(updatedUser);
-    } catch (err) {
-        console.error("Error updating user:", err); // Log the full error
-        res.status(500).json({ message: err.message });
     }
-});
-  
+    else {
+      res.status(401).send({ message: "Unauthorized" });
+
+    }
+})
+ 
+
+
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")

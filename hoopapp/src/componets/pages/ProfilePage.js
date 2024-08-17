@@ -38,7 +38,9 @@ const ProfilePage = ()=>{
             city: updatedData.city || loggedUser.city
         };
         try { 
-        const res = await axios.post(`http://localhost:3400/profile/updateUser`,updatedProfileData)  
+        const res = await axios.post(`http://localhost:3400/profile/updateUser`,updatedProfileData  ,  {
+            withCredentials: true,
+        })  
         
         console.log(res.data) 
         handleEdit()
