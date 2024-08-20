@@ -31,12 +31,15 @@ const ProfilePage = ()=>{
     
     const handleSave = async (e)=> { 
         e.preventDefault() 
-        const updatedProfileData = {
+        const updatedProfileData = { 
+            
             username: updatedData.username || loggedUser.username,
             email: updatedData.email || loggedUser.email,
             favoritePark: updatedData.favoritePark || loggedUser.favoritePark,
             city: updatedData.city || loggedUser.city
-        };
+        }; 
+
+      
         try { 
         const res = await axios.post(`http://localhost:3400/profile/updateUser`,updatedProfileData  ,  {
             withCredentials: true,
@@ -138,13 +141,10 @@ const ProfilePage = ()=>{
                     <div className="profile-card"> 
                     <div className="p-card-top">
                     
-                    
-                        <h1 contentEditable id="username" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1px solid black",   }}>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"  }.  
-                    
-                            <h2 contentEditable id ="email" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1px solid black"}} >{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
-                        </h1>
-                    
-                    
+                    <div className="heading">
+                        <h1 contentEditable id="username" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>{loggedUser && loggedUser.username? loggedUser.username.username: "loading the User"  }</h1>
+                        <h2 contentEditable id="email" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px",}} >{loggedUser.email ===  null? "Email not set": loggedUser.email}</h2>
+                    </div>
                         <div className="pic-box"> H </div>
                         <div className="pic-save" onClick={handleSave}> </div>
                     </div>  
@@ -217,12 +217,10 @@ const ProfilePage = ()=>{
                     <div className="profile-card"> 
                     <div className="p-card-top">
 
-
-                        <h1>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"}.  
-
-                            <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
-                        </h1>
-
+                        <div className="heading">
+                        <h1>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"}.</h1>  
+                        <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
+                        </div>
 
                         <div className="pic-box"> H </div>
                         <div className="pic-edit" onClick={handleEdit}> </div>

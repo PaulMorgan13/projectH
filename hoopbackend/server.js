@@ -355,7 +355,6 @@ app.post("/signup", async(req, res)=>{
 
         const newUserProfile = new  UserProfile({ 
             username: newUser.id, 
-          
             email:null,
             fullName:fullName,
             number:number,
@@ -492,8 +491,11 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   
   app.post("/profile/updateUser", async (req,res) =>{  
 
-      const updatedData = req.body;
+      const updatedData = req.body;   
 
+      console.log(updatedData)
+      
+    
     if(req.isAuthenticated()){
       try { 
 
@@ -508,15 +510,16 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         }
         
       } catch (error) {  
-          res.status(500).send({ message: "Internal Server Error" })
-        
+          res.status(500).send({ message: `internal server error ${updatedData}`})
       }
 
     }
     else {
       res.status(401).send({ message: "Unauthorized" });
 
-    }
+    } 
+
+    
 })
  
 
