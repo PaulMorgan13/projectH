@@ -181,8 +181,25 @@ img{
         background-size: cover; 
         background-repeat: no-repeat;  
         cursor: pointer; 
+        opacity: 40%; 
+        
+    } 
+    .court-t-r{
+        display: flex; 
+        flex-direction: row-reverse;
+        gap: 10px;
+    }
+    
+    .like-c{
+        width: 25px;
+        height: 25px;
+        background-color: #f86931; 
+        background: url(../images/hand.png);
+        background-size: cover; 
+        background-repeat: no-repeat;  
+        cursor: pointer; 
         opacity: 40%;
-    }  
+    } 
 
     .edit-c:hover{
        opacity: 70%;

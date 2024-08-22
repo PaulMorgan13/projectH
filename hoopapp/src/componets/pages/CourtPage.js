@@ -155,7 +155,11 @@ const CourtPage = () => {
                         
 
                         <div className="court-t-r">
-                                <div className="edit-c"></div>
+                        
+                                <div className="edit-c"></div> 
+                                <div className="like-c"></div> 
+                                
+                                
                         </div>
 
                         </div>    
