@@ -19,7 +19,8 @@ const CourtPage = () => {
     const [imageDescription, setImageDescription] = useState("")   
     const [image , setImage] = useState(null) 
     const [imageUrl , setImageUrl] = useState("")  
-    const [logged, setLogged] = useState(null)
+    const [logged, setLogged] = useState(null) 
+    const [like, setLike] = useState(false)
 
 
 
@@ -67,6 +68,21 @@ const CourtPage = () => {
     const uploadImg = (e) => {
         e.preventDefault()  
        inputRef.current && inputRef.current.click()
+    } 
+
+    const handleLike = async (e) => { 
+        e.preventDefault() 
+    
+        try{ 
+            console.log("clicked")
+            const res = await axios.post(`http://localhost:3400/like/`,{id})  
+
+        } 
+        catch(err){
+            console.log(err)
+        }
+
+
     }
 
 
@@ -156,8 +172,8 @@ const CourtPage = () => {
 
                         <div className="court-t-r">
                         
-                                <div className="edit-c"></div> 
-                                <div className="like-c"></div> 
+                                <div className="edit-c" ></div> 
+                                <div className="like-c" onClick={handleLike}></div> 
                                 
                                 
                         </div>

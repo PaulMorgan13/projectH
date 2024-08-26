@@ -522,7 +522,26 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     
 })
  
+app.get("/like/", async(req, res)=> {
+    const addedUser = req.user  
+    const court = req.body._id
+    
+    console.log(court)
 
+  try {
+    
+    const updateLiked = await Court.findOneAndUpdate({_id: court}, 
+     { $push: { likedList: addedUser }})    
+
+    res.send({message: `${court}`}  )
+
+    
+  } catch (error) {
+        res.status(500).send({message: "not able to load"})
+  }
+
+  
+})
 
 
 app.listen(3400 , ()=> {
