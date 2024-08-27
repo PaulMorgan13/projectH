@@ -530,11 +530,15 @@ app.get("/like/", async(req, res)=> {
 
   try {
     
-    const updateLiked = await Court.findOneAndUpdate({_id: court}, 
+    const updatedCourt = await Court.findOneAndUpdate({_id: court}, 
      { $push: { likedList: addedUser }})    
 
     res.send({message: `${court}`}  )
+     
+    if(!updatedCourt) {
 
+      res.status(400).send({message:"court not found"})
+    }
     
   } catch (error) {
         res.status(500).send({message: "not able to load"})

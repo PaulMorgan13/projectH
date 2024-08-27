@@ -75,8 +75,14 @@ const CourtPage = () => {
     
         try{ 
             console.log("clicked")
-            const res = await axios.post(`http://localhost:3400/like/`,{id})  
+            const res = await axios.post(`http://localhost:3400/like`,{id})   
 
+            if(res.status ===200){
+                console.log(res.data.message)
+            } 
+            else{
+                console.log(`not able to like : ${res.status}`)
+            }
         } 
         catch(err){
             console.log(err)
