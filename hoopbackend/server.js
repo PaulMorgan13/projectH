@@ -109,7 +109,8 @@ const courtSchema = new mongoose.Schema({
     threePointLine:Boolean, 
     collegeThreePointLine:Boolean, 
     courtCount: Number,
-    seats:Boolean
+    seats:Boolean,
+    likedList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 
 })   
 
@@ -522,7 +523,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     
 })
  
-app.get("/like/", async(req, res)=> {
+app.post("/like", async(req, res)=> {
     const addedUser = req.user  
     const court = req.body._id
     
@@ -533,7 +534,8 @@ app.get("/like/", async(req, res)=> {
     const updatedCourt = await Court.findOneAndUpdate({_id: court}, 
      { $push: { likedList: addedUser }})    
 
-    res.send({message: `${court}`}  )
+    res.send({message: `${court}`}  ) 
+    console.log(updatedCourt)
      
     if(!updatedCourt) {
 
@@ -545,6 +547,37 @@ app.get("/like/", async(req, res)=> {
   }
 
   
+}) 
+
+app.post("unlike",  async (req, res) => { 
+
+      const user = req.user 
+      const court = req.body._id
+
+
+
+
+
+
+      try {  
+            const updatedCourt = await Court.findOneAndUpdate({_id: court}, 
+              {$pull: { likedList: addedUser }}
+            )  
+
+            res.status(200).send({message: "unliked"})  
+
+            if(!updatedCourt) {
+              res.status(404).send({message:"court not found"})
+            }
+
+      } 
+
+      catch(err){
+              res.status(500).send({message:"server error"})
+      }
+
+
+
 })
 
 

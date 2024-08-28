@@ -75,7 +75,9 @@ const CourtPage = () => {
     
         try{ 
             console.log("clicked")
-            const res = await axios.post(`http://localhost:3400/like`,{id})   
+            const res = await axios.post(`http://localhost:3400/like`,{_id: id},  {
+                withCredentials: true
+            })   
 
             if(res.status ===200){
                 console.log(res.data.message)
