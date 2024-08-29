@@ -580,6 +580,27 @@ app.post("unlike",  async (req, res) => {
 
 })
 
+app.get("court/:courtId/checkLike", async (req, res) => {
+      
+  const user = req.user;  
+  const court = req.params.courtId
+  
+  try { 
+
+    const court = await Court.findOne({_id: court})   
+
+    if (!court){
+      res.status(400).send({message:`court not found`})
+    }
+
+  }
+  catch (err){
+      res.status(500).send({message: `server issue ${err}`})
+  }
+
+} ) 
+
+
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
