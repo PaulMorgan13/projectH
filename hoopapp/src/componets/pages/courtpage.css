@@ -199,7 +199,12 @@ img{
         background-repeat: no-repeat;  
         cursor: pointer; 
         opacity: 40%;
-    } 
+    }  
+    
+    .like-c:hover {
+        opacity: 80%;
+
+    }
 
     .edit-c:hover{
        opacity: 70%;
