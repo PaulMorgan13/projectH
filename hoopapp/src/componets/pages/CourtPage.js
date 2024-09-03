@@ -20,7 +20,8 @@ const CourtPage = () => {
     const [image , setImage] = useState(null) 
     const [imageUrl , setImageUrl] = useState("")  
     const [logged, setLogged] = useState(null) 
-    const [like, setLike] = useState(false)
+    const [like, setLike] = useState(false)  
+    const [checkedLike ,setCheckedLike] = useState(null)
 
 
 
@@ -150,6 +151,29 @@ const CourtPage = () => {
         grabCourt()
     },[id])  
 
+
+    useEffect(()=> {
+        try{
+            const checkLike = async () => {
+                const res = await axios.get(`court/:courtId/checkLike`)    
+
+                if (res.status === 200) {
+                    setCheckedLike(true)
+                } 
+                else if (res.status === 400) { 
+                    setCheckedLike(false)
+
+                }
+            }
+    
+        } 
+        catch (err) { 
+            console.log(err)
+
+        }
+
+    checkedLike()
+    }, [])
 
         return( 
                 <div className="container"> 

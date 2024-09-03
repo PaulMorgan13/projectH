@@ -587,10 +587,13 @@ app.get("court/:courtId/checkLike", async (req, res) => {
   
   try { 
 
-    const court = await Court.findOne({_id: court})   
+    const court = await Court.findOne({_id: court, likedList: user})   
 
     if (!court){
       res.status(400).send({message:`court not found`})
+    } 
+    else {
+      res.status(200).send({message: `${user} liked that court`})
     }
 
   }
