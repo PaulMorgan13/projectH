@@ -34,9 +34,7 @@ const CourtPage = () => {
         setImage(e.target.files[0])
     }  
 
-    const styleLike ={
-        backgroundColor:`green`
-    }
+    
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
@@ -83,10 +81,13 @@ const CourtPage = () => {
             })   
 
             if(res.status ===200){
-                console.log(res.data.message)
+                console.log(res.data.message) 
+                setCheckedLike((prev) => 
+                    !prev
+                )
             } 
             else{
-                console.log(`not able to like : ${res.status}`)
+                console.log(`not able to like : ${res.status}`) 
             }
         } 
         catch(err){
@@ -212,7 +213,7 @@ const CourtPage = () => {
                         
                                 <div className="edit-c" ></div> 
 
-                                {checkedLike ?  <div className="like-c" style={styleLike} onClick={handleLike}></div> : <div className="like-c" onClick={handleLike}></div>}
+                                {checkedLike ?  <div className="like-cg"  onClick={handleLike}></div> : <div className="like-c" onClick={handleLike}></div>}
                                 
                                 
                                 

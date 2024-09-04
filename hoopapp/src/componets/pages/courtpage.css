@@ -204,7 +204,23 @@ img{
     .like-c:hover {
         opacity: 80%;
 
+    } 
+    .like-cg{
+        width: 25px;
+        height: 25px;
+        background-color: #f86931; 
+        background: url(../images/hand-g.png);
+        background-size: cover; 
+        background-repeat: no-repeat;  
+        cursor: pointer; 
+        opacity: 90%;
+    }  
+    
+    .like-cg:hover {
+        opacity: 80%;
+
     }
+
 
     .edit-c:hover{
        opacity: 70%;
