@@ -580,14 +580,14 @@ app.post("unlike",  async (req, res) => {
 
 })
 
-app.get("court/:courtId/checkLike", async (req, res) => {
+app.get("/courts/:courtId/checkLike", async (req, res) => {
       
   const user = req.user;  
-  const court = req.params.courtId
+  const courtParam = req.params.courtId
   
   try { 
 
-    const court = await Court.findOne({_id: court, likedList: user})   
+    const court = await Court.findOne({_id: courtParam, likedList: user})   
 
     if (!court){
       res.status(400).send({message:`court not found`})

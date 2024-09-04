@@ -34,7 +34,9 @@ const CourtPage = () => {
         setImage(e.target.files[0])
     }  
 
-    
+    const styleLike ={
+        backgroundColor:`green`
+    }
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
@@ -153,27 +155,31 @@ const CourtPage = () => {
 
 
     useEffect(()=> {
-        try{
-            const checkLike = async () => {
-                const res = await axios.get(`court/:courtId/checkLike`)    
-
-                if (res.status === 200) {
-                    setCheckedLike(true)
-                } 
-                else if (res.status === 400) { 
-                    setCheckedLike(false)
-
-                }
-            }
+       const  checkLike = async () => { 
     
-        } 
-        catch (err) { 
-            console.log(err)
+        try { 
+            const res = await axios.get(`http://localhost:3400/courts/${id}/checkLike`,{
+                withCredentials: true, }
 
+            )  
+
+            if(res.status === 200){ 
+                console.log(res.status + " this is for the check like")
+                setCheckedLike(true)
+
+            }
+            else if(res.status === 400){ 
+                console.log(res.status)
+                setCheckedLike(false)
+            }
+            
+        } catch (err) {
+            console.log({message: `${err}`})
         }
+       } 
 
-    checkedLike()
-    }, [])
+    checkLike()
+    }, [id])
 
         return( 
                 <div className="container"> 
@@ -205,7 +211,9 @@ const CourtPage = () => {
                         <div className="court-t-r">
                         
                                 <div className="edit-c" ></div> 
-                                <div className="like-c" onClick={handleLike}></div> 
+
+                                {checkedLike ?  <div className="like-c" style={styleLike} onClick={handleLike}></div> : <div className="like-c" onClick={handleLike}></div>}
+                                
                                 
                                 
                         </div>
