@@ -83,7 +83,7 @@ import { useParams ,useNavigate } from "react-router-dom";
                         {editing && 
                         <>
                         <div className="add-u-photo"  onClick={handleClick} ></div> 
-                        <input type="file" /*style={{display:"none"}} */ style={{width:"300px" , height:"50px"}} ref={inputRef}  onChange={handleSelectedImg}/>
+                        <input type="file" style={{display:"none"}}  /*style={{width:"300px" , height:"50px"}} */ ref={inputRef}  onChange={handleSelectedImg}/>
                         </>
                         
                         }

@@ -224,7 +224,25 @@ img{
 
     .edit-c:hover{
        opacity: 70%;
+    }   
+
+    .save-c{
+        margin: 3px;
+        width: 20px;
+        height: 20px;
+        background-color: #f86931; 
+        background: url(../images/save-icon.png);
+        background-size: cover; 
+        background-repeat: no-repeat;  
+        cursor: pointer; 
+        opacity: 60%;  
+        transition: ease-in .51ms;
+        
     }  
+
+    .save-c:hover{
+        opacity: 80%;
+     }   
 
     .miles-away{
         margin-top:20px ;
