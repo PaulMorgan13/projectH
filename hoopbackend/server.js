@@ -604,6 +604,26 @@ app.get("/courts/:courtId/checkLike", async (req, res) => {
 } ) 
 
 
+app.post("/courts/:courtId/updateCourt", async (req, res)=> {
+  const courtParam = req.params.courtId 
+
+  const updatedCourt = req.body
+  
+  try {
+      const court = await Court.findOne({_id:courtParam}) 
+
+      if (!court){
+        res.status(400).send({message:`court could not be found`}) 
+      }
+  }
+  catch (err){
+      res.status(500).send({message:`someing when wrong on our end`})
+  }
+
+
+
+
+})
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
