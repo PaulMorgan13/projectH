@@ -610,7 +610,7 @@ app.post("/courts/:courtId/updateCourt", async (req, res)=> {
   const updatedCourt = req.body
   
   try {
-      const court = await Court.findOne({_id:courtParam}) 
+      const court = await Court.findByIdAndUpdate({_id:courtParam} , updatedCourt) 
 
       if (!court){
         res.status(400).send({message:`court could not be found`}) 

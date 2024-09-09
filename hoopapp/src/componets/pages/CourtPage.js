@@ -22,7 +22,7 @@ const CourtPage = () => {
     const [logged, setLogged] = useState(null)   
     const [checkedLike ,setCheckedLike] = useState(null)
     const [editing, setEditing] = useState(null)
-    const [updatedData, setProfileData] = useState({})
+    const [updatedData, setCourtData] = useState({})
 
 
     const navigate = useNavigate();
@@ -34,15 +34,6 @@ const CourtPage = () => {
     }  
 
 
-    const handleInputChange = (e) => {
-        const {id, innerText} = e.target  
-        setProfileData((prev)=> ({
-            ...prev, //this takes the prev object
-            [id]:innerText //new content
-        }))
-        console.log(updatedData)
-    }
-    
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
@@ -209,6 +200,47 @@ const CourtPage = () => {
                 console.log({message: err})
             }
 
+    }  
+
+
+    const handleInputChange = (e) => {
+        const {id, innerText} = e.target  
+        setCourtData((prev)=> ({
+            ...prev, //this takes the prev object
+            [id]:innerText //new content
+        }))
+        console.log(updatedData)
+    }
+    
+    const handleSave = async (e)=> { 
+        e.preventDefault() 
+        const updatedProfileData = { 
+            
+            courtName: updatedData.CourtName || court.name,
+            courtAddress: updatedData.courtAddress || court.address,
+            courtType: updatedData.courtType || court.type,
+            courtCount: updatedData.courtCount || court.counCount,
+            courtFloor: updatedData.courtFloor || court.floor, 
+            courtRim: updatedData.courtRim || court.rim,
+            courtNet: updatedData.courtNet || court.netType,
+            courtThree: updatedData.courtThree || court.threePointLine,
+            courtCollegeThree: updatedData.courtCollegeThree || court.collegeThreePointLine
+        }; 
+
+      
+        try { 
+        const res = await axios.post(`http://localhost:3400/profile/updateUser`,updatedProfileData  ,  {
+            withCredentials: true,
+        })  
+        
+        console.log(res.data) 
+        handleEdit()
+
+        } 
+        catch(err){
+                console.log("error:", err)
+        }
+
     }
 
         return( 
@@ -229,7 +261,7 @@ const CourtPage = () => {
 
 <h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>{court.type}</h2>
 
-<div className="c-image" style={{transform:`scale(80%)`, margin:`none`, alignContent:`start`}}> 
+<div className="c-image" style={{transform:`scale(80%)`, margin:`none`, }}> 
 <img src={bb} />
 <h3 contentEditable id="CourtCount" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"100px", }}className="c-court-num">{court.courtCount}x</h3>
 </div>
@@ -239,7 +271,7 @@ const CourtPage = () => {
 
 <div className="court-t-r">
 
-        <div className="save-c" onClick={handleEdit} ></div> 
+        <div className="save-c" onClick={handleSave} ></div> 
 
        
         
