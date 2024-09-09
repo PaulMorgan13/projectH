@@ -94,7 +94,34 @@ const CourtPage = () => {
         }
 
 
+    }  
+
+    const handleUnlike = async (e) => { 
+        e.preventDefault() 
+    
+        try{ 
+            console.log("clicked")
+            const res = await axios.post(`http://localhost:3400/unlike`,{_id: id},  {
+                withCredentials: true
+            })   
+
+            if(res.status ===200){
+                console.log(res.data.message) 
+                setCheckedLike((prev) => 
+                    !prev
+                )
+            } 
+            else{
+                console.log(`not able to unlike : ${res.status}`) 
+            }
+        } 
+        catch(err){
+            console.log(err)
+        }
+
+
     }
+
 
 
     useEffect(() =>  { 
@@ -259,7 +286,7 @@ const CourtPage = () => {
 {court.address}
 </h2>
 
-<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>{court.type}</h2>
+/*<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>{court.type}</h2> */
 
 <div className="c-image" style={{transform:`scale(80%)`, margin:`none`, }}> 
 <img src={bb} />
@@ -361,7 +388,7 @@ const CourtPage = () => {
 
         <div className="edit-c" onClick={handleEdit} ></div> 
 
-        {checkedLike ?  <div className="like-cg"  onClick={handleLike}></div> : <div className="like-c" onClick={handleLike}></div>}
+        {checkedLike ?  <div className="like-cg"  onClick={handleLike}></div> : <div className="like-c" onClick={handleUnlike}></div>}
         
         
         

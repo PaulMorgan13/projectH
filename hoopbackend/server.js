@@ -564,7 +564,7 @@ app.post("unlike",  async (req, res) => {
               {$pull: { likedList: addedUser }}
             )  
 
-            res.status(200).send({message: "unliked"})  
+            res.status(200).send({message: "unliked court"})  
 
             if(!updatedCourt) {
               res.status(404).send({message:"court not found"})
