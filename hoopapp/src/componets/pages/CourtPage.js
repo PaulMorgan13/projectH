@@ -388,7 +388,7 @@ const CourtPage = () => {
 
         <div className="edit-c" onClick={handleEdit} ></div> 
 
-        {checkedLike ?  <div className="like-cg"  onClick={handleLike}></div> : <div className="like-c" onClick={handleUnlike}></div>}
+        {checkedLike ?  <div className="like-cg"  onClick={handleUnlike}></div> : <div className="like-c" onClick={handleLike}></div>}
         
         
         

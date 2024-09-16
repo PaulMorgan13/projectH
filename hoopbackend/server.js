@@ -549,19 +549,16 @@ app.post("/like", async(req, res)=> {
   
 }) 
 
-app.post("unlike",  async (req, res) => { 
+app.post("/unlike",  async (req, res) => { 
 
-      const user = req.user 
+      const removeUser = req.user._id
       const court = req.body._id
-
-
-
-
 
 
       try {  
             const updatedCourt = await Court.findOneAndUpdate({_id: court}, 
-              {$pull: { likedList: addedUser }}
+              {$pull: { likedList: removeUser }}, 
+              { new: true }
             )  
 
             res.status(200).send({message: "unliked court"})  
