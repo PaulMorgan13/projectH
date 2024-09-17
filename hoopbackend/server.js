@@ -9,7 +9,8 @@ const LocalStrategy  = require("passport-local").Strategy;
 const bcrypt = require("bcrypt"); 
 const multer = require("multer"); 
 const cloudinary = require("cloudinary")
-const fs = require('fs');
+const fs = require('fs'); 
+const cosineSimilarity = require("compute-cosine-similarity")
 const { type } = require("os");
 
 
@@ -621,6 +622,22 @@ app.post("/courts/:courtId/updateCourt", async (req, res)=> {
 
 
 })
+
+/*
+
+app.get("/recomendedCourts", async (req , res)=> {
+
+
+
+
+
+
+
+
+
+})  
+
+*/
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")

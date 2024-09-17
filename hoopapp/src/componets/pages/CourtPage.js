@@ -2,7 +2,8 @@ import React  , {useState , useEffect , useContext ,  useRef}from "react";
 import axios from "axios"  
 import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
-import bb from "../images/bb_image.png" 
+import bb from "../images/bb_image.png"  
+import addAlt from "../images/add-alt.png" 
 import upload from "../images/icons8-upload-100.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
@@ -312,7 +313,7 @@ const CourtPage = () => {
         <div className="court-more-info">
             <p contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Court Type: {court.type}</p>
             <p contentEditable id="courtCount" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Court Count: {court.courtCount}</p>
-            <p contentEditable id="courtFloor" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Floor: {court.floor}</p>
+            <p contentEditable id="courtFloor" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Surface: {court.floor}</p>
             <p contentEditable id="courtRim" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Rim: {court.rim}</p>
             <p contentEditable id="courtNet" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Net Type: {court.netType}</p>
             <p contentEditable id="courtThree" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>Three Point Line: {court.threePointLine}</p>
@@ -377,7 +378,7 @@ const CourtPage = () => {
 <h2>{court.type}</h2>
 
 <div className="c-image"> 
-<img src={bb}/>
+<img src={bb} style={{transform:`scale(80%)`, margin:`none`, }}/>
 <h3 className="c-court-num">{court.courtCount}x</h3>
 </div>
 
@@ -400,11 +401,12 @@ const CourtPage = () => {
         <div className="court-more-info">
             <p>Court Type: {court.type}</p>
             <p>Court Count: {court.courtCount}</p>
-            <p>Floor: {court.floor}</p>
+            <p>Suface: {court.floor}</p>
             <p>Rim: {court.rim}</p>
             <p>Net Type: {court.netType}</p>
             <p>Three Point Line: {court.threePointLine}</p>
-            <p>College Three Point Line: {court.collegeThreePointLine}</p>
+            <p>College Three Point Line: {court.collegeThreePointLine}</p> 
+            <p className="perks-tag">Perks: Shade, Water fountain, Clean <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}/></p>
             
         </div>  
         

@@ -113,7 +113,27 @@ img{
 .c-image img{
     height: 90px;
     width: 70px;
-}  
+}    
+
+.perks-tag{
+    display: flex; 
+    align-items:last baseline; 
+    gap: 5px
+
+} 
+
+.add-alt{
+    cursor: pointer; 
+    opacity: 70%;
+
+}
+
+.add-alt:hover{
+    opacity: 100%;
+
+    transform: scale(130%);
+
+}
 
 @media (min-width: 1090px) { 
 

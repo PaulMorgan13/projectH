@@ -56,8 +56,7 @@ const ProfilePage = ()=>{
     }
     
     const handleEdit = (e) => {
-        setIsEditing((prevEdit) => 
-            !prevEdit) 
+        setIsEditing((prevEdit) => !prevEdit) 
     }
 
     useEffect(() =>  { 
