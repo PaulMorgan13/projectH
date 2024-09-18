@@ -34,7 +34,8 @@ h2{
 .court-bottom{  
     padding: 1rem;
     border-radius: 5px;
-    background-color: #dcdcdc; 
+    background-color: #dcdcdc;  
+    height: 170px;
     width: 100%;   
     position: relative;
 
@@ -93,8 +94,8 @@ h2{
 
 
 .bb{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 } 
 .c-image{
     margin-top: 1.5rem;
@@ -150,7 +151,7 @@ img{
     .c-court-num{  
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
         letter-spacing: -0.3rem;
-        font-size: 4.5rem;
+        font-size: 4.3rem;
         color: #f86931!important; 
         font-style: oblique;
     }    

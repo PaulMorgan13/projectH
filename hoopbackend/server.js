@@ -211,7 +211,36 @@ const imageSchema = new mongoose.Schema({
 })
 
 
-const Image = new mongoose.model("Image", imageSchema)
+const Image = new mongoose.model("Image", imageSchema)    
+
+//perks Schema 
+ 
+
+const PerksSchema = new mongoose.Schema({ 
+    
+      perk: [
+        {
+          type:String, 
+          required:true
+          }
+      ] 
+    , 
+    user: {
+      type:String, 
+      required:true
+    }, 
+    courtId:{
+      type:String, 
+      required: true
+    },
+    createdAt:{
+      type:Date, 
+      default:Date.now
+    }
+      
+
+})
+
 
 
 
@@ -637,7 +666,26 @@ app.get("/recomendedCourts", async (req , res)=> {
 
 })  
 
-*/
+*/  
+
+
+app.post("courts/:courtId/perks", async (req, res)=> {
+   const court = req.params.courtId 
+   const user = req.user
+   const perk = req.body 
+
+
+   try {
+    
+
+   } catch (error) { 
+
+      res.status(500).send({message: `something when wrong ${error}`})
+    
+   }
+
+
+})
 
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")

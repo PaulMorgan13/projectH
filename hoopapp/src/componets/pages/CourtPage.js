@@ -3,7 +3,9 @@ import axios from "axios"
 import { useParams ,useNavigate } from "react-router-dom"; 
 import "./courtpage.css"
 import bb from "../images/bb_image.png"  
-import addAlt from "../images/add-alt.png" 
+import addAlt from "../images/add-alt.png"  
+import checkMark from "../images/checkmark.png"  
+import checkMarkGreen from "../images/checkmarkGreen.png" 
 import upload from "../images/icons8-upload-100.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
@@ -23,7 +25,9 @@ const CourtPage = () => {
     const [logged, setLogged] = useState(null)   
     const [checkedLike ,setCheckedLike] = useState(null)
     const [editing, setEditing] = useState(null)
-    const [updatedData, setCourtData] = useState({})
+    const [updatedData, setCourtData] = useState({}) 
+    const [addingPerk, setAddingPerk] = useState(null)  
+    const [hover,setHover] = useState(null)
 
 
     const navigate = useNavigate();
@@ -269,7 +273,15 @@ const CourtPage = () => {
                 console.log("error:", err)
         }
 
+    }  
+
+    const handlePerk = (e) => {
+            e.preventDefault() 
+            setAddingPerk((prev) => !prev )
+            
+
     }
+
 
         return( 
                 <div className="container"> 
@@ -406,8 +418,13 @@ const CourtPage = () => {
             <p>Net Type: {court.netType}</p>
             <p>Three Point Line: {court.threePointLine}</p>
             <p>College Three Point Line: {court.collegeThreePointLine}</p> 
-            <p className="perks-tag">Perks: Shade, Water fountain, Clean <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}/></p>
             
+            { !addingPerk ?
+            <p className="perks-tag">Perks: Shade, Water fountain, Clean <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}  onClick={handlePerk} /></p> 
+                :
+                <p className="perks-tag" style={{fontSize:"1.4em",fontWeight:`bold`, opacity:`80%`}}>Perks:  <input style={{transform:`scale(1)` , border:`#7da259 1.5px solid` ,marginBottom:`0` , transition:`ease-in-out 3ms`}} /><img className="add-alt" src={hover ? checkMarkGreen : checkMark } style={{width:"13px", height:"13px"}}  onClick={handlePerk} onMouseOver={(e)=>setHover(true)} onMouseLeave={(e)=>setHover(false)}/></p> 
+
+        }
         </div>  
         
 
