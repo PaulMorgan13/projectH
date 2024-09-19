@@ -26,7 +26,8 @@ const CourtPage = () => {
     const [checkedLike ,setCheckedLike] = useState(null)
     const [editing, setEditing] = useState(null)
     const [updatedData, setCourtData] = useState({}) 
-    const [addingPerk, setAddingPerk] = useState(null)  
+    const [addingPerk, setAddingPerk] = useState(null)   
+    const [perkData, setPerkData]  = useState('')
     const [hover,setHover] = useState(null)
 
 
@@ -127,6 +128,32 @@ const CourtPage = () => {
 
     }
 
+
+    const handlePerkSubmit = async (e)=> {   
+        e.preventDefault()   
+
+        const postedPerk = perkData
+
+        try {  
+            if (postedPerk){
+            const res = await axios.post(`http://localhost:3400/courts/${id}/perk`, postedPerk , {withCredentials:true}) 
+            setAddingPerk(false)
+
+            } 
+            else{
+                console.log("this cannot be blank")
+            } 
+
+            
+        } catch (error) { 
+            console.log(`error:`, error)
+            
+        }
+
+
+
+
+    }
 
 
     useEffect(() =>  { 
@@ -277,11 +304,12 @@ const CourtPage = () => {
 
     const handlePerk = (e) => {
             e.preventDefault() 
-            setAddingPerk((prev) => !prev )
-            
-
+            setAddingPerk((prev) => !prev ) 
     }
 
+    
+
+    
 
         return( 
                 <div className="container"> 
@@ -422,7 +450,7 @@ const CourtPage = () => {
             { !addingPerk ?
             <p className="perks-tag">Perks: Shade, Water fountain, Clean <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}  onClick={handlePerk} /></p> 
                 :
-                <p className="perks-tag" style={{fontSize:"1.4em",fontWeight:`bold`, opacity:`80%`}}>Perks:  <input style={{transform:`scale(1)` , border:`#7da259 1.5px solid` ,marginBottom:`0` , transition:`ease-in-out 3ms`}} /><img className="add-alt" src={hover ? checkMarkGreen : checkMark } style={{width:"13px", height:"13px"}}  onClick={handlePerk} onMouseOver={(e)=>setHover(true)} onMouseLeave={(e)=>setHover(false)}/></p> 
+                <p className="perks-tag" style={{fontSize:"1.4em",fontWeight:`bold`, opacity:`80%`}}>Perks:  <input style={{transform:`scale(1)` , border:`#7da259 1.5px solid` ,marginBottom:`0` , transition:`ease-in-out 3ms`}}  onChange={(e)=>setPerkData(e.target.value)} /><img className="add-alt" src={hover ? checkMarkGreen : checkMark } style={{width:"13px", height:"13px"}}  onClick={handlePerkSubmit} onMouseOver={(e)=>setHover(true)} onMouseLeave={(e)=>setHover(false)}/></p> 
 
         }
         </div>  

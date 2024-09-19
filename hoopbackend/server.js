@@ -218,7 +218,7 @@ const Image = new mongoose.model("Image", imageSchema)
 
 const PerksSchema = new mongoose.Schema({ 
     
-      perk: [
+    perk: [
         {
           type:String, 
           required:true
@@ -242,6 +242,7 @@ const PerksSchema = new mongoose.Schema({
 })
 
 
+const Perk = new mongoose.model("Perk", PerksSchema)
 
 
 //passport.js 
@@ -334,7 +335,7 @@ app.get("/courts/:id", async (req, res) => {
 
 //creating a post 
 app.post("/courts", async(req, res)=>{
-    const newCourt = new Post(req.body)
+    const newCourt = new Court(req.body)
     const savedCourt = await newCourt.save()
     res.send(savedCourt)
 
@@ -669,14 +670,16 @@ app.get("/recomendedCourts", async (req , res)=> {
 */  
 
 
-app.post("courts/:courtId/perks", async (req, res)=> {
-   const court = req.params.courtId 
+app.post("/courts/:courtId/perk", async (req, res)=> {
+   const courtParam = req.params.courtId 
    const user = req.user
    const perk = req.body 
 
 
    try {
-    
+      const newPerk = new Perk(req.body)
+      const savedPerk = await newPerk.save() 
+      res.send(savedPerk)
 
    } catch (error) { 
 
