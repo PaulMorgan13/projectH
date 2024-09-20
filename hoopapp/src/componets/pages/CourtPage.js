@@ -136,7 +136,9 @@ const CourtPage = () => {
 
         try {  
             if (postedPerk){
+            
             const res = await axios.post(`http://localhost:3400/courts/${id}/perk`, postedPerk , {withCredentials:true}) 
+            console.log(postedPerk)
             setAddingPerk(false)
 
             } 

@@ -673,20 +673,29 @@ app.get("/recomendedCourts", async (req , res)=> {
 app.post("/courts/:courtId/perk", async (req, res)=> {
    const courtParam = req.params.courtId 
    const user = req.user
-   const perk = req.body 
+   const {postedPerk}= req.body 
+
+  try {
+        if(!postedPerk){
+          res.status(400).send({message: `Perk can not be empty`})
+        }
+      
+        const newPerk = new Perk({
+          postedPerk, 
+          court: courtParam, 
+          user: user._id
+  })
 
 
-   try {
-      const newPerk = new Perk(req.body)
-      const savedPerk = await newPerk.save() 
-      res.send(savedPerk)
+    await newPerk.save(); 
 
-   } catch (error) { 
+    res.status(200).send({message:"perk has been added"})
 
-      res.status(500).send({message: `something when wrong ${error}`})
-    
-   }
 
+
+  } catch (error) {
+      res.status(500).send({message:error})
+  }
 
 })
 
