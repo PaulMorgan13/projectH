@@ -28,7 +28,8 @@ const CourtPage = () => {
     const [updatedData, setCourtData] = useState({}) 
     const [addingPerk, setAddingPerk] = useState(null)   
     const [perkData, setPerkData]  = useState('')
-    const [hover,setHover] = useState(null)
+    const [hover,setHover] = useState(null) 
+    const [inputColor, setInputColor] = useState(null)
 
 
     const navigate = useNavigate();
@@ -127,23 +128,34 @@ const CourtPage = () => {
 
 
     }
+    
 
+    const inputStyle = {transform:`scale(1)`, 
+        border:`${inputColor ? `red 2px`: `#7da259 1.5px`}  solid` ,
+        marginBottom:`0` ,
+        transition:`ease-in-out 3ms`}  
+
+   
 
     const handlePerkSubmit = async (e)=> {   
         e.preventDefault()   
 
-        const postedPerk = perkData
+        
 
         try {  
-            if (postedPerk){
+            if (perkData){
             
-            const res = await axios.post(`http://localhost:3400/courts/${id}/perk`, postedPerk , {withCredentials:true}) 
-            console.log(postedPerk)
+            // const res = await axios.post(`http://localhost:3400/courts/${id}/perk`, perkData , {withCredentials:true}) 
+            console.log(perkData) 
+            setInputColor(true)
             setAddingPerk(false)
 
             } 
             else{
-                console.log("this cannot be blank")
+                console.log("this cannot be blank")  
+                setInputColor(false)
+
+                  
             } 
 
             
@@ -258,7 +270,7 @@ const CourtPage = () => {
                 console.log(res.data)
                 
             } catch (err) {
-                console.log({message: err})
+                console.log({message: err}) 
             }
 
     }  
@@ -452,7 +464,7 @@ const CourtPage = () => {
             { !addingPerk ?
             <p className="perks-tag">Perks: Shade, Water fountain, Clean <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}  onClick={handlePerk} /></p> 
                 :
-                <p className="perks-tag" style={{fontSize:"1.4em",fontWeight:`bold`, opacity:`80%`}}>Perks:  <input style={{transform:`scale(1)` , border:`#7da259 1.5px solid` ,marginBottom:`0` , transition:`ease-in-out 3ms`}}  onChange={(e)=>setPerkData(e.target.value)} /><img className="add-alt" src={hover ? checkMarkGreen : checkMark } style={{width:"13px", height:"13px"}}  onClick={handlePerkSubmit} onMouseOver={(e)=>setHover(true)} onMouseLeave={(e)=>setHover(false)}/></p> 
+                <p className="perks-tag" style={{fontSize:"1.4em",fontWeight:`bold`, opacity:`80%`}}>Perks:  <input style={inputStyle}  onChange={(e)=>setPerkData(e.target.value)} /><img className="add-alt" src={hover ? checkMarkGreen : checkMark } style={{width:"13px", height:"13px"}}  onClick={handlePerkSubmit} onMouseOver={(e)=>setHover(true)} onMouseLeave={(e)=>setHover(false)}/></p> 
 
         }
         </div>  
