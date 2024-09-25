@@ -218,19 +218,16 @@ const Image = new mongoose.model("Image", imageSchema)
 
 const PerksSchema = new mongoose.Schema({ 
     
-    perk: [
-        {
-          type:String, 
-          required:true
-          }
-      ] 
-    , 
+    perkName: {
+      type: String,
+      required:true
+    },
     user: {
-      type:String, 
+      type: mongoose.Schema.Types.ObjectId, ref: 'User',
       required:true
     }, 
     courtId:{
-      type:String, 
+      type: String,
       required: true
     },
     createdAt:{
@@ -671,28 +668,33 @@ app.get("/recomendedCourts", async (req , res)=> {
 
 
 app.post("/courts/:courtId/perk", async (req, res)=> {
-   const courtParam = req.params.courtId 
-   const user = req.user
-   const {postedPerk}= req.body 
+   const {courtId} = req.params 
+   const postedUser = req.user
+   const postedPerk = req.body.perkName 
 
-  console.log(req.body)
-  res.send(postedPerk)
-
+  console.log(req.body.perkName)   
 
 
-  /*try {
-        if(!postedPerk){
-          res.status(400).send({message: `Perk can not be empty`})
-        }
-      
-    res.status(200).send({message:"perk has been added"})
+  if(!postedPerk){
+    res.status(400).send({message: `Perk can not be empty`})
+  }
 
-
+  try {
+        const newPerk = new Perk({
+          perkName:postedPerk, 
+          user: postedUser._id, 
+          courtId:courtId
+          })     
+        
+    
+    await newPerk.save()
+    console.log(newPerk) 
+    res.status(200).send({message:"perk has been added"}) 
 
   } catch (error) {
       res.status(500).send({message:error})
   }
-  */
+  
 })
 
 app.listen(3400 , ()=> {

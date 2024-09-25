@@ -139,16 +139,24 @@ const CourtPage = () => {
 
     const handlePerkSubmit = async (e)=> {   
         e.preventDefault()   
-
+        
         
 
         try {  
-            if (perkData){
+            if (perkData){ 
             
-            // const res = await axios.post(`http://localhost:3400/courts/${id}/perk`, perkData , {withCredentials:true}) 
+            const sentPerkData = {
+                perkName: perkData
+            }
+                
+            
+            const res = await axios.post(`http://localhost:3400/courts/${id}/perk`, sentPerkData , {withCredentials:true}) 
             console.log(perkData) 
             setInputColor(true)
-            setAddingPerk(false)
+            setAddingPerk(false)  
+            setPerkData("")
+            
+            
 
             } 
             else{
