@@ -29,7 +29,8 @@ const CourtPage = () => {
     const [addingPerk, setAddingPerk] = useState(null)   
     const [perkData, setPerkData]  = useState('')
     const [hover,setHover] = useState(null) 
-    const [inputColor, setInputColor] = useState(null)
+    const [inputColor, setInputColor] = useState(null) 
+    const [perks, setPerk] = useState([])
 
 
     const navigate = useNavigate();
@@ -156,7 +157,6 @@ const CourtPage = () => {
             setAddingPerk(false)  
             setPerkData("")
             
-            
 
             } 
             else{
@@ -233,6 +233,25 @@ const CourtPage = () => {
         } 
         grabCourt()
     },[id])  
+ 
+
+    useEffect(()=> {
+            const grabPerks = async () => {  
+
+            try {
+                const res = await axios.get(`http://localhost:3400/courts/${id}/perks` , {withCredentials: true}) 
+                setPerk(res.data)
+                
+            } catch (error) {
+                console.log(error, `not able to get courts`)
+            }
+
+            } 
+        grabPerks()
+    },[])  
+
+
+    const perksList = perks.map(perk => perk.perkName).join(", ")
 
 
     useEffect(()=> {
@@ -448,13 +467,16 @@ const CourtPage = () => {
 
 
 <div className="court-t-r">
+        
+       
+        
 
         <div className="edit-c" onClick={handleEdit} ></div> 
+        
 
         {checkedLike ?  <div className="like-cg"  onClick={handleUnlike}></div> : <div className="like-c" onClick={handleLike}></div>}
         
-        
-        
+    
 </div>
 
 </div>    
@@ -470,7 +492,7 @@ const CourtPage = () => {
             <p>College Three Point Line: {court.collegeThreePointLine}</p> 
             
             { !addingPerk ?
-            <p className="perks-tag">Perks: Shade, Water fountain, Clean <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}  onClick={handlePerk} /></p> 
+            <p className="perks-tag">Perks:{perksList} <img className="add-alt" src={addAlt} style={{width:"10px", height:"10px"}}  onClick={handlePerk} /></p> 
                 :
                 <p className="perks-tag" style={{fontSize:"1.4em",fontWeight:`bold`, opacity:`80%`}}>Perks:  <input style={inputStyle}  onChange={(e)=>setPerkData(e.target.value)} /><img className="add-alt" src={hover ? checkMarkGreen : checkMark } style={{width:"13px", height:"13px"}}  onClick={handlePerkSubmit} onMouseOver={(e)=>setHover(true)} onMouseLeave={(e)=>setHover(false)}/></p> 
 

@@ -697,6 +697,26 @@ app.post("/courts/:courtId/perk", async (req, res)=> {
   
 })
 
+app.get("/courts/:courtId/perks", async (req, res)=> {
+    const court = req.params.courtId
+
+    try { 
+      const perks = await Perk.find({courtId:court})   
+
+     if(perks.length === 0){
+      res.status(404).send({message:`not perks for that court`})
+     }
+
+      res.status(200).json(perks)
+
+      
+    } catch (error) { 
+        res.status(500).send({error: `no courts are found`})
+      
+    }
+})
+
+
 app.listen(3400 , ()=> {
     console.log("port is running on port 3400")
 })  
