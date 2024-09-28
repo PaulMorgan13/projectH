@@ -331,10 +331,45 @@ app.get("/courts/:id", async (req, res) => {
 }) 
 
 //creating a post 
-app.post("/courts", async(req, res)=>{
-    const newCourt = new Court(req.body)
+app.post("/addCourt", async(req, res)=>{
+    console.log(req.body) 
+    const court = req.body 
+
+
+    
+    try { 
+      const newCourt = new Court(
+        {
+          name: court.name, 
+          type: court.type, 
+          address:court.address, 
+          floor:court.floor, 
+          rim:court.rim,
+          netType:court.netType, 
+          threePointLine:true, 
+          collegeThreePointLine:true,
+          courtCount:0, 
+          seats:true, 
+
+        }
+      )  
+
+      await newCourt.save() 
+      console.log(newCourt) 
+      console.log(`new court has been added`)
+      res.status(200).send({message:`new court has been added`})
+      
+
+    } 
+    catch(error){
+        res.status(500).send({message:`error`})
+
+    }
+  
+  /*const newCourt = new Court(req.body)
     const savedCourt = await newCourt.save()
-    res.send(savedCourt)
+    res.send(savedCourt) 
+    */
 
 }) 
 
