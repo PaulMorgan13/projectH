@@ -366,11 +366,7 @@ app.post("/addCourt", async(req, res)=>{
 
     }
   
-  /*const newCourt = new Court(req.body)
-    const savedCourt = await newCourt.save()
-    res.send(savedCourt) 
-    */
-
+  
 }) 
 
 app.delete("/courts/:id", async (req , res) => {
@@ -749,7 +745,26 @@ app.get("/courts/:courtId/perks", async (req, res)=> {
         res.status(500).send({error: `no courts are found`})
       
     }
-})
+})  
+
+app.get(`/courts/:courtId/images`, async (req, res)=> {
+    const court = req.params.courtId   
+    try{
+        const images = await Image.find({courtId:court})
+
+        res.status(200).json(images)
+          
+
+    } 
+    catch(error){ 
+      res.status(500).send(error, `something went wrong. Cant find photos`)
+
+    }
+
+
+}) 
+
+
 
 
 app.listen(3400 , ()=> {

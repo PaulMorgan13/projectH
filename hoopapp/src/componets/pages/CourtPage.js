@@ -30,7 +30,8 @@ const CourtPage = () => {
     const [perkData, setPerkData]  = useState('')
     const [hover,setHover] = useState(null) 
     const [inputColor, setInputColor] = useState(null) 
-    const [perks, setPerk] = useState([])
+    const [perks, setPerk] = useState([]) 
+    const [courtImages, setImages] = useState([])
 
 
     const navigate = useNavigate();
@@ -176,7 +177,34 @@ const CourtPage = () => {
 
 
     }
+    useEffect(()=>{
+        const grabCourtImages = async () => {
+                
+           try{ 
+                console.log(`getting courts`)
+                const res = await axios.get(`http://localhost:3400/courts/${id}/images`, {
+                    withCredentials: true,
+                  }) 
+                
+                 console.log(`courts have been set`) 
+                 console.log(`this is the courts`,courtImages)
+                  if(res.status === 200){
+                  //console.log(res) // comment will be removed once testing is and debugging is done
+                  setImages(res.data)  
+                  console.log(`this is the courts`,courtImages)
+                  }
+                  
+           }
+           catch(error){ 
+                console.log(error , `not able to get photos`)
 
+
+           }
+
+        }
+
+        grabCourtImages()
+    }, [id])
 
     useEffect(() =>  { 
 
@@ -409,7 +437,7 @@ const CourtPage = () => {
             {
                 !toggleOn ?  <div className="carousell-container"> 
                         <div className="carousell-box"> 
-
+                            
                         </div>  
 
                         <div className="carousell-box"> 
@@ -504,21 +532,15 @@ const CourtPage = () => {
             <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
             {
-                !toggleOn ?  <div className="carousell-container"> 
-                        <div className="carousell-box"> 
+                !toggleOn ?  <div className="carousell-container">    
+                        {courtImages.map( courtImage => {
+                              <div key={courtImage._id} className="carousell-box" style={ {backgroudImage:`url(${courtImages.imageUrl})`}}> 
+                                    
+                              </div>  
+      
+                        })}
 
-                        </div>  
 
-                        <div className="carousell-box"> 
-
-                        </div> 
-                         <div className="carousell-box"> 
-
-                        </div> 
-
-                        <div className="carousell-box"> 
-
-                        </div>
                 
                             </div> 
                 : 

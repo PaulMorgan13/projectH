@@ -105,24 +105,24 @@ const  NewCourtPage =() => {
 
                 <div className="input-f">
                 <label>Park Name</label>
-                <input type="text" name="name" placeholder="Enter Park a Name" onChange={handleChange}></input>
+                <input type="text" name="name" placeholder="Enter the Park's name." onChange={handleChange}></input>
                 </div> 
                 
                 <div className="input-f">
                 <label>Park Address</label>
-                <input type="text" name="address" placeholder="Enter the Address" onChange={handleChange}></input>
+                <input type="text" name="address" placeholder="Enter the Park's Address" onChange={handleChange}></input>
                 </div> 
 
 
                 <div className="input-f">
                 <label>Type</label>
-                <input type="text" name="type" placeholder="Enter the court Type" onChange={handleChange}></input>
+                <input type="text" name="type" placeholder="Is the court half or full?" onChange={handleChange}></input>
                 </div> 
 
 
                 <div className="input-f">
                 <label>Floor</label>
-                <input type="text" name="floor" placeholder="Enter the type of floor" onChange={handleChange}></input>
+                <input type="text" name="floor" placeholder="What is type of floor/surface?" onChange={handleChange}></input>
                 </div> 
 
 
@@ -134,12 +134,12 @@ const  NewCourtPage =() => {
              
                 <div className="input-f">
                 <label>Rim Type</label>
-                <input type="text" name="rim" placeholder="Enter Double or Single Rim" onChange={handleChange}></input>
+                <input type="text" name="rim" placeholder="Enter Double or Single Rim?" onChange={handleChange}></input>
                 </div> 
 
                 <div className="input-f">
                 <label>Net Type</label>
-                <input type="text" name="netType" placeholder="Enter Rope type" onChange={handleChange}></input>
+                <input type="text" name="netType" placeholder="What kind of net does the Rim use?" onChange={handleChange}></input>
                 </div> 
                 
                 <div className="input-f">
@@ -149,7 +149,7 @@ const  NewCourtPage =() => {
 
                 <div className="input-f">
                 <label>Seats</label>
-                <input type="text" name="seats" placeholder="Does this park has " onChange={handleChange}></input>
+                <input type="text" name="seats" placeholder="Does the court have seats?" onChange={handleChange}></input>
 
                 </div>  
 
