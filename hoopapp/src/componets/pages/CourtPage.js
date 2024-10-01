@@ -204,7 +204,10 @@ const CourtPage = () => {
         }
 
         grabCourtImages()
-    }, [id])
+    }, [id])  
+
+
+  
 
     useEffect(() =>  { 
 
@@ -533,10 +536,12 @@ const CourtPage = () => {
 
             {
                 !toggleOn ?  <div className="carousell-container">    
-                        {courtImages.map( courtImage => {
-                              <div key={courtImage._id} className="carousell-box" style={ {backgroudImage:`url(${courtImages.imageUrl})`}}> 
+                        {  
+                        
+                            courtImages.map( courtImage => {
+                            return ( <div key={courtImage._id} className="carousell-box"  style={{backgroundImage:`url(${courtImage.imageUrl})` , backgroundSize: `cover` ,opacity: `0.8`, cursor: `pointer` }}>  
                                     
-                              </div>  
+                              </div>  )
       
                         })}
 
