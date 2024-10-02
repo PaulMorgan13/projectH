@@ -751,13 +751,19 @@ app.get(`/courts/:courtId/images`, async (req, res)=> {
     const court = req.params.courtId   
     try{
         const images = await Image.find({courtId:court})
-
-        res.status(200).json(images)
           
+        if(images.length === 0 ){
+        return  res.status(404).send({message: `the are no photos`})
+        }
+         
+        
+        return res.status(200).json(images)
+        
 
+        
     } 
     catch(error){ 
-      res.status(500).send(error, `something went wrong. Cant find photos`)
+   //  return res.status(500).send(error, `something went wrong. Cant find photos`)
 
     }
 

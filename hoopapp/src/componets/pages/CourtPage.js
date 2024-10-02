@@ -188,10 +188,13 @@ const CourtPage = () => {
                 
                  console.log(`courts have been set`) 
                  console.log(`this is the courts`,courtImages)
-                  if(res.status === 200){
+                  if(res.status === 200 && res.data.length > 0){
                   //console.log(res) // comment will be removed once testing is and debugging is done
                   setImages(res.data)  
                   console.log(`this is the courts`,courtImages)
+                  } 
+                  else{
+                    setImages([])
                   }
                   
            }
@@ -204,7 +207,7 @@ const CourtPage = () => {
         }
 
         grabCourtImages()
-    }, [id])  
+    }, [])  
 
 
   
@@ -538,12 +541,12 @@ const CourtPage = () => {
                 !toggleOn ?  <div className="carousell-container">    
                         {  
                         
-                            courtImages.map( courtImage => {
+                        courtImages  ?    (courtImages.map( courtImage => {
                             return ( <div key={courtImage._id} className="carousell-box"  style={{backgroundImage:`url(${courtImage.imageUrl})` , backgroundSize: `cover` ,opacity: `0.8`, cursor: `pointer` }}>  
                                     
                               </div>  )
       
-                        })}
+                        })) :  <div>no court</div>  }
 
 
                 
