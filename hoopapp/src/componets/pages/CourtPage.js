@@ -186,17 +186,19 @@ const CourtPage = () => {
                     withCredentials: true,
                   }) 
                 
-                 console.log(`courts have been set`) 
-                 console.log(`this is the courts`,courtImages)
-                  if(res.status === 200 && res.data.length > 0){
+                 //console.log(`courts have been set`) 
+                 //console.log(`this is the courts`,courtImages)
+                  if(res.status === 200){
                   //console.log(res) // comment will be removed once testing is and debugging is done
+                    if(res.data.length > 0) {
                   setImages(res.data)  
-                  console.log(`this is the courts`,courtImages)
+                  console.log(`this is the courts`,courtImages) 
+                    } 
+                    else {
+                        setImages([])
+                    }
                   } 
-                  else{
-                    setImages([])
-                  }
-                  
+            
            }
            catch(error){ 
                 console.log(error , `not able to get photos`)
@@ -207,7 +209,7 @@ const CourtPage = () => {
         }
 
         grabCourtImages()
-    }, [])  
+    }, [id])  
 
 
   
