@@ -176,7 +176,9 @@ const CourtPage = () => {
 
 
 
-    }
+    } 
+
+    
     useEffect(()=>{
         const grabCourtImages = async () => {
                 
@@ -211,8 +213,8 @@ const CourtPage = () => {
         grabCourtImages()
     }, [id])  
 
-
-  
+    
+        
 
     useEffect(() =>  { 
 

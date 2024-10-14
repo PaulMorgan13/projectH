@@ -735,7 +735,7 @@ app.get("/courts/:courtId/perks", async (req, res)=> {
       const perks = await Perk.find({courtId:court})   
 
      if(perks.length === 0){
-      res.status(404).send({message:`not perks for that court`})
+      return res.status(404).send({message:`not perks for that court`})
      }
 
       res.status(200).json(perks)
