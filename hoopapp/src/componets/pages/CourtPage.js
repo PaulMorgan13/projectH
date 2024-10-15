@@ -188,15 +188,16 @@ const CourtPage = () => {
                     withCredentials: true,
                   }) 
                 
-                 //console.log(`courts have been set`) 
-                 //console.log(`this is the courts`,courtImages)
+                 console.log(`courts have been set`) 
+                 console.log(`this is the courts`,courtImages)
                   if(res.status === 200){
-                  //console.log(res) // comment will be removed once testing is and debugging is done
+                  console.log(res) // comment will be removed once testing is and debugging is done
                     if(res.data.length > 0) {
                   setImages(res.data)  
                   console.log(`this is the courts`,courtImages) 
                     } 
                     else {
+                        console.log(`not able to get courts`)
                         setImages([])
                     }
                   } 
@@ -243,7 +244,7 @@ const CourtPage = () => {
           
       }
          checkAuth()
-  }, [] ) 
+  }, [id] ) 
 
 
 
@@ -545,12 +546,17 @@ const CourtPage = () => {
                 !toggleOn ?  <div className="carousell-container">    
                         {  
                         
-                        courtImages  ?    (courtImages.map( courtImage => {
+                        courtImages && courtImages.length > 0 ?    (courtImages.map( courtImage => {
                             return ( <div key={courtImage._id} className="carousell-box"  style={{backgroundImage:`url(${courtImage.imageUrl})` , backgroundSize: `cover` ,opacity: `0.8`, cursor: `pointer` }}>  
                                     
                               </div>  )
       
-                        })) :  <div>no court</div>  }
+                        })) :  <div className="no-photo"> 
+                                <p className="no-images">No Images for this Court</p>
+                                <p className="click-ub">Click the button above to upload first photo!</p>
+                                </div>  
+                                
+                        }
 
 
                 

@@ -753,7 +753,7 @@ app.get(`/courts/:courtId/images`, async (req, res)=> {
   try {
     const foundImages = await Image.find({courtId:court}) 
 
-    if(foundImages && foundImages.length> 7) {
+    if(foundImages) {
       res.status(200).json(foundImages)
     } 
 
