@@ -759,11 +759,35 @@ app.get(`/courts/:courtId/images`, async (req, res)=> {
 
   } 
   catch(error){
-      res.status(400)
+      res.status(400).send({err})
   }
 
 }) 
 
+
+//route will send the date of the most recent image
+
+app.get(`/courts/:courtId/recentCourt`, async (req, res)=> {
+
+  const court = req.params.courtId ;
+
+  try { 
+
+    const latestCourts = await Image.find({courtId:court}).sort({createdAt: -1})
+
+    res.status(200).json(latestCourts[1])
+    
+  } catch (error) {   
+
+
+      res.status(400).send({error})
+    
+  }
+
+
+
+
+})
 
 
 
