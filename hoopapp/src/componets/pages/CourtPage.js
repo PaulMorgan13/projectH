@@ -31,7 +31,8 @@ const CourtPage = () => {
     const [hover,setHover] = useState(null) 
     const [inputColor, setInputColor] = useState(null) 
     const [perks, setPerk] = useState([]) 
-    const [courtImages, setImages] = useState([])
+    const [courtImages, setImages] = useState([]) 
+    const [imageDate,setImageDate] = useState([])
 
 
     const navigate = useNavigate();
@@ -215,6 +216,38 @@ const CourtPage = () => {
     }, [id])  
 
     
+
+    useEffect(() => {
+
+        const getImageDate = async () => {
+
+            try { 
+                const res = await axios.get(`http://localhost:3400/courts/${id}/recentUpload`, {withCredentials:true})
+                
+                if (res.status === 200){ 
+
+                    const imageDate = res.data 
+                    const date = imageDate.createdAt
+                    setImageDate(date)  
+                    console.log(`hi`, date)
+                }  
+                else{
+                    console.log(`no dates`)
+                }
+
+            } catch (error) { 
+                console.log(error)
+                
+            }
+
+
+        }
+            getImageDate()
+
+    }
+
+   , [id]) 
+   
         
 
     useEffect(() =>  { 
@@ -443,7 +476,7 @@ const CourtPage = () => {
         
 
         <div className="recent-changes">
-            <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
+            <h3>Recent Photos: <span className="r-date">{imageDate.data.createdAt}</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
             {
                 !toggleOn ?  <div className="carousell-container"> 
@@ -540,7 +573,7 @@ const CourtPage = () => {
         
 
         <div className="recent-changes">
-            <h3>Recent Photos: <span className="r-date">00/00/00</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
+            <h3>Recent Photos: <span className="r-date">{imageDate.createdAt}</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
             {
                 !toggleOn ?  <div className="carousell-container">    
