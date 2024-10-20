@@ -9,6 +9,7 @@ import checkMarkGreen from "../images/checkmarkGreen.png"
 import upload from "../images/icons8-upload-100.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
+import Modal from "../overlays/Modal"
 
 
 
@@ -227,9 +228,11 @@ const CourtPage = () => {
                 if (res.status === 200){ 
 
                     const imageDate = res.data 
-                    const date = imageDate.createdAt
-                    setImageDate(date)  
-                    console.log(`hi`, date)
+                    const date = imageDate.createdAt  
+                    const formatedDate = date.substring(0,10).replaceAll("-", "/")
+
+                    setImageDate(formatedDate)  
+                    console.log(`hi`, formatedDate)
                 }  
                 else{
                     console.log(`no dates`)
@@ -425,11 +428,14 @@ const CourtPage = () => {
     
 
         return( 
-                <div className="container"> 
+                <div className="container">
+                     
 
                     <Top/> 
+                    <Modal/>
                     { editing ?  <div className="court-card"> 
 
+                        
 
 <div className="court-top">  
 <div className="court-t-l">
@@ -573,7 +579,7 @@ const CourtPage = () => {
         
 
         <div className="recent-changes">
-            <h3>Recent Photos: <span className="r-date">{imageDate.createdAt}</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
+            <h3>Recent Photos: <span className="r-date">{imageDate}</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
 
             {
                 !toggleOn ?  <div className="carousell-container">    
