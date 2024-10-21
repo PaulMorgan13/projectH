@@ -34,6 +34,9 @@ const CourtPage = () => {
     const [perks, setPerk] = useState([]) 
     const [courtImages, setImages] = useState([]) 
     const [imageDate,setImageDate] = useState([])
+    const [showModal, setModal] = useState(false) 
+    const [selectedPhoto, setSelectedPhoto] = useState([])
+
 
 
     const navigate = useNavigate();
@@ -130,6 +133,12 @@ const CourtPage = () => {
             console.log(err)
         }
 
+
+    }  
+
+    const handleModal = (photo) => {
+            setSelectedPhoto(photo)
+            setModal(true)  
 
     }
     
@@ -431,8 +440,8 @@ const CourtPage = () => {
                 <div className="container">
                      
 
-                    <Top/> 
-                    <Modal/>
+                    <Top/>  
+                    { showModal && <Modal uploader={selectedPhoto.user} date ={selectedPhoto.date}  imageDescription={selectedPhoto.imageDescription} />}
                     { editing ?  <div className="court-card"> 
 
                         
@@ -586,7 +595,7 @@ const CourtPage = () => {
                         {  
                         
                         courtImages && courtImages.length > 0 ?    (courtImages.map( courtImage => {
-                            return ( <div key={courtImage._id} className="carousell-box"  style={{backgroundImage:`url(${courtImage.imageUrl})` , backgroundSize: `cover` ,opacity: `0.8`, cursor: `pointer` }}>  
+                            return ( <div key={courtImage._id} onClick={()=> {handleModal(courtImage)}} className="carousell-box"  style={{backgroundImage:`url(${courtImage.imageUrl})` , backgroundSize: `cover` ,opacity: `0.8`, cursor: `pointer` }}>  
                                     
                               </div>  )
       
