@@ -767,7 +767,7 @@ app.get(`/courts/:courtId/images`, async (req, res)=> {
 
 //route will send the date of the most recent image
 
-app.get(`/courts/:courtId/recentUpload`, async (req, res)=> {
+app.get(`/courts/:courtId/recentCourt`, async (req, res)=> {
 
   const court = req.params.courtId ;
 
@@ -783,6 +783,7 @@ app.get(`/courts/:courtId/recentUpload`, async (req, res)=> {
       res.status(400).send({error})
     
   }
+
 
 
 })

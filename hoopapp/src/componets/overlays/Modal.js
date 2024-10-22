@@ -52,13 +52,14 @@ const btnStyle = {
     marginRight:"20px"
 
 }
-const Modal = (prop)=>{
+const Modal = (prop )=>{ 
 
+ 
 return( 
     createPortal(<div style={modalStyle}>  
 
-            <div style={topStyle}>  
-                <button style={btnStyle}><img style={{width:`20px`,height :`20px`}} src={closeButton}/></button>
+            <div style={{ backgroundImage:`url(${prop.image})`, width:`100%`,height:`60%`,flex:`2`, }} >  
+                <button style={btnStyle}><img style={{width:`20px`,height :`20px`}} src={closeButton}  onClick={prop.closeModal}/></button>
                 
             </div> 
             <div style={bottompStyle}>  

@@ -141,7 +141,11 @@ const CourtPage = () => {
             setModal(true)  
 
     }
-    
+    const handleCloseModal = () => { 
+        console.log("click exit button")
+        setModal(false)  
+
+}
 
     const inputStyle = {transform:`scale(1)`, 
         border:`${inputColor ? `red 2px`: `#7da259 1.5px`}  solid` ,
@@ -441,7 +445,7 @@ const CourtPage = () => {
                      
 
                     <Top/>  
-                    { showModal && <Modal uploader={selectedPhoto.user} date ={selectedPhoto.date}  imageDescription={selectedPhoto.imageDescription} />}
+                    { showModal && <Modal uploader={selectedPhoto.user} date ={selectedPhoto.date}  imageDescription={selectedPhoto.imageDescription} image={selectedPhoto.imageUrl}  closeModal={handleCloseModal} />}
                     { editing ?  <div className="court-card"> 
 
                         
