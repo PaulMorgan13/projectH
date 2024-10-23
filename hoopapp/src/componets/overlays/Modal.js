@@ -1,7 +1,9 @@
-import react from "react"  
+import React  , {useState , useEffect , useContext ,  useRef}from "react"; 
 import { createPortal } from "react-dom"  
 import closeButton from "../images/delete-button.png" 
-
+import axios from "axios" 
+import { useParams ,useNavigate } from "react-router-dom"; 
+import { AuthContext } from "../../App"; 
 
 
 const mountedElement = document.getElementById("overlays")
@@ -27,7 +29,10 @@ const topStyle ={
     backgroundColor:`red`, 
     width:`100%`,
     height:`60%`,
-    flex:`2`,
+    flex:`2`,  
+    padding:"5%"
+    
+    
     
 }
 
@@ -36,38 +41,65 @@ const bottompStyle ={
     width:`100%`,
     height:`60%`,
     flex:"1",
-    padding: "2%"
+    padding: "2%", 
+    display:"flex",
+    flexDirection:"row"
 }  
 
 const btnStyle = { 
-    width:"0",
-    height:"0",
+    width:"20px",
+    height:"20px",
     borderRadius:"50%", 
     background:"none", 
-    opacity:"70%",
-    position:"absolute", 
-    top:"5", 
-    right:"10",
-    marginTop:"5px",
-    marginRight:"20px"
+    //opacity:"70%", 
+    background:"white",
+    display:"flex", 
+    justifyContent:"center", 
+    alignItems:"center", 
+    boxShadow: "0px 5px 17px rgba(0, 0, 0, 0.5)", 
+
+
+}  
+
+const emphasizedText = {
+    fontWeight:"bold", 
+    opacity: "90%"
+}  
+
+const unemphasizedText = {
+    fontSize:".8em", 
+    color:"##1f1f20"
+} 
+
+const h2Style = { 
+    fontWeight: "lighter" ,
+    fontSize:".9em", 
+    textTransform: 'capitalize'
 
 }
+
+
 const Modal = (prop )=>{ 
 
  
 return( 
     createPortal(<div style={modalStyle}>  
 
-            <div style={{ backgroundImage:`url(${prop.image})`, width:`100%`,height:`60%`,flex:`2`, }} >  
+            <div style={{ backgroundImage:`url(${prop.image})`,backgroundSize:"cover", width:`100%`,height:`60%`,flex:`2`, padding:"2%",display:"flex", justifyContent:"flex-end"}} >  
                 <button style={btnStyle}><img style={{width:`20px`,height :`20px`}} src={closeButton}  onClick={prop.closeModal}/></button>
                 
             </div> 
-            <div style={bottompStyle}>  
-            <h2 style={{fontSize:"1.5em"}}>Uploader: {prop.uploader}</h2>
-            <p>Image Description: {prop.imageDescription}</p>
-            <p>date:{prop.date}</p>
+            <div style={bottompStyle}> 
 
+            < div style={{display:"grid" ,width:"70%"}}>
+            <h2 style={{fontSize:"1.5em", color:"#d46605"}}>Uploader: <span style={h2Style}>{prop.uploader}</span></h2>
+            <p><span style={emphasizedText}>Image Description:</span> {prop.imageDescription}</p> 
+            <p><span style={emphasizedText}>Date:</span> <span style={unemphasizedText}>{prop.date}</span></p>
+            </div> 
 
+            <div style={{display:"grid", gridTemplateColumns:"1fr auto",gridTemplateRow:"1fr auto" ,width:"30%"} }>
+            <button style={{gridRow:"100", gridColumn:"2"}} onClick={()=> {console.log("trash was clicked")}}>trash</button> 
+            </div>
             </div>
             
         

@@ -445,7 +445,7 @@ const CourtPage = () => {
                      
 
                     <Top/>  
-                    { showModal && <Modal uploader={selectedPhoto.user} date ={selectedPhoto.date}  imageDescription={selectedPhoto.imageDescription} image={selectedPhoto.imageUrl}  closeModal={handleCloseModal} />}
+                    { showModal && <Modal uploader={selectedPhoto.user} date ={selectedPhoto.createdAt}  imageDescription={selectedPhoto.description} image={selectedPhoto.imageUrl}  closeModal={handleCloseModal} />}
                     { editing ?  <div className="court-card"> 
 
                         
