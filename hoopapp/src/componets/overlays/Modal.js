@@ -81,6 +81,30 @@ const h2Style = {
 
 const Modal = (prop )=>{ 
 
+    const removePhoto = async (e) =>{
+
+        e.preventDefault()  
+
+        try { 
+            console.log("trash clicked"); 
+            const res = await axios.post("route" ,{withCredentials: true}) 
+
+            if(res.status === 200){
+                console.log('was able to remove photo') 
+                //add navagate route
+            }
+            else {
+                console.log("was not able to remove photo", res.status)
+            }
+            
+        } catch (error) { 
+            
+        }
+
+
+
+    }
+
  
 return( 
     createPortal(<div style={modalStyle}>  
@@ -98,7 +122,7 @@ return(
             </div> 
 
             <div style={{display:"grid", gridTemplateColumns:"1fr auto",gridTemplateRow:"1fr auto" ,width:"30%"} }>
-            <button style={{gridRow:"100", gridColumn:"2"}} onClick={()=> {console.log("trash was clicked")}}>trash</button> 
+            <button style={{gridRow:"100", gridColumn:"2"}} onClick={removePhoto}>trash</button> 
             </div>
             </div>
             

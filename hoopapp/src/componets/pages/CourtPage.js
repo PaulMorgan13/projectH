@@ -279,7 +279,14 @@ const CourtPage = () => {
                 console.log(res) 
                 if(res.data.authenticated === true){
                     navigate(`/courts/${id}`) 
-                    setLogged(res.data.user.username)
+                    //setLogged(res.data.user.username)  
+
+                    //setLogged(res.data.user._id)  
+                    const userNameData = await res.data.user._id 
+                    console.log(userNameData) 
+                    setLogged(userNameData)
+                    console.log(`user will be set to logged: ${userNameData}`)
+                    
                 }
                 else {
                     navigate("/login")
