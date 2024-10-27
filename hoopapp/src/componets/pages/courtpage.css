@@ -204,7 +204,23 @@ img{
         cursor: pointer; 
         opacity: 40%; 
         
-    } 
+    }  
+    .edit-broom{
+        width: 25px;
+        height: 25px;
+        background-color: #f86931; 
+        background: url(../images/broom.png);
+        background-size: cover; 
+        background-repeat: no-repeat;  
+        cursor: pointer; 
+        opacity: 40%; 
+        
+    }  
+
+    .edit-broom:hover{
+        opacity: 70%;
+    }
+
     .court-t-r{
         display: flex; 
         flex-direction: row-reverse;
