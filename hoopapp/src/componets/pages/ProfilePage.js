@@ -217,7 +217,7 @@ const ProfilePage = ()=>{
                     <div className="p-card-top">
 
                         <div className="heading">
-                        <h1>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"}.</h1>  
+                        <h1 style={{textTransform: "capitalize"}}>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"}.</h1>  
                         <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
                         </div>
 

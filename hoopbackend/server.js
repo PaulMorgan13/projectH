@@ -192,7 +192,8 @@ const imageSchema = new mongoose.Schema({
       required : true
     }, 
     user : {
-      type:String, 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'User',
       required: true
     }, 
     description: {
@@ -511,7 +512,9 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   try {
   // Upload the file to Cloudinary  
   const description = req.body.imageDescription; 
-  const loggedUser = req.body.loggedInUser 
+  //loggedUser = req.body.loggedInUser  
+  loggedUserId = req.body.loggedInUser
+  const loggedUser = await User.findOne({_id: loggedUserId })
   const courtId = req.body.courtId;
   
 

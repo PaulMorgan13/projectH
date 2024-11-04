@@ -35,7 +35,10 @@ const CourtPage = () => {
     const [courtImages, setImages] = useState([]) 
     const [imageDate,setImageDate] = useState([])
     const [showModal, setModal] = useState(false) 
-    const [selectedPhoto, setSelectedPhoto] = useState([])
+    const [selectedPhoto, setSelectedPhoto] = useState([]) 
+    const [isUploader, setUploader] = useState([])
+    
+    
 
 
 
@@ -444,7 +447,11 @@ const CourtPage = () => {
     }
 
     
+    const uploaderMatch = ()=> {
+        const currentUser = logged; 
+       // const imageUploader = 
 
+    }
     
 
         return( 
@@ -501,9 +508,11 @@ const CourtPage = () => {
         </div>  
         
 
-        <div className="recent-changes">
-            <h3>Recent Photos: <span className="r-date">{imageDate.data.createdAt}</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
+        <div className="recent-changes"> 
 
+            {/*need to find the why the image date is not working*/}
+            <h3>Recent Photos: <span className="r-date">{/*imageDate.data.createdAt*/}</span> <button className="btn-add-img" onClick={toggleImg} ></button></h3>  
+            
             {
                 !toggleOn ?  <div className="carousell-container"> 
                         <div className="carousell-box"> 
