@@ -79,7 +79,9 @@ const h2Style = {
 }
 
 
-const Modal = (prop )=>{ 
+const Modal = (prop )=>{   
+
+    const [showTrash, setShowTrash ] = useState({})
 
     const removePhoto = async (e) =>{
 

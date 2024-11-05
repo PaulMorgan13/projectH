@@ -514,7 +514,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   const description = req.body.imageDescription; 
   //loggedUser = req.body.loggedInUser  
   loggedUserId = req.body.loggedInUser
-  const loggedUser = await User.findOne({_id: loggedUserId })
+  const loggedUser = await User.findOne({_id: loggedUserId }).populate("User")
   const courtId = req.body.courtId;
   
 
