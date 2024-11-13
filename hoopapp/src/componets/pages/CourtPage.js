@@ -36,8 +36,6 @@ const CourtPage = () => {
     const [imageDate,setImageDate] = useState([])
     const [showModal, setModal] = useState(false) 
     const [selectedPhoto, setSelectedPhoto] = useState([]) 
-    const [isUploader, setUploader] = useState([])
-    
     
 
 
@@ -448,19 +446,26 @@ const CourtPage = () => {
     }
 
     
-    const uploaderMatch = ()=> {
-        const currentUser = logged; 
-       // const imageUploader = 
+
+    const sendCleanUp = async (e)=> { 
+        
+        try {
+            
+            const res = await axios.post(`http://localhost:3400/courts/${id}/sendCleanUp`, {withCredentials:true})
+
+        } catch (e) {
+            console.log(e)
+        }
 
     }
-    
+  
 
         return( 
                 <div className="container">
                      
 
                     <Top/>  
-                    { showModal && <Modal uploader={selectedPhoto.user} date={selectedPhoto.createdAt}  imageDescription={selectedPhoto.description} image={selectedPhoto.imageUrl}  closeModal={handleCloseModal} />}
+                    { showModal && <Modal uploader={selectedPhoto.user} date={selectedPhoto.createdAt}  imageDescription={selectedPhoto.description} image={selectedPhoto.imageUrl}  closeModal={handleCloseModal} loggedInUser={logged._id} />}
                     { editing ?  <div className="court-card"> 
 
                         
@@ -581,7 +586,7 @@ const CourtPage = () => {
         
         <div className="edit-c" onClick={handleEdit} ></div> 
         
-        <div className="edit-broom" ></div> 
+        <div className="edit-broom"  onClick={sendCleanUp} ></div> 
         {checkedLike ?  <div className="like-cg"  onClick={handleUnlike}></div> : <div className="like-c" onClick={handleLike}></div>}
         
     

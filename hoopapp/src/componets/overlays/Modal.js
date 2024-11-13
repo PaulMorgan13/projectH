@@ -78,10 +78,18 @@ const h2Style = {
 
 }
 
-
 const Modal = (prop )=>{   
 
-    const [showTrash, setShowTrash ] = useState({})
+    const [showTrash, setShowTrash ] = useState(false) 
+
+
+    const checkIfMatch =()=> {
+       return prop.uploader === prop.loggedInUser
+    }
+
+    useEffect(()=> {
+        setShowTrash(checkIfMatch())
+    })
 
     const removePhoto = async (e) =>{
 
@@ -123,8 +131,11 @@ return(
             <p><span style={emphasizedText}>Date:</span> <span style={unemphasizedText}>{prop.date}</span></p>
             </div> 
 
-            <div style={{display:"grid", gridTemplateColumns:"1fr auto",gridTemplateRow:"1fr auto" ,width:"30%"} }>
-            <button style={{gridRow:"100", gridColumn:"2"}} onClick={removePhoto}>trash</button> 
+            <div style={{display:"grid", gridTemplateColumns:"1fr auto",gridTemplateRow:"1fr auto" ,width:"30%"} }>  
+            {
+               !showTrash && <button style={{gridRow:"100", gridColumn:"2"}} onClick={removePhoto}>trash</button> 
+
+            }
             </div>
             </div>
             

@@ -792,6 +792,16 @@ app.get(`/courts/:courtId/recentCourt`, async (req, res)=> {
 })
 
 
+app.post(`/courts/:courtId/sendCleanUp`, async (req, res)=>{
+
+    const court = req.params.courtId
+
+      
+
+
+
+})
+
 
 
 app.listen(3400 , ()=> {
