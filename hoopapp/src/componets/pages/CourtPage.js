@@ -446,7 +446,9 @@ const CourtPage = () => {
     }
 
     
+    //code is commented out for testing 
 
+    /*
     const sendCleanUp = async (e)=> { 
         
         try {
@@ -459,7 +461,7 @@ const CourtPage = () => {
 
     }
   
-
+    */
         return( 
                 <div className="container">
                      
