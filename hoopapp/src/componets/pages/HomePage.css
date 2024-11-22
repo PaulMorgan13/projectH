@@ -147,8 +147,8 @@ img{
     }  
 
     .h-card{
-        width: calc(90% - 20px);  
-        height: 125px;
+        width: calc(80% - 20px);  
+        height: 150px;
         background: white;
         border-radius: 5px; 
         box-shadow: 1px 4px 2px 2px rgba(0, 0, 10, 0.51); 
@@ -182,7 +182,7 @@ img{
     
     .h-read-more{
         width: 80px; 
-        height: 20px;
+        height: 30px;
     }
 
     
