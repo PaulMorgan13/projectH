@@ -8,7 +8,8 @@ const passport = require("passport");
 const LocalStrategy  = require("passport-local").Strategy; 
 const bcrypt = require("bcrypt"); 
 const multer = require("multer"); 
-const cloudinary = require("cloudinary")
+const cloudinary = require("cloudinary") 
+const nodeMailer = require("nodemailer")
 const fs = require('fs'); 
 const cosineSimilarity = require("compute-cosine-similarity")
 const { type } = require("os");
@@ -308,8 +309,16 @@ passport.use(new LocalStrategy(
 
 
 
+//this transporter will be used to bridge the app to the apps email 
 
-
+const transporter =  nodeMailer.createTransport({
+  service:"gmail", 
+  auth:{
+      user:"placeholderUsername",
+      pass:"placeholderPassword"
+  }
+}
+)
 
 
 
@@ -792,14 +801,30 @@ app.get(`/courts/:courtId/recentCourt`, async (req, res)=> {
 })
 
 
-app.post(`/courts/:courtId/sendCleanUp`, async (req, res)=>{
+app.post(`/courts/:courtId/sendCleanUp`, async (req , res)=> {
+  const court = req.params.courtId  
 
-    const court = req.params.courtId
+  //will be creating the email here 
 
-      
+  try {
+    const mailOptions = {
+      from: "demoEmail address", // will be changing this to either the app email or the users email
+      to: `parkDepartmentEmail`, //this will be the parks department email. parks city will be used particular email
+      subject:"Park Issue"
+  }  
+
+  //this will send the email out  
+  const sentMail = await transporter.sendMail(mailOptions ,)
 
 
 
+  } 
+
+  catch(error){
+    console.log('Not able to send mail',error) 
+    res.status(500).json({message: `not able to send mail`})
+  }
+ 
 })
 
 
