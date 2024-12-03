@@ -314,8 +314,8 @@ passport.use(new LocalStrategy(
 const transporter =  nodeMailer.createTransport({
   service:"gmail", 
   auth:{
-      user:"placeholderUsername",
-      pass:"placeholderPassword"
+      user: process.env.TEST_EMAIL,
+      pass: process.env.TEST_PASSWORD
   }
 }
 )
@@ -808,7 +808,7 @@ app.post(`/courts/:courtId/sendCleanUp`, async (req , res)=> {
 
   try {
     const mailOptions = {
-      from: "demoEmail address", // will be changing this to either the app email or the users email
+      from: process.env.TEST_EMAIL, // will be changing this to either the app email or the users email
       to: `parkDepartmentEmail`, //this will be the parks department email. parks city will be used particular email
       subject:"Park Issue"
   }  
