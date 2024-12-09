@@ -29,13 +29,13 @@ import { useParams ,useNavigate } from "react-router-dom";
 
 
 
-            /*
+            
             const imgUrl = URL.createObjectURL(photo) 
             console.log("image url", imgUrl)
             console.log(image)
             setImage(imgUrl) 
             console.log(image) 
-            */
+            
           
         }
        
@@ -79,7 +79,8 @@ import { useParams ,useNavigate } from "react-router-dom";
 
                     <div className="user-icon" style={style}  onClick={((e)=> { navigate("/profile") })}>   
 
-                    <img src="{image}" style={imgStyle}/>
+                    
+                        
                         {editing && 
                         <>
                         <div className="add-u-photo"  onClick={handleClick} ></div> 

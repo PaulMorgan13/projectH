@@ -178,7 +178,11 @@ const userProfileSchema = new mongoose.Schema({
         type:String,
        
 
-    }]
+    }] ,  
+    avatar:{
+      type:String,
+    }
+    
 
 })
 
@@ -827,6 +831,26 @@ app.post(`/courts/:courtId/sendCleanUp`, async (req , res)=> {
  
 })
 
+
+app.get("/profile/checkAvatar", async (req, res)=> {
+  if (req.isAuthenticated()){
+      try {
+        
+        const userProfile = await UserProfile.fideOne({username:req.user._id})
+        
+        if (userProfile) {
+          res.send(userProfile.avatar)
+        }
+
+      } catch (error) {
+        res.status(500).send({ message: "Internal Server Error" })
+      }
+
+
+  }
+
+
+})
 
 
 app.listen(3400 , ()=> {
