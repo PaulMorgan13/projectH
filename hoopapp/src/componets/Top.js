@@ -7,9 +7,47 @@ import { useParams ,useNavigate } from "react-router-dom";
  const  Top = ({editing, setIsEditing}) => {   
 
     const inputRef = useRef(null)
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState(null) 
+    const [avatar, setAvatar] = useState(null)
 
 
+    // this will be used to get or check use has proifle photo
+    useEffect(() => {
+        const getAvatar = async () => {
+
+            try {   
+                console.log("getting avatar")
+                const res = await axios.get('http://localhost:3400/profile/checkAvatar' , {
+                    withCredentials: true
+                })
+
+                if (res.status === 200){
+                    
+                    if(res.data != null){
+                        setAvatar(res.data) 
+                        console.log('current avatar', avatar)
+                    } 
+
+                else {
+                    console.log("not able to get an avatar") 
+                    setAvatar([])
+                }
+
+                }
+                
+                
+            } catch (error) { 
+                console.log('not able able to get avatar', error)
+                
+            }
+
+
+        }  
+
+        getAvatar()
+
+
+    } ,[])
 
     const handleSelectedImg = (e) => {
         //file will be set to the event selected photo   
