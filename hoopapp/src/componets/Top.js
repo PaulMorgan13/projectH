@@ -1,17 +1,19 @@
 import react, {useRef, useState, useEffect} from "react"   
 import "./Top.css" 
 import pIcon from "./images/ProjectH.svg" 
-import { useParams ,useNavigate } from "react-router-dom"; 
+import { useParams ,useNavigate } from "react-router-dom";  
+import demo from "./images/stock_photo.jpg"
 
 
  const  Top = ({editing, setIsEditing}) => {   
 
     const inputRef = useRef(null)
     const [image, setImage] = useState(null) 
-    const [avatar, setAvatar] = useState(null)
+    //const [avatar, setAvatar] = useState(null)
 
 
     // this will be used to get or check use has proifle photo
+  /*
     useEffect(() => {
         const getAvatar = async () => {
 
@@ -47,7 +49,9 @@ import { useParams ,useNavigate } from "react-router-dom";
         getAvatar()
 
 
-    } ,[])
+    } ,[]) 
+
+    */
 
     const handleSelectedImg = (e) => {
         //file will be set to the event selected photo   
@@ -97,7 +101,7 @@ import { useParams ,useNavigate } from "react-router-dom";
     const style = {
         border: editing && "dashed 2px black",
         transition: ".2s ease-in", 
-        backgroundImage: image ?  'url(${image})': "none",
+        backgroundImage: /* image ?  'url(${image})': "none"  */  `url(${demo})`,
         backgroundSize: 'cover',
         backgroundColor: "white",
         backgroundPosition: 'center',
