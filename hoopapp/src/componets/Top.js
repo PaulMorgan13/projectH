@@ -2,7 +2,10 @@ import react, {useRef, useState, useEffect} from "react"
 import "./Top.css" 
 import pIcon from "./images/ProjectH.svg" 
 import { useParams ,useNavigate } from "react-router-dom";  
+
+//the is the the demo image that will be used until i get get avatar to work
 import demo from "./images/stock_photo.jpg"
+import axios from "axios";
 
 
  const  Top = ({editing, setIsEditing}) => {   
@@ -86,24 +89,44 @@ import demo from "./images/stock_photo.jpg"
     
 
 
-    const handleClick = (e) => {
+    const UpdatePhoto = async (e) => {
         e.preventDefault()
-        console.log(`file was clicked`); 
-        if(inputRef.current){
+        console.log(`update photo was clicked`); 
+     
+     
+     /*   if(inputRef.current){
             inputRef.current.click()
         }
+      */  
         
-        
-        //inputRef.current && inputRef.current.click() 
+        //inputRef.current && inputRef.current.click()  
+
+        try { 
+
+            const res = await axios.post(`link`,, {
+                withCredentials: true
+            } ) 
+
+            if(res.status === 200){
+                console.log("photo update was sent", res.data.avatar) 
+
+            }
+            
+        } catch (error) {
+            
+        }
+
     }
 
 
     const style = {
         border: editing && "dashed 2px black",
         transition: ".2s ease-in", 
+        //hard coded the background image url
         backgroundImage: /* image ?  'url(${image})': "none"  */  `url(${demo})`,
         backgroundSize: 'cover',
-        backgroundColor: "white",
+        backgroundColor: editing &&  `rgba(255, 255, 255, 0.486)` , 
+        backgroundBlendMode: 'overlay',
         backgroundPosition: 'center',
     } 
 
@@ -126,7 +149,7 @@ import demo from "./images/stock_photo.jpg"
                         {editing && 
                         <>
                         <div className="add-u-photo"  onClick={handleClick} ></div> 
-                        <input type="file" style={{display:"none"}}  /*style={{width:"300px" , height:"50px"}} */ ref={inputRef}  onChange={handleSelectedImg}/>
+                        <input type="file" name="avatar" style={{display:"none"}}  /*style={{width:"300px" , height:"50px"}} */ ref={inputRef}  onChange={handleSelectedImg}/>
                         </>
                         
                         }

@@ -829,6 +829,35 @@ app.post(`/courts/:courtId/sendCleanUp`, async (req , res)=> {
     res.status(500).json({message: `not able to send mail`})
   }
  
+})  
+
+app.post("/profile/updateAvatar", upload.single("avatar") , async (req,res)=> {
+  const user = req.user; 
+
+
+  try{
+ 
+    const filePath = req.file.path; 
+
+    const result = await cloudinary.uploader.upload(filePath, {
+      folder:"avatars"
+    }) 
+
+    const avatarLink = result.secure_url
+
+    const updatedUser = await UserProfile.findByIdAndUpdate(user, {avatar: avatarLink})
+
+    res.status(200).json({success:true, user: updatedUser})
+    
+  }  
+  
+  catch(err) { 
+    console.error("no able to update avatar",err); 
+    res.status(500).send({message:'not able to change photo ' + err })
+
+  }
+
+
 })
 
 
