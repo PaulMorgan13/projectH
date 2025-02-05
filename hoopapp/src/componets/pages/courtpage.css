@@ -317,17 +317,19 @@ img{
     #imageDesc{ 
         
         width: 130px; 
-        height: 30px;
+        height: 25px;
     }
     .img-form{ 
         display: flex; 
         flex-direction: column; 
         gap: .35rem;
-        border: solid black 3px; 
-        height: 90px; 
+        background-color: rgb(237, 238, 238);
+        border: solid rgba(0, 0, 0, 0.209) 2px; 
+        height: 100px; 
         margin-top: .5em;  
         padding: .5rem;
-        width:260px
+        width:260px;
+        border-radius: 5px;
 
     } 
     .upload-icon{  
@@ -341,7 +343,7 @@ img{
         grid-gap:3%; 
         place-items: center;
         width: 130px; 
-        height: 50px; 
+        height: 60px;  
         
     } 
     .u-btn:hover{
@@ -354,6 +356,7 @@ img{
         width: 50px;
         height:25px;   
         font-size: .7rem; 
+        padding: 3%;
         margin-left: 0;  
        
     }  

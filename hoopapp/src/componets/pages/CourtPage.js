@@ -6,7 +6,7 @@ import bb from "../images/bb_image.png"
 import addAlt from "../images/add-alt.png"  
 import checkMark from "../images/checkmark.png"  
 import checkMarkGreen from "../images/checkmarkGreen.png" 
-import upload from "../images/icons8-upload-100.png"
+import upload from "../images/upload-button.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
 import Modal from "../overlays/Modal"
@@ -542,7 +542,7 @@ const CourtPage = () => {
                 : 
                 <form className="img-form"  onSubmit={handleSubmit} > 
                 <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button>
-                <input placeholder="image description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 
+                <input placeholder="Image Description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 
                 <input type="file" style={{ display: 'none' }} ref={inputRef}  onChange={handleFile}/> 
                 <button className="c-s-btn">Submit</button> 
                 </form>
@@ -640,7 +640,7 @@ const CourtPage = () => {
                 : 
                 <form className="img-form"  onSubmit={handleSubmit} > 
                 <button className="u-btn" onClick={uploadImg}>Upload Image  <img  className="upload-icon"src={upload} /> </button>
-                <input placeholder="image description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 
+                <input placeholder="Image Description" id="imageDesc" value={imageDescription} onChange={(e)=>setImageDescription(e.target.value)}/> 
                 <input type="file" style={{ display: 'none' }} ref={inputRef}  onChange={handleFile}/> 
                 <button className="c-s-btn">Submit</button> 
                 </form>

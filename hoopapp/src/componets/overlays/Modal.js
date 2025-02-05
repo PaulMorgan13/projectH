@@ -15,7 +15,7 @@ const modalStyle = {
     position: "fixed",
     width: "400px",
     height: "400px",
-    background: "grey",
+    background: "white",
     margin:`5%`,
     borderRadius: "10px",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)", 
@@ -119,7 +119,7 @@ const Modal = (prop )=>{
 return( 
     createPortal(<div style={modalStyle}>  
 
-            <div style={{ backgroundImage:`url(${prop.image})`,backgroundSize:"cover", width:`100%`,height:`60%`,flex:`2`, padding:"2%",display:"flex", justifyContent:"flex-end"}} >  
+            <div style={{ backgroundImage:`url(${prop.image})`, border:`white 5px solid`, borderRadius:`15px`,backgroundSize:"cover", width:`100%`,height:`60%`,flex:`2`, padding:"2%",display:"flex", justifyContent:"flex-end"}} >  
                 <button style={btnStyle}><img style={{width:`20px`,height :`20px`}} src={closeButton}  onClick={prop.closeModal}/></button>
                 
             </div> 

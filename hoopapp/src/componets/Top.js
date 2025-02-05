@@ -87,7 +87,7 @@ import axios from "axios";
     }   
 
     
-
+    
 
     const UpdatePhoto = async (e) => {
         e.preventDefault()
@@ -103,7 +103,7 @@ import axios from "axios";
 
         try { 
 
-            const res = await axios.post(`link`,, {
+            const res = await axios.post(`link`, {
                 withCredentials: true
             } ) 
 
@@ -117,6 +117,7 @@ import axios from "axios";
         }
 
     }
+
 
 
     const style = {
