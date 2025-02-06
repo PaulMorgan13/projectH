@@ -54,7 +54,11 @@ import axios from "axios";
 
     } ,[]) 
 
-    */
+    */  
+
+    const handleClick = (e)=> {
+        console.log(`this is the change photo button`)
+    }
 
     const handleSelectedImg = (e) => {
         //file will be set to the event selected photo   
@@ -148,8 +152,14 @@ import axios from "axios";
                     
                         
                         {editing && 
-                        <>
-                        <div className="add-u-photo"  onClick={handleClick} ></div> 
+                        <> 
+
+                        {/* will need to change this part of the  jsx to*/}
+                        <div className="add-u-photo"  onClick={handleClick} ></div>  
+
+                        {/*this will be for the profile photo (once done comment will be removed)*/}
+
+
                         <input type="file" name="avatar" style={{display:"none"}}  /*style={{width:"300px" , height:"50px"}} */ ref={inputRef}  onChange={handleSelectedImg}/>
                         </>
                         
