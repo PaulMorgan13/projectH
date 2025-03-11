@@ -481,7 +481,7 @@ const CourtPage = () => {
 {court.address}
 </h2>
 
-/*<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>{court.type}</h2> */
+<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>{court.type}</h2> 
 
 <div className="c-image" style={{transform:`scale(80%)`, margin:`none`, }}> 
 <img src={bb} />
