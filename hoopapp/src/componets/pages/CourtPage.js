@@ -474,24 +474,23 @@ const CourtPage = () => {
 
 <div className="court-top">  
 <div className="court-t-l">
-<h1 contentEditable id="courtName" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>
+<div>
+<h1 contentEditable id="courtName" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"45%", }}>
 {court.name}<span className="dot">.</span>
 </h1> 
-<h2 contentEditable id="courtAddress" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>
+<h2 contentEditable id="courtAddress" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"45%", }}>
 {court.address}
 </h2>
 
-<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"350px", }}>{court.type}</h2> 
+<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"45%", }}>{court.type}</h2> 
 
-<div className="c-image" style={{transform:`scale(80%)`, margin:`none`, }}> 
-<img src={bb} />
-<h3 contentEditable id="CourtCount" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"100px", }}className="c-court-num">{court.courtCount}x</h3>
+</div> 
+
+
 </div>
 
-</div>
 
-
-<div className="court-t-r">
+<div className="court-t-r" style={{width: "30%"}}>
 
         <div className="save-c" onClick={handleSave} ></div> 
 
