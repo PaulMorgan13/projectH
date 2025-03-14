@@ -15,7 +15,7 @@
 
 h1{
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }  
 
 h2{
@@ -24,7 +24,6 @@ h2{
 }
 .court-top{ 
     width: 100%;  
-    background: #4e68a1; 
 
 }
 
@@ -100,8 +99,6 @@ h2{
     height: 30px;
 } 
 .c-image{ 
-    background: #509731; 
-
     margin-top: 1.5rem;
     width: 100%;  
     display: flex;

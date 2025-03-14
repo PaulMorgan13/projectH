@@ -475,14 +475,14 @@ const CourtPage = () => {
 <div className="court-top">  
 <div className="court-t-l">
 <div>
-<h1 contentEditable id="courtName" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"45%", }}>
+<h1 contentEditable id="courtName" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"70%", }}>
 {court.name}<span className="dot">.</span>
 </h1> 
-<h2 contentEditable id="courtAddress" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"45%", }}>
+<h2 contentEditable id="courtAddress" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"70%", }}>
 {court.address}
 </h2>
 
-<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"45%", }}>{court.type}</h2> 
+<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"70%", }}>{court.type}</h2> 
 
 </div> 
 
