@@ -9,7 +9,8 @@ import checkMarkGreen from "../images/checkmarkGreen.png"
 import upload from "../images/upload-button.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
-import Modal from "../overlays/Modal"
+import Modal from "../overlays/Modal"  
+import editIcon from "../images/edit-c.svg"
 
 
 
@@ -474,17 +475,27 @@ const CourtPage = () => {
 
 <div className="court-top">  
 <div className="court-t-l">
+<div className="editLabel"> 
+
+    <h1>Editing Mode.</h1> 
+    <img src={editIcon}  style={{width:'50px',height:"50px"}}/>
+
+</div>
+
+
+
 <div>
-<h1 contentEditable id="courtName" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"70%", }}>
+<h1 contentEditable id="courtName" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"65%", }}>
 {court.name}<span className="dot">.</span>
 </h1> 
-<h2 contentEditable id="courtAddress" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"70%", }}>
+<h2 contentEditable id="courtAddress" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"65%", }}>
 {court.address}
 </h2>
 
-<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"70%", }}>{court.type}</h2> 
+<h2 contentEditable id="courtType" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"2px solid black",  width:"65%", }}>{court.type}</h2> 
 
-</div> 
+</div>   
+
 
 
 </div>

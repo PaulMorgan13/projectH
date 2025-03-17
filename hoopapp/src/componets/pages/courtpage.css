@@ -135,8 +135,25 @@ img{
 
     transform: scale(130%);
 
-} 
+}   
 
+.editLabel{
+    display: flex;
+    width: 65%;
+    height: 20%; 
+    align-items: center; 
+    opacity: 50%; 
+    background-color:  #f86931;; 
+    border-radius: 6px; 
+    margin-bottom: 5% ; 
+    padding: 3%; 
+}
+ 
+
+.editLabel h1 {
+    color:black;
+    font-size: 2rem;
+}
 
 
 @media (min-width: 1090px) { 
