@@ -5,7 +5,7 @@ import  "./profilePage.css"
 import Top from "../Top"
 import { AuthContext } from "../../App"   
 import { useParams , useNavigate } from "react-router-dom"; 
-
+import gear from "../images/gear.png"
 
 
 const ProfilePage = ()=>{   
@@ -138,14 +138,32 @@ const ProfilePage = ()=>{
                     editing ?
                     
                     <div className="profile-card"> 
-                    <div className="p-card-top">
-                    
-                    <div className="heading">
-                        <h1 contentEditable id="username" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>{loggedUser && loggedUser.username? loggedUser.username.username: "loading the User"  }</h1>
-                        <h2 contentEditable id="email" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px",}} >{loggedUser.email ===  null? "Email not set": loggedUser.email}</h2>
-                    </div>
+                    <div className="p-card-top">  
+
+                        <div className="p-card-top-l">
+                            <div className="edit-label">
+
+                                <h1>Editing Profile.</h1>  
+                                <img src={gear} style={{width:"20px",height:"20px", opacity:"60%"}}/>
+                            </div>
+                            
+                                <div className="heading">
+                                     <h1 contentEditable id="username" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px", }}>{loggedUser && loggedUser.username? loggedUser.username.username: "loading the User"  }</h1>
+                                    <h2 contentEditable id="email" onInput={handleInputChange} suppressContentEditableWarning={true} style={{border:"1.5px solid black",  width:"200px",}} >{loggedUser.email ===  null? "Email not set": loggedUser.email}</h2>
+                                </div>
+                            
+                        
+                        </div> 
+
+                        <div className="p-card-top-r">
+
+                            
                         <div className="pic-box"> H </div>
                         <div className="pic-save" onClick={handleSave}> </div>
+
+                        </div>
+                    
+
                     </div>  
                     
                     <div className="p-card-bottom"> 
@@ -215,14 +233,25 @@ const ProfilePage = ()=>{
                     :
                     <div className="profile-card"> 
                     <div className="p-card-top">
-
+                            
+                        
+                    <div className="p-card-top-l">
                         <div className="heading">
-                        <h1 style={{textTransform: "capitalize"}}>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"}.</h1>  
-                        <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
+                            <h1 style={{textTransform: "capitalize"}}>{loggedUser && loggedUser.username ? loggedUser.username.username: "loading the User"}.</h1>  
+                            <h2>{loggedUser.email ===  null ? "Email not set": loggedUser.email}</h2>
                         </div>
 
-                        <div className="pic-box"> H </div>
-                        <div className="pic-edit" onClick={handleEdit}> </div>
+                        
+                    </div> 
+
+                        <div className="p-card-top-r">
+
+                            
+                            <div className="pic-box"> H </div>
+                            <div className="pic-edit" onClick={handleEdit}> </div>
+
+                        </div>
+         
                     </div>  
 
                     <div className="p-card-bottom"> 

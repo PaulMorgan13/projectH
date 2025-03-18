@@ -10,7 +10,7 @@ import upload from "../images/upload-button.png"
 import { AuthContext } from "../../App"; 
 import Top from "../Top";
 import Modal from "../overlays/Modal"  
-import editIcon from "../images/edit-c.svg"
+import editIcon from "../images/edit-c.svg" 
 
 
 
